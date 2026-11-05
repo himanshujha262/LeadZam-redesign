@@ -227,13 +227,13 @@
           </td>
           <td class="py-3 px-4 text-right">
             <div class="flex items-center justify-end gap-1.5 opacity-90 group-hover:opacity-100">
-              <button onclick="openLeadDrawerById(${lead.id})" class="p-1 rounded bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-[#1264F5] transition" title="Inspect Lead">
+              <button data-action="inspect-lead" data-id="${lead.id}" class="p-1 rounded bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-[#1264F5] transition" title="Inspect Lead">
                 <span class="material-symbols-outlined text-[16px]">visibility</span>
               </button>
-              <button onclick="triggerQuickWhatsApp('${lead.phone}', '${lead.name}')" class="p-1 rounded bg-emerald-50 hover:bg-emerald-100 text-emerald-600 transition" title="Send WhatsApp">
+              <button data-action="quick-whatsapp" data-phone="${lead.phone}" data-name="${lead.name}" class="p-1 rounded bg-emerald-50 hover:bg-emerald-100 text-emerald-600 transition" title="Send WhatsApp">
                 <span class="material-symbols-outlined text-[16px]">chat</span>
               </button>
-              <button onclick="openQualifyModalForLead(${lead.id})" class="px-2 py-1 rounded bg-blue-50 hover:bg-blue-100 text-[#1264F5] font-bold text-[10px] transition">
+              <button data-action="qualify-lead" data-id="${lead.id}" class="px-2 py-1 rounded bg-blue-50 hover:bg-blue-100 text-[#1264F5] font-bold text-[10px] transition">
                 Qualify
               </button>
             </div>
@@ -241,6 +241,22 @@
         `;
         tbody.appendChild(tr);
       });
+
+      if (!tbody._hasActionDelegation) {
+        tbody._hasActionDelegation = true;
+        tbody.addEventListener('click', (e) => {
+          const btn = e.target.closest('button[data-action]');
+          if (!btn) return;
+          const action = btn.dataset.action;
+          if (action === 'inspect-lead') {
+            openLeadDrawerById(Number(btn.dataset.id));
+          } else if (action === 'quick-whatsapp') {
+            triggerQuickWhatsApp(btn.dataset.phone, btn.dataset.name);
+          } else if (action === 'qualify-lead') {
+            openQualifyModalForLead(Number(btn.dataset.id));
+          }
+        });
+      }
     }
 
     // Render Kanban Columns
@@ -258,7 +274,7 @@
       leadsData.forEach(lead => {
         const card = document.createElement('div');
         card.className = "bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs hover:shadow-md transition cursor-pointer space-y-2";
-        card.onclick = () => openLeadDrawer(lead);
+        card.addEventListener('click', () => openLeadDrawer(lead));
         card.innerHTML = `
           <div class="flex items-center justify-between">
             <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">${lead.source}</span>
@@ -675,10 +691,10 @@
       leadsData.slice(0, 5).forEach(l => {
         const item = document.createElement('div');
         item.className = "bg-white p-3 rounded-xl border border-slate-200 shadow-xs space-y-1.5 cursor-pointer";
-        item.onclick = () => {
+        item.addEventListener('click', () => {
           toggleMobileView();
           openLeadDrawer(l);
-        };
+        });
         item.innerHTML = `
           <div class="flex items-center justify-between">
             <span class="font-bold text-slate-900">${l.name}</span>
@@ -702,4 +718,159 @@
     function toggleSelect(id, checkbox) {
       const lead = leadsData.find(l => l.id === id);
       if (lead) lead.selected = checkbox.checked;
+    }
+
+    function initDashboard() {
+      // Navigation View Switching
+      document.querySelectorAll('[data-view]').forEach(btn => {
+        btn.addEventListener('click', () => switchView(btn.dataset.view));
+      });
+
+      // Search input
+      const searchInput = document.getElementById('lead-search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => handleSearch(e.target.value));
+      }
+
+      // Header quick actions
+      const btnSimulate = document.getElementById('btn-simulate-lead');
+      if (btnSimulate) btnSimulate.addEventListener('click', simulateIncomingLead);
+
+      const btnExport = document.getElementById('btn-export-csv');
+      if (btnExport) btnExport.addEventListener('click', exportLeadsCSV);
+
+      const btnAddLead = document.getElementById('btn-add-lead');
+      if (btnAddLead) btnAddLead.addEventListener('click', openAddLeadModal);
+
+      // Layout switcher
+      const btnTable = document.getElementById('layout-table-btn');
+      if (btnTable) btnTable.addEventListener('click', () => setPipelineLayout('table'));
+
+      const btnKanban = document.getElementById('layout-kanban-btn');
+      if (btnKanban) btnKanban.addEventListener('click', () => setPipelineLayout('kanban'));
+
+      // Channel filter
+      const channelFilter = document.getElementById('channel-filter');
+      if (channelFilter) {
+        channelFilter.addEventListener('change', (e) => filterByChannel(e.target.value));
+      }
+
+      // Status tabs
+      document.querySelectorAll('.tab-btn[data-status]').forEach(btn => {
+        btn.addEventListener('click', () => filterByStatus(btn.dataset.status, btn));
+      });
+
+      // Select all checkbox
+      const selectAll = document.getElementById('select-all-leads');
+      if (selectAll) {
+        selectAll.addEventListener('change', (e) => toggleSelectAll(e.target));
+      }
+
+      // Automations & Integrations action buttons
+      const btnNewAuto = document.getElementById('btn-new-automation');
+      if (btnNewAuto) {
+        btnNewAuto.addEventListener('click', () => alert('New automation workflow builder activated.'));
+      }
+
+      const btnSyncMeta = document.getElementById('btn-sync-meta');
+      if (btnSyncMeta) {
+        btnSyncMeta.addEventListener('click', () => alert('Meta OAuth credentials verified and synced.'));
+      }
+
+      const btnSyncGoogle = document.getElementById('btn-sync-google');
+      if (btnSyncGoogle) {
+        btnSyncGoogle.addEventListener('click', () => alert('Google Ads OAuth credentials verified and synced.'));
+      }
+
+      // State buttons
+      const btnReset1 = document.getElementById('btn-state-reset-1');
+      if (btnReset1) btnReset1.addEventListener('click', () => setState('default'));
+
+      const btnStateSimulate = document.getElementById('btn-state-simulate');
+      if (btnStateSimulate) btnStateSimulate.addEventListener('click', simulateIncomingLead);
+
+      const btnReset2 = document.getElementById('btn-state-reset-2');
+      if (btnReset2) btnReset2.addEventListener('click', () => setState('default'));
+
+      const btnRetry = document.getElementById('btn-retry-connection');
+      if (btnRetry) btnRetry.addEventListener('click', retryConnection);
+
+      const btnReset3 = document.getElementById('btn-state-reset-3');
+      if (btnReset3) btnReset3.addEventListener('click', () => setState('default'));
+
+      // Lead Drawer buttons
+      const drawerBackdrop = document.getElementById('drawer-backdrop');
+      if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeLeadDrawer);
+
+      const closeDrawerBtn = document.getElementById('close-drawer-btn');
+      if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeLeadDrawer);
+
+      const drawerWaBtn = document.getElementById('drawer-wa-btn');
+      if (drawerWaBtn) drawerWaBtn.addEventListener('click', openWhatsAppComposer);
+
+      const drawerCallBtn = document.getElementById('drawer-call-btn');
+      if (drawerCallBtn) drawerCallBtn.addEventListener('click', logCall);
+
+      const drawerQualifyBtn = document.getElementById('drawer-qualify-btn');
+      if (drawerQualifyBtn) drawerQualifyBtn.addEventListener('click', openQualifyModalFromDrawer);
+
+      const drawerDisqualifyBtn = document.getElementById('drawer-disqualify-btn');
+      if (drawerDisqualifyBtn) drawerDisqualifyBtn.addEventListener('click', disqualifyCurrentLead);
+
+      const waTemplateSelect = document.getElementById('wa-template-select');
+      if (waTemplateSelect) {
+        waTemplateSelect.addEventListener('change', (e) => applyWhatsAppTemplate(e.target.value));
+      }
+
+      const sendWaBtn = document.getElementById('send-wa-btn');
+      if (sendWaBtn) sendWaBtn.addEventListener('click', sendWhatsAppMessage);
+
+      const addNoteBtn = document.getElementById('add-note-btn');
+      if (addNoteBtn) addNoteBtn.addEventListener('click', addLeadNote);
+
+      const drawerBottomClose = document.getElementById('drawer-bottom-close-btn');
+      if (drawerBottomClose) drawerBottomClose.addEventListener('click', closeLeadDrawer);
+
+      const drawerBottomQualify = document.getElementById('drawer-bottom-qualify-btn');
+      if (drawerBottomQualify) drawerBottomQualify.addEventListener('click', openQualifyModalFromDrawer);
+
+      // Qualify modal buttons
+      const closeQualifyX = document.getElementById('close-qualify-x-btn');
+      if (closeQualifyX) closeQualifyX.addEventListener('click', closeQualifyModal);
+
+      const cancelQualifyBtn = document.getElementById('cancel-qualify-btn');
+      if (cancelQualifyBtn) cancelQualifyBtn.addEventListener('click', closeQualifyModal);
+
+      const confirmQualifyBtn = document.getElementById('confirm-qualify-btn');
+      if (confirmQualifyBtn) confirmQualifyBtn.addEventListener('click', confirmQualification);
+
+      // Add lead modal buttons & form
+      const closeAddLeadX = document.getElementById('close-add-lead-x-btn');
+      if (closeAddLeadX) closeAddLeadX.addEventListener('click', closeAddLeadModal);
+
+      const manualForm = document.getElementById('manual-add-lead-form');
+      if (manualForm) manualForm.addEventListener('submit', handleManualAddLead);
+
+      const cancelAddLeadBtn = document.getElementById('cancel-add-lead-btn');
+      if (cancelAddLeadBtn) cancelAddLeadBtn.addEventListener('click', closeAddLeadModal);
+
+      // Toast & Mobile preview
+      const toastCalBtn = document.getElementById('toast-cal-btn');
+      if (toastCalBtn) toastCalBtn.addEventListener('click', () => alert('Google Calendar invite dispatched to lead and rep.'));
+
+      const toastDismissBtn = document.getElementById('toast-dismiss-btn');
+      if (toastDismissBtn) toastDismissBtn.addEventListener('click', dismissSuccessToast);
+
+      const closeMobilePreviewBtn = document.getElementById('close-mobile-preview-btn');
+      if (closeMobilePreviewBtn) closeMobilePreviewBtn.addEventListener('click', toggleMobileView);
+
+      // Initial render
+      renderLeads();
+      updateCounts();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDashboard);
+    } else {
+      initDashboard();
     }

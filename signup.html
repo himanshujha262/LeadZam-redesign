@@ -10,22 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            brand: "#1264F5",
-            "brand-hover": "#0e52cb"
-          },
-          fontFamily: {
-            sans: ["Plus Jakarta Sans", "Inter", "sans-serif"]
-          }
-        }
-      }
-    }
-  </script>
+  <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="css/auth.css"/>
 </head>
@@ -90,7 +75,7 @@
 
       <!-- Social Signup Buttons -->
       <div class="grid grid-cols-2 gap-3 mb-6" id="social-auth-section">
-        <button onclick="simulateSocialSignup('Google')" class="flex items-center justify-center gap-2 h-10 px-3 text-xs sm:text-sm font-medium text-slate-700 bg-white border border-[#E2E8F0] rounded-lg hover:bg-slate-50 transition-colors shadow-xs active:scale-[0.99]" type="button">
+        <button id="signup-google-btn" class="flex items-center justify-center gap-2 h-10 px-3 text-xs sm:text-sm font-medium text-slate-700 bg-white border border-[#E2E8F0] rounded-lg hover:bg-slate-50 transition-colors shadow-xs active:scale-[0.99]" type="button">
           <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
@@ -99,7 +84,7 @@
           </svg>
           <span class="truncate">Google</span>
         </button>
-        <button onclick="simulateSocialSignup('Microsoft')" class="flex items-center justify-center gap-2 h-10 px-3 text-xs sm:text-sm font-medium text-slate-700 bg-white border border-[#E2E8F0] rounded-lg hover:bg-slate-50 transition-colors shadow-xs active:scale-[0.99]" type="button">
+        <button id="signup-microsoft-btn" class="flex items-center justify-center gap-2 h-10 px-3 text-xs sm:text-sm font-medium text-slate-700 bg-white border border-[#E2E8F0] rounded-lg hover:bg-slate-50 transition-colors shadow-xs active:scale-[0.99]" type="button">
           <svg class="w-4 h-4 shrink-0" viewBox="0 0 21 21">
             <path d="M1 1h9v9H1z" fill="#f25022"></path>
             <path d="M1 11h9v9H1z" fill="#00a4ef"></path>
@@ -119,7 +104,7 @@
       </div>
 
       <!-- Main Sign Up Form -->
-      <form class="space-y-4" id="signupForm" onsubmit="event.preventDefault(); simulateSubmit();">
+      <form class="space-y-4" id="signupForm">
         <!-- Full Name -->
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1.5" for="fullName">Full Name</label>
@@ -164,7 +149,7 @@
         <!-- Password Field with Strength Indicator -->
         <div>
           <label class="block text-xs font-semibold text-slate-700 mb-1.5" for="password">Password</label>
-          <input oninput="updateStrength(this.value)" class="w-full h-10 px-3.5 text-sm text-slate-900 bg-white border border-[#E2E8F0] rounded-lg placeholder:text-slate-400 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-colors shadow-xs" id="password" placeholder="At least 8 characters" required="" type="password" value="GrowthLeader2026!"/>
+          <input class="w-full h-10 px-3.5 text-sm text-slate-900 bg-white border border-[#E2E8F0] rounded-lg placeholder:text-slate-400 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-colors shadow-xs" id="password" placeholder="At least 8 characters" required="" type="password" value="GrowthLeader2026!"/>
           <!-- Password Strength Bars -->
           <div class="mt-2 flex items-center gap-1.5">
             <div class="h-1 flex-1 rounded-full bg-emerald-500 transition-colors" id="bar1"></div>

@@ -10,31 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              50: '#EFF6FF',
-              100: '#DBEAFE',
-              200: '#BFDBFE',
-              500: '#1264F5',
-              600: '#0F52CC',
-              700: '#0B3E9E',
-            },
-            slate: {
-              850: '#0F172A',
-              900: '#0B1120',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="css/dashboard.css"/>
 </head>
@@ -74,12 +50,12 @@
         <div class="px-3 py-2 space-y-1 text-xs font-semibold">
           <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Workspace</div>
           
-          <button onclick="switchView('overview')" id="nav-overview" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+          <button data-view="overview" id="nav-overview" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
             <span class="material-symbols-outlined text-[20px]">dashboard</span>
             <span>Dashboard Overview</span>
           </button>
 
-          <button onclick="switchView('leads')" id="nav-leads" class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-blue-50 text-[#1264F5] transition-all">
+          <button data-view="leads" id="nav-leads" class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-blue-50 text-[#1264F5] transition-all">
             <div class="flex items-center gap-2.5">
               <span class="material-symbols-outlined text-[20px]">filter_alt</span>
               <span>Leads &amp; Pipeline</span>
@@ -87,28 +63,28 @@
             <span class="bg-[#1264F5] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full" id="sidebar-lead-count">8</span>
           </button>
 
-          <button onclick="switchView('automations')" id="nav-automations" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+          <button data-view="automations" id="nav-automations" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
             <span class="material-symbols-outlined text-[20px]">bolt</span>
             <span>Automations</span>
             <span class="ml-auto w-2 h-2 rounded-full bg-emerald-500"></span>
           </button>
 
-          <button onclick="switchView('adaccounts')" id="nav-adaccounts" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+          <button data-view="adaccounts" id="nav-adaccounts" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
             <span class="material-symbols-outlined text-[20px]">campaign</span>
             <span>Ad Accounts</span>
           </button>
 
-          <button onclick="switchView('reports')" id="nav-reports" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+          <button data-view="reports" id="nav-reports" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
             <span class="material-symbols-outlined text-[20px]">query_stats</span>
             <span>Reports &amp; ROAS</span>
           </button>
 
-          <button onclick="switchView('integrations')" id="nav-integrations" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+          <button data-view="integrations" id="nav-integrations" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
             <span class="material-symbols-outlined text-[20px]">sync_alt</span>
             <span>Integrations</span>
           </button>
 
-          <button onclick="switchView('settings')" id="nav-settings" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+          <button data-view="settings" id="nav-settings" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
             <span class="material-symbols-outlined text-[20px]">settings</span>
             <span>Settings</span>
           </button>
@@ -157,7 +133,7 @@
         <div class="flex items-center gap-3 flex-1 max-w-xl">
           <div class="relative w-full max-w-xs sm:max-w-sm">
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
-            <input id="lead-search-input" oninput="handleSearch(this.value)" class="w-full h-9 pl-9 pr-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#1264F5] transition" placeholder="Search leads by name, email, company..."/>
+            <input id="lead-search-input" class="w-full h-9 pl-9 pr-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#1264F5] transition" placeholder="Search leads by name, email, company..."/>
           </div>
 
           <div class="hidden sm:flex items-center gap-2 px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-semibold shrink-0">
@@ -169,19 +145,19 @@
         <!-- Right Quick Actions -->
         <div class="flex items-center gap-2 sm:gap-3">
           <!-- Simulate Ingestion Button -->
-          <button onclick="simulateIncomingLead()" class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 bg-blue-50 hover:bg-blue-100 text-[#1264F5] text-xs font-bold rounded-lg border border-blue-200 transition active:scale-95 shadow-xs" title="Simulate a new lead being submitted via Meta Ads right now!">
+          <button id="btn-simulate-lead" class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 bg-blue-50 hover:bg-blue-100 text-[#1264F5] text-xs font-bold rounded-lg border border-blue-200 transition active:scale-95 shadow-xs" title="Simulate a new lead being submitted via Meta Ads right now!">
             <span class="material-symbols-outlined text-[16px] animate-spin">sync</span>
             <span>+ Simulate Ad Lead</span>
           </button>
 
           <!-- Export CSV -->
-          <button onclick="exportLeadsCSV()" class="inline-flex items-center gap-1 px-3 py-2 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg border border-slate-200 transition shadow-xs">
+          <button id="btn-export-csv" class="inline-flex items-center gap-1 px-3 py-2 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg border border-slate-200 transition shadow-xs">
             <span class="material-symbols-outlined text-[16px]">download</span>
             <span class="hidden sm:inline">Export</span>
           </button>
 
           <!-- Add Quick Lead -->
-          <button onclick="openAddLeadModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm hover:shadow transition active:scale-95">
+          <button id="btn-add-lead" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm hover:shadow transition active:scale-95">
             <span class="material-symbols-outlined text-[16px]">add</span>
             <span>+ Add Lead</span>
           </button>
@@ -209,18 +185,18 @@
             <!-- View Switcher (Table vs Kanban) & Filter Options -->
             <div class="flex items-center gap-2">
               <div class="inline-flex p-1 bg-slate-100 rounded-lg text-xs font-semibold">
-                <button onclick="setPipelineLayout('table')" id="layout-table-btn" class="px-2.5 py-1 rounded bg-white text-[#1264F5] shadow-xs flex items-center gap-1">
+                <button id="layout-table-btn" class="px-2.5 py-1 rounded bg-white text-[#1264F5] shadow-xs flex items-center gap-1">
                   <span class="material-symbols-outlined text-[15px]">table_rows</span>
                   <span>Table</span>
                 </button>
-                <button onclick="setPipelineLayout('kanban')" id="layout-kanban-btn" class="px-2.5 py-1 rounded text-slate-500 hover:text-slate-800 transition flex items-center gap-1">
+                <button id="layout-kanban-btn" class="px-2.5 py-1 rounded text-slate-500 hover:text-slate-800 transition flex items-center gap-1">
                   <span class="material-symbols-outlined text-[15px]">view_kanban</span>
                   <span>Kanban</span>
                 </button>
               </div>
 
               <!-- Channel Filter Dropdown -->
-              <select id="channel-filter" onchange="filterByChannel(this.value)" class="text-xs font-semibold bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#1264F5]">
+              <select id="channel-filter" class="text-xs font-semibold bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#1264F5]">
                 <option value="all">All Ad Channels</option>
                 <option value="Meta Ads">Meta Lead Ads</option>
                 <option value="Google Ads">Google Ads</option>
@@ -231,24 +207,24 @@
 
           <!-- Status Filter Tabs -->
           <div class="flex items-center border-b border-slate-200 overflow-x-auto text-xs font-semibold gap-1">
-            <button onclick="filterByStatus('all', this)" class="tab-btn px-4 py-2.5 text-[#1264F5] border-b-2 border-[#1264F5] flex items-center gap-1.5 transition -mb-px">
+            <button data-status="all" class="tab-btn px-4 py-2.5 text-[#1264F5] border-b-2 border-[#1264F5] flex items-center gap-1.5 transition -mb-px">
               <span>All Leads</span>
               <span class="bg-blue-100 text-[#1264F5] px-1.5 py-0.2 rounded-full text-[10px]" id="count-all">8</span>
             </button>
-            <button onclick="filterByStatus('New', this)" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+            <button data-status="New" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
               <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
               <span>New</span>
               <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-new">2</span>
             </button>
-            <button onclick="filterByStatus('Qualified', this)" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+            <button data-status="Qualified" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
               <span>Qualified</span>
               <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-qualified">3</span>
             </button>
-            <button onclick="filterByStatus('Follow-up', this)" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+            <button data-status="Follow-up" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
               <span>Follow-up</span>
               <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-followup">2</span>
             </button>
-            <button onclick="filterByStatus('Meeting Booked', this)" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+            <button data-status="Meeting Booked" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
               <span>Meeting Booked</span>
               <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-meeting">1</span>
             </button>
@@ -261,7 +237,7 @@
                 <thead class="bg-slate-50/90 text-slate-500 uppercase tracking-wider text-[10px] font-bold border-b border-slate-100">
                   <tr>
                     <th class="py-3 px-4 w-10">
-                      <input type="checkbox" onchange="toggleSelectAll(this)" class="rounded border-slate-300 text-[#1264F5]"/>
+                      <input type="checkbox" id="select-all-leads" class="rounded border-slate-300 text-[#1264F5]"/>
                     </th>
                     <th class="py-3 px-4">Lead &amp; Company</th>
                     <th class="py-3 px-3">Ad Channel &amp; Campaign</th>
@@ -539,7 +515,7 @@
               <h2 class="text-xl font-bold text-[#0F172A]">Speed-To-Lead Automations</h2>
               <p class="text-xs text-slate-500">Instantly trigger multi-channel sequences the moment an ad form is submitted.</p>
             </div>
-            <button onclick="alert('New automation workflow builder activated.')" class="px-3.5 py-2 bg-[#1264F5] text-white text-xs font-bold rounded-lg shadow-xs hover:bg-blue-600 transition">
+            <button id="btn-new-automation" class="px-3.5 py-2 bg-[#1264F5] text-white text-xs font-bold rounded-lg shadow-xs hover:bg-blue-600 transition">
               + New Automation Rule
             </button>
           </div>
@@ -630,7 +606,7 @@
                 <div>Last Lead Ingested: <strong class="text-emerald-600">2 minutes ago</strong></div>
                 <div>Total Synced Leads: <strong>1,840</strong></div>
               </div>
-              <button onclick="alert('Meta OAuth credentials verified and synced.')" class="w-full py-2 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50">
+              <button id="btn-sync-meta" class="w-full py-2 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50">
                 Manage Meta Webhooks
               </button>
             </div>
@@ -651,7 +627,7 @@
                 <div>Last Lead Ingested: <strong class="text-emerald-600">14 minutes ago</strong></div>
                 <div>Total Synced Leads: <strong>822</strong></div>
               </div>
-              <button onclick="alert('Google Ads OAuth credentials verified and synced.')" class="w-full py-2 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50">
+              <button id="btn-sync-google" class="w-full py-2 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50">
                 Manage Google Webhooks
               </button>
             </div>
@@ -671,10 +647,10 @@
             Your pipeline is currently empty or no leads match your filter. Connect your Meta or Google ad accounts to ingest leads instantly.
           </p>
           <div class="mt-6 flex flex-wrap justify-center gap-2">
-            <button onclick="setState('default')" class="px-4 py-2 bg-[#1264F5] text-white text-xs font-bold rounded-lg shadow-sm hover:bg-blue-600">
+            <button id="btn-state-reset-1" class="px-4 py-2 bg-[#1264F5] text-white text-xs font-bold rounded-lg shadow-sm hover:bg-blue-600">
               Restore Sample Leads
             </button>
-            <button onclick="simulateIncomingLead()" class="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-200">
+            <button id="btn-state-simulate" class="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-200">
               + Simulate Incoming Lead
             </button>
           </div>
@@ -694,7 +670,7 @@
             <div class="h-10 w-full rounded-lg skeleton-shimmer"></div>
           </div>
           <div class="pt-4 text-center">
-            <button onclick="setState('default')" class="text-xs font-bold text-[#1264F5] hover:underline">
+            <button id="btn-state-reset-2" class="text-xs font-bold text-[#1264F5] hover:underline">
               ← Return to live data
             </button>
           </div>
@@ -710,10 +686,10 @@
             Meta Graph API returned token expiration error [Code 190]. Live webhook ingestion is currently paused.
           </p>
           <div class="mt-6 flex justify-center gap-3">
-            <button onclick="retryConnection()" class="px-4 py-2 bg-red-600 text-white text-xs font-bold rounded-lg shadow-sm hover:bg-red-700">
+            <button id="btn-retry-connection" class="px-4 py-2 bg-red-600 text-white text-xs font-bold rounded-lg shadow-sm hover:bg-red-700">
               Re-authenticate Meta OAuth
             </button>
-            <button onclick="setState('default')" class="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-200">
+            <button id="btn-state-reset-3" class="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-200">
               Dismiss &amp; View Cached Leads
             </button>
           </div>
@@ -726,7 +702,7 @@
   <!-- =========================================================================
        3. CONTEXT-PRESERVING LEAD DRAWER (Sliding Panel)
        ========================================================================= -->
-  <div id="drawer-backdrop" onclick="closeLeadDrawer()" class="fixed inset-0 bg-slate-900/30 backdrop-blur-xs z-40 hidden transition-opacity"></div>
+  <div id="drawer-backdrop" class="fixed inset-0 bg-slate-900/30 backdrop-blur-xs z-40 hidden transition-opacity"></div>
   
   <div id="lead-drawer" class="fixed right-0 top-0 h-full w-full max-w-[540px] bg-white z-50 shadow-2xl drawer-shadow transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
     
@@ -747,7 +723,7 @@
         </div>
       </div>
 
-      <button onclick="closeLeadDrawer()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/50 transition">
+      <button id="close-drawer-btn" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/50 transition">
         <span class="material-symbols-outlined text-[20px]">close</span>
       </button>
     </div>
@@ -757,19 +733,19 @@
       
       <!-- Instant Outreach Action Bar -->
       <div class="grid grid-cols-4 gap-2">
-        <button onclick="openWhatsAppComposer()" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 font-bold flex flex-col items-center gap-1 hover:bg-emerald-100 transition shadow-xs">
+        <button id="drawer-wa-btn" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 font-bold flex flex-col items-center gap-1 hover:bg-emerald-100 transition shadow-xs">
           <span class="material-symbols-outlined text-[20px] text-emerald-600">chat</span>
           <span>WhatsApp</span>
         </button>
-        <button onclick="logCall()" class="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold flex flex-col items-center gap-1 hover:bg-slate-50 transition shadow-xs">
+        <button id="drawer-call-btn" class="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold flex flex-col items-center gap-1 hover:bg-slate-50 transition shadow-xs">
           <span class="material-symbols-outlined text-[20px] text-blue-600">call</span>
           <span>Call Lead</span>
         </button>
-        <button onclick="openQualifyModalFromDrawer()" class="p-2.5 rounded-xl border border-blue-200 bg-blue-50 text-[#1264F5] font-bold flex flex-col items-center gap-1 hover:bg-blue-100 transition shadow-xs">
+        <button id="drawer-qualify-btn" class="p-2.5 rounded-xl border border-blue-200 bg-blue-50 text-[#1264F5] font-bold flex flex-col items-center gap-1 hover:bg-blue-100 transition shadow-xs">
           <span class="material-symbols-outlined text-[20px]">verified</span>
           <span>Qualify</span>
         </button>
-        <button onclick="disqualifyCurrentLead()" class="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold flex flex-col items-center gap-1 hover:bg-red-50 hover:text-red-600 transition shadow-xs">
+        <button id="drawer-disqualify-btn" class="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold flex flex-col items-center gap-1 hover:bg-red-50 hover:text-red-600 transition shadow-xs">
           <span class="material-symbols-outlined text-[20px] text-slate-400">block</span>
           <span>Disqualify</span>
         </button>
@@ -838,13 +814,13 @@
           </div>
           <span class="text-[10px] text-emerald-700 bg-emerald-100 font-bold px-2 py-0.5 rounded">Cloud API Ready</span>
         </div>
-        <select id="wa-template-select" onchange="applyWhatsAppTemplate(this.value)" class="w-full text-xs bg-white border border-emerald-300 rounded-lg p-2 font-medium">
+        <select id="wa-template-select" class="w-full text-xs bg-white border border-emerald-300 rounded-lg p-2 font-medium">
           <option value="1">Template: Immediate Inquiry Follow-up &amp; Booking</option>
           <option value="2">Template: Meeting Reschedule / Confirmation</option>
           <option value="3">Template: Growth Case Study &amp; Pricing PDF</option>
         </select>
         <textarea id="wa-message-text" rows="3" class="w-full text-xs p-2.5 rounded-lg border border-emerald-200 bg-white focus:outline-none focus:border-emerald-500">Hi Rahul, thank you for requesting details on LeadZam from our Meta campaign. Would tomorrow at 11:00 AM work for a quick 10-minute demo?</textarea>
-        <button onclick="sendWhatsAppMessage()" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition flex items-center justify-center gap-1.5 shadow-xs">
+        <button id="send-wa-btn" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition flex items-center justify-center gap-1.5 shadow-xs">
           <span>Deliver WhatsApp Now</span>
           <span class="material-symbols-outlined text-[16px]">check</span>
         </button>
@@ -870,7 +846,7 @@
         <!-- Add Custom Note Input -->
         <div class="pt-2 flex gap-2">
           <input id="new-note-input" class="flex-1 text-xs bg-white border border-slate-200 rounded-lg px-3 py-2" placeholder="Add an internal rep note..."/>
-          <button onclick="addLeadNote()" class="px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition">
+          <button id="add-note-btn" class="px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition">
             Post Note
           </button>
         </div>
@@ -880,11 +856,11 @@
 
     <!-- Drawer Footer Actions -->
     <div class="p-4 border-t border-slate-200 bg-white flex items-center justify-between">
-      <button onclick="closeLeadDrawer()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg transition">
+      <button id="drawer-bottom-close-btn" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg transition">
         Close Drawer
       </button>
       <div class="flex items-center gap-2">
-        <button onclick="openQualifyModalFromDrawer()" class="px-4 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm transition">
+        <button id="drawer-bottom-qualify-btn" class="px-4 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm transition">
           Qualify &amp; Assign →
         </button>
       </div>
@@ -906,7 +882,7 @@
             <p class="text-[11px] text-slate-400" id="qualify-lead-subtitle">Lead: Rahul Sharma</p>
           </div>
         </div>
-        <button onclick="closeQualifyModal()" class="text-slate-400 hover:text-slate-600">
+        <button id="close-qualify-x-btn" class="text-slate-400 hover:text-slate-600">
           <span class="material-symbols-outlined text-[18px]">close</span>
         </button>
       </div>
@@ -937,8 +913,8 @@
       </div>
 
       <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
-        <button onclick="closeQualifyModal()" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
-        <button onclick="confirmQualification()" class="px-4 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm">
+        <button id="cancel-qualify-btn" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+        <button id="confirm-qualify-btn" class="px-4 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm">
           Confirm Qualification
         </button>
       </div>
@@ -952,12 +928,12 @@
     <div class="bg-white rounded-2xl max-w-md w-full border border-slate-200 shadow-2xl p-6 space-y-4">
       <div class="flex items-center justify-between pb-3 border-b border-slate-100">
         <h3 class="text-sm font-bold text-[#0F172A]">Add New Lead Manually</h3>
-        <button onclick="closeAddLeadModal()" class="text-slate-400 hover:text-slate-600">
+        <button id="close-add-lead-x-btn" class="text-slate-400 hover:text-slate-600">
           <span class="material-symbols-outlined text-[18px]">close</span>
         </button>
       </div>
 
-      <form onsubmit="handleManualAddLead(event)" class="space-y-3 text-xs">
+      <form id="manual-add-lead-form" class="space-y-3 text-xs">
         <div>
           <label class="block font-semibold text-slate-700 mb-1">Full Name</label>
           <input id="add-lead-name" required placeholder="Elena Rostova" class="w-full p-2.5 rounded-lg border border-slate-200 bg-white"/>
@@ -979,7 +955,7 @@
           </select>
         </div>
         <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
-          <button type="button" onclick="closeAddLeadModal()" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+          <button type="button" id="cancel-add-lead-btn" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
           <button type="submit" class="px-4 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm">
             Save Lead
           </button>
@@ -999,10 +975,10 @@
       <h4 class="font-bold text-white" id="toast-title">Lead Qualified Successfully!</h4>
       <p class="text-slate-400 mt-0.5 leading-relaxed" id="toast-desc">Lead has been routed to Amit Verma and consultation scheduled.</p>
       <div class="mt-2.5 flex items-center gap-2">
-        <button onclick="alert('Google Calendar invite dispatched to lead and rep.')" class="px-2.5 py-1 bg-[#1264F5] text-white rounded font-bold hover:bg-blue-600 transition">
+        <button id="toast-cal-btn" class="px-2.5 py-1 bg-[#1264F5] text-white rounded font-bold hover:bg-blue-600 transition">
           Send Invite
         </button>
-        <button onclick="dismissSuccessToast()" class="text-slate-400 hover:text-white font-medium">
+        <button id="toast-dismiss-btn" class="text-slate-400 hover:text-white font-medium">
           Dismiss
         </button>
       </div>
@@ -1025,7 +1001,7 @@
           <img src="assets/images/logo.png" alt="LeadZam" class="h-5 w-auto"/>
           <span class="text-[9px] bg-blue-50 text-[#1264F5] px-1 py-0.2 rounded font-bold">Mobile</span>
         </div>
-        <button onclick="toggleMobileView()" class="text-slate-400 hover:text-slate-700 text-xs font-bold">✕</button>
+        <button id="close-mobile-preview-btn" class="text-slate-400 hover:text-slate-700 text-xs font-bold">✕</button>
       </div>
 
       <!-- Mobile Content Area -->

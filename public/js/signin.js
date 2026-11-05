@@ -5,6 +5,7 @@
 function togglePasswordVisibility() {
   const input = document.getElementById('password');
   const icon = document.getElementById('eye-icon');
+  if (!input || !icon) return;
   if (input.type === 'password') {
     input.type = 'text';
     icon.textContent = 'visibility_off';
@@ -19,9 +20,9 @@ function instantDemoLogin() {
   const text = document.getElementById('btn-text');
   const success = document.getElementById('success-banner');
 
-  btn.disabled = true;
-  text.textContent = 'Connecting Demo Workspace...';
-  success.classList.remove('hidden');
+  if (btn) btn.disabled = true;
+  if (text) text.textContent = 'Connecting Demo Workspace...';
+  if (success) success.classList.remove('hidden');
 
   setTimeout(() => {
     window.location.href = 'dashboard.html';
@@ -30,35 +31,72 @@ function instantDemoLogin() {
 
 function handleSocialAuth(provider) {
   const success = document.getElementById('success-banner');
-  success.querySelector('span:last-child').textContent = `Authenticating with ${provider}... Redirecting to workspace.`;
-  success.classList.remove('hidden');
+  if (success) {
+    const label = success.querySelector('span:last-child');
+    if (label) label.textContent = `Authenticating with ${provider}... Redirecting to workspace.`;
+    success.classList.remove('hidden');
+  }
   setTimeout(() => {
     window.location.href = 'dashboard.html';
   }, 800);
 }
 
 function handleFormSubmit(e) {
-  e.preventDefault();
-  const email = document.getElementById('work-email').value;
+  if (e) e.preventDefault();
+  const emailInput = document.getElementById('work-email');
   const btn = document.getElementById('submit-btn');
   const text = document.getElementById('btn-text');
   const success = document.getElementById('success-banner');
   const error = document.getElementById('error-banner');
 
-  error.classList.add('hidden');
+  if (error) error.classList.add('hidden');
 
+  const email = emailInput ? emailInput.value : '';
   if (!email.includes('@')) {
-    document.getElementById('email-error-msg').classList.remove('hidden');
+    if (error) error.classList.remove('hidden');
     return;
   }
 
-  btn.disabled = true;
-  text.textContent = 'Verifying credentials...';
+  if (btn) btn.disabled = true;
+  if (text) text.textContent = 'Verifying credentials...';
+  if (success) success.classList.remove('hidden');
 
   setTimeout(() => {
-    success.classList.remove('hidden');
-    setTimeout(() => {
-      window.location.href = 'dashboard.html';
-    }, 600);
-  }, 600);
+    window.location.href = 'dashboard.html';
+  }, 800);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const demoBtn = document.getElementById('demo-login-btn');
+  if (demoBtn) {
+    demoBtn.addEventListener('click', instantDemoLogin);
+  }
+
+  const googleBtn = document.getElementById('google-login-btn');
+  if (googleBtn) {
+    googleBtn.addEventListener('click', () => handleSocialAuth('Google'));
+  }
+
+  const msBtn = document.getElementById('microsoft-login-btn');
+  if (msBtn) {
+    msBtn.addEventListener('click', () => handleSocialAuth('Microsoft'));
+  }
+
+  const signinForm = document.getElementById('signin-form');
+  if (signinForm) {
+    signinForm.addEventListener('submit', handleFormSubmit);
+  }
+
+  const togglePassBtn = document.getElementById('toggle-password-btn');
+  if (togglePassBtn) {
+    togglePassBtn.addEventListener('click', togglePasswordVisibility);
+  }
+
+  const forgotLink = document.getElementById('forgot-password-link');
+  if (forgotLink) {
+    forgotLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Password reset link has been dispatched to your work email.');
+    });
+  }
+});

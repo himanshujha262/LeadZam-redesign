@@ -7,6 +7,7 @@ function updateStrength(val) {
   const b2 = document.getElementById('bar2');
   const b3 = document.getElementById('bar3');
   const txt = document.getElementById('strengthText');
+  if (!b1 || !b2 || !b3 || !txt) return;
 
   if (val.length < 5) {
     b1.className = 'h-1 flex-1 rounded-full bg-red-400';
@@ -31,8 +32,11 @@ function updateStrength(val) {
 
 function simulateSocialSignup(provider) {
   const alertBox = document.getElementById('state-success-alert');
-  alertBox.querySelector('h4').textContent = `Authenticated with ${provider}!`;
-  alertBox.classList.remove('hidden');
+  if (alertBox) {
+    const title = alertBox.querySelector('h4');
+    if (title) title.textContent = `Authenticated with ${provider}!`;
+    alertBox.classList.remove('hidden');
+  }
   setTimeout(() => {
     window.location.href = 'dashboard.html';
   }, 700);
@@ -43,11 +47,40 @@ function simulateSubmit() {
   const text = document.getElementById('btnText');
   const alertBox = document.getElementById('state-success-alert');
 
-  btn.disabled = true;
-  text.textContent = 'Setting up workspace...';
-  alertBox.classList.remove('hidden');
+  if (btn) btn.disabled = true;
+  if (text) text.textContent = 'Setting up workspace...';
+  if (alertBox) alertBox.classList.remove('hidden');
 
   setTimeout(() => {
     window.location.href = 'dashboard.html';
   }, 800);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const googleBtn = document.getElementById('signup-google-btn');
+  if (googleBtn) {
+    googleBtn.addEventListener('click', () => simulateSocialSignup('Google'));
+  }
+
+  const msBtn = document.getElementById('signup-microsoft-btn');
+  if (msBtn) {
+    msBtn.addEventListener('click', () => simulateSocialSignup('Microsoft'));
+  }
+
+  const signupForm = document.getElementById('signupForm');
+  if (signupForm) {
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      simulateSubmit();
+    });
+  }
+
+  const passInput = document.getElementById('password');
+  if (passInput) {
+    passInput.addEventListener('input', (e) => {
+      updateStrength(e.target.value);
+    });
+    // Initialize initial strength
+    updateStrength(passInput.value || '');
+  }
+});

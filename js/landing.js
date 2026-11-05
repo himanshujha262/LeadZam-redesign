@@ -25,21 +25,48 @@ function switchScreenTab(tabId) {
 
 function toggleFaq(btn) {
   const parent = btn.closest('.faq-item');
+  if (!parent) return;
   const content = parent.querySelector('.faq-content');
   const badge = parent.querySelector('.toggle-badge');
+  if (!content || !badge) return;
   const icon = badge.querySelector('span');
 
   const isHidden = content.classList.contains('hidden');
 
   if (isHidden) {
     content.classList.remove('hidden');
-    icon.textContent = 'remove';
+    if (icon) icon.textContent = 'remove';
     badge.classList.remove('bg-slate-100', 'text-slate-600');
     badge.classList.add('bg-blue-100', 'text-[#1264F5]');
   } else {
     content.classList.add('hidden');
-    icon.textContent = 'add';
+    if (icon) icon.textContent = 'add';
     badge.classList.remove('bg-blue-100', 'text-[#1264F5]');
     badge.classList.add('bg-slate-100', 'text-slate-600');
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Screen tab switcher listeners
+  const tabs = ['live', 'dashboard-screen', 'drawer-screen', 'qualify-screen'];
+  tabs.forEach((tabId) => {
+    const btn = document.getElementById('tab-btn-' + tabId);
+    if (btn) {
+      btn.addEventListener('click', () => switchScreenTab(tabId));
+    }
+  });
+
+  // Table rows navigation to dashboard.html
+  const clickableRows = document.querySelectorAll('.demo-lead-row');
+  clickableRows.forEach((row) => {
+    row.addEventListener('click', () => {
+      window.location.href = 'dashboard.html';
+    });
+  });
+
+  // FAQ accordion toggles
+  const faqButtons = document.querySelectorAll('.faq-toggle-btn');
+  faqButtons.forEach((btn) => {
+    btn.addEventListener('click', () => toggleFaq(btn));
+  });
+});

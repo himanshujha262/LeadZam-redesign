@@ -11,32 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#EFF6FF',
-              100: '#DBEAFE',
-              200: '#BFDBFE',
-              500: '#1264F5',
-              600: '#0B52D4',
-              700: '#0940AA',
-            },
-            slate: {
-              850: '#0F172A',
-              900: '#0B132B',
-            }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="css/landing.css"/>
 </head>
@@ -250,7 +225,7 @@
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-slate-100 text-[11px]">
-                    <tr class="hover:bg-blue-50/40 transition-colors cursor-pointer" onclick="location.href='dashboard.html'">
+                    <tr class="demo-lead-row hover:bg-blue-50/40 transition-colors cursor-pointer">
                       <td class="py-2 px-3 font-semibold text-[#0F172A] flex items-center gap-2">
                         <div class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 font-bold text-[10px] flex items-center justify-center">RS</div>
                         <span>Rahul Sharma</span>
@@ -265,7 +240,7 @@
                       </td>
                       <td class="py-2 px-3 text-right font-bold text-emerald-600">&lt; 3s</td>
                     </tr>
-                    <tr class="hover:bg-blue-50/40 transition-colors cursor-pointer" onclick="location.href='dashboard.html'">
+                    <tr class="demo-lead-row hover:bg-blue-50/40 transition-colors cursor-pointer">
                       <td class="py-2 px-3 font-semibold text-[#0F172A] flex items-center gap-2">
                         <div class="w-5 h-5 rounded-full bg-purple-100 text-purple-700 font-bold text-[10px] flex items-center justify-center">LS</div>
                         <span>Liam Scott</span>
@@ -603,19 +578,19 @@
 
         <!-- Interactive Screen Switcher Tabs -->
         <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
-          <button onclick="switchScreenTab('live')" id="tab-btn-live" class="px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs bg-[#1264F5] text-white flex items-center gap-2">
+          <button id="tab-btn-live" class="px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs bg-[#1264F5] text-white flex items-center gap-2">
             <span class="material-symbols-outlined text-[16px]">desktop_windows</span>
             <span>Live Interactive Window</span>
           </button>
-          <button onclick="switchScreenTab('dashboard-screen')" id="tab-btn-dashboard-screen" class="px-4 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-2">
+          <button id="tab-btn-dashboard-screen" class="px-4 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-2">
             <span class="material-symbols-outlined text-[16px]">image</span>
             <span>CRM Dashboard Screen</span>
           </button>
-          <button onclick="switchScreenTab('drawer-screen')" id="tab-btn-drawer-screen" class="px-4 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-2">
+          <button id="tab-btn-drawer-screen" class="px-4 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-2">
             <span class="material-symbols-outlined text-[16px]">side_navigation</span>
             <span>Lead Drawer Screen</span>
           </button>
-          <button onclick="switchScreenTab('qualify-screen')" id="tab-btn-qualify-screen" class="px-4 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-2">
+          <button id="tab-btn-qualify-screen" class="px-4 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-2">
             <span class="material-symbols-outlined text-[16px]">verified</span>
             <span>Qualify Modal Screen</span>
           </button>
@@ -740,7 +715,7 @@
                   </thead>
                   <tbody class="divide-y divide-slate-100 text-slate-700">
                     <!-- Row 1 -->
-                    <tr class="hover:bg-blue-50/40 transition-colors cursor-pointer" onclick="location.href='dashboard.html'">
+                    <tr class="demo-lead-row hover:bg-blue-50/40 transition-colors cursor-pointer">
                       <td class="py-3.5 px-4">
                         <div class="font-bold text-[#0F172A]">Liam Scott</div>
                         <div class="text-[11px] text-slate-400">liam@growthpartner.io</div>
@@ -777,7 +752,7 @@
                     </tr>
 
                     <!-- Row 2 -->
-                    <tr class="hover:bg-blue-50/40 transition-colors cursor-pointer" onclick="location.href='dashboard.html'">
+                    <tr class="demo-lead-row hover:bg-blue-50/40 transition-colors cursor-pointer">
                       <td class="py-3.5 px-4">
                         <div class="font-bold text-[#0F172A]">Sarah Miller</div>
                         <div class="text-[11px] text-slate-400">sarah@nexussaas.co</div>
@@ -814,7 +789,7 @@
                     </tr>
 
                     <!-- Row 3 -->
-                    <tr class="hover:bg-blue-50/40 transition-colors cursor-pointer" onclick="location.href='dashboard.html'">
+                    <tr class="demo-lead-row hover:bg-blue-50/40 transition-colors cursor-pointer">
                       <td class="py-3.5 px-4">
                         <div class="font-bold text-[#0F172A]">David Chang</div>
                         <div class="text-[11px] text-slate-400">d.chang@ventures.com</div>
@@ -851,7 +826,7 @@
                     </tr>
 
                     <!-- Row 4 -->
-                    <tr class="hover:bg-blue-50/40 transition-colors cursor-pointer" onclick="location.href='dashboard.html'">
+                    <tr class="demo-lead-row hover:bg-blue-50/40 transition-colors cursor-pointer">
                       <td class="py-3.5 px-4">
                         <div class="font-bold text-[#0F172A]">Elena Rostova</div>
                         <div class="text-[11px] text-slate-400">elena@meditech.de</div>
@@ -1112,7 +1087,7 @@
         <div class="max-w-3xl mx-auto space-y-3.5">
           <!-- Q1: Open by default -->
           <div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
-            <button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+            <button class="faq-toggle-btn w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none">
               <span>What is LeadZam?</span>
               <div class="w-7 h-7 rounded-full bg-blue-100 text-[#1264F5] flex items-center justify-center shrink-0 toggle-badge">
                 <span class="material-symbols-outlined text-[18px]">remove</span>
@@ -1125,7 +1100,7 @@
 
           <!-- Q2 -->
           <div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
-            <button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+            <button class="faq-toggle-btn w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none">
               <span>Which ad platforms can I connect?</span>
               <div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
                 <span class="material-symbols-outlined text-[18px]">add</span>
@@ -1138,7 +1113,7 @@
 
           <!-- Q3 -->
           <div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
-            <button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+            <button class="faq-toggle-btn w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none">
               <span>How does LeadZam capture leads so quickly?</span>
               <div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
                 <span class="material-symbols-outlined text-[18px]">add</span>
@@ -1151,7 +1126,7 @@
 
           <!-- Q4 -->
           <div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
-            <button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+            <button class="faq-toggle-btn w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none">
               <span>Can I automate WhatsApp and SMS follow-ups?</span>
               <div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
                 <span class="material-symbols-outlined text-[18px]">add</span>
@@ -1164,7 +1139,7 @@
 
           <!-- Q5 -->
           <div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
-            <button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+            <button class="faq-toggle-btn w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none">
               <span>Does LeadZam provide true marketing ROAS analytics?</span>
               <div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
                 <span class="material-symbols-outlined text-[18px]">add</span>
@@ -1177,7 +1152,7 @@
 
           <!-- Q6 -->
           <div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
-            <button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+            <button class="faq-toggle-btn w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none">
               <span>Is there a free trial?</span>
               <div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
                 <span class="material-symbols-outlined text-[18px]">add</span>

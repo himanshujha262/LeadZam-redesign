@@ -264,28 +264,24 @@ export const SignupPage: React.FC = () => {
                 </div>
                 <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden flex gap-1">
                   <div
-                    className={`h-full transition-all duration-300 ${
+                    className={`h-full w-1/4 transition-all duration-300 ${
                       passwordStrength.score >= 1 ? passwordStrength.color : 'bg-transparent'
                     }`}
-                    style={{ width: '25%' }}
                   />
                   <div
-                    className={`h-full transition-all duration-300 ${
+                    className={`h-full w-1/4 transition-all duration-300 ${
                       passwordStrength.score >= 2 ? passwordStrength.color : 'bg-transparent'
                     }`}
-                    style={{ width: '25%' }}
                   />
                   <div
-                    className={`h-full transition-all duration-300 ${
+                    className={`h-full w-1/4 transition-all duration-300 ${
                       passwordStrength.score >= 3 ? passwordStrength.color : 'bg-transparent'
                     }`}
-                    style={{ width: '25%' }}
                   />
                   <div
-                    className={`h-full transition-all duration-300 ${
+                    className={`h-full w-1/4 transition-all duration-300 ${
                       passwordStrength.score >= 4 ? passwordStrength.color : 'bg-transparent'
                     }`}
-                    style={{ width: '25%' }}
                   />
                 </div>
               </div>

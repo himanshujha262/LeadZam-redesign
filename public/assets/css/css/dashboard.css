@@ -1,0 +1,60 @@
+/* LeadZam CRM Dashboard Stylesheet */
+
+body {
+  font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+  background-color: #F8FAFC;
+  color: #0F172A;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.drawer-shadow {
+  box-shadow: -10px 0 35px -5px rgba(15, 23, 42, 0.12);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.progress-meta-lead {
+  width: 64%;
+}
+
+.progress-google-search {
+  width: 28%;
+}
+
+.progress-direct-webhooks {
+  width: 8%;
+}
+
+.progress-benchmark-metric {
+  width: 84%;
+}

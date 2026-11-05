@@ -35,23 +35,7 @@
       }
     }
   </script>
-  <style>
-    body { font-family: 'Plus Jakarta Sans', Inter, sans-serif; background-color: #F8FAFC; color: #0F172A; }
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
-    ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
-    .drawer-shadow { box-shadow: -10px 0 35px -5px rgba(15, 23, 42, 0.12); }
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    .skeleton-shimmer {
-      background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/dashboard.css"/>
 </head>
 <body class="min-h-screen flex flex-col bg-[#F8FAFC] antialiased text-[#0F172A] select-none sm:select-auto">
 
@@ -138,7 +122,7 @@
             <span class="text-[#1264F5] font-bold">8,420 / 10k</span>
           </div>
           <div class="w-full bg-slate-200 h-1.5 rounded-full mt-2 overflow-hidden">
-            <div class="bg-[#1264F5] h-full rounded-full" style="width: 84%"></div>
+            <div class="bg-[#1264F5] h-full rounded-full progress-benchmark-metric"></div>
           </div>
           <div class="flex justify-between text-[10px] text-slate-400 mt-1">
             <span>84% utilized</span>
@@ -505,7 +489,7 @@
                       <span>64% (1,840)</span>
                     </div>
                     <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                      <div class="bg-[#1877F2] h-full" style="width: 64%"></div>
+                      <div class="bg-[#1877F2] h-full progress-meta-lead"></div>
                     </div>
                   </div>
 
@@ -518,7 +502,7 @@
                       <span>28% (822)</span>
                     </div>
                     <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                      <div class="bg-amber-500 h-full" style="width: 28%"></div>
+                      <div class="bg-amber-500 h-full progress-google-search"></div>
                     </div>
                   </div>
 
@@ -531,7 +515,7 @@
                       <span>8% (184)</span>
                     </div>
                     <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                      <div class="bg-emerald-500 h-full" style="width: 8%"></div>
+                      <div class="bg-emerald-500 h-full progress-direct-webhooks"></div>
                     </div>
                   </div>
                 </div>

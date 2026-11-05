@@ -1,0 +1,787 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"background":"#faf8ff","surface-container-lowest":"#ffffff","outline-variant":"#c2c6d8","on-tertiary":"#ffffff","on-primary":"#ffffff","surface":"#faf8ff","on-error-container":"#93000a","on-background":"#131b2e","secondary":"#525e7a","on-tertiary-fixed":"#002113","on-primary-fixed":"#001849","on-primary-fixed-variant":"#003fa5","on-tertiary-fixed-variant":"#005236","outline":"#737687","inverse-primary":"#b3c5ff","error-container":"#ffdad6","on-tertiary-container":"#ccffe2","error":"#ba1a1a","primary-container":"#1264f5","primary":"#004dc6","on-secondary":"#ffffff","on-secondary-container":"#55617c","tertiary-container":"#007f57","primary-fixed-dim":"#b3c5ff","tertiary-fixed-dim":"#4edea3","secondary-container":"#d0ddfd","surface-container-high":"#e2e7ff","on-error":"#ffffff","surface-container":"#eaedff","surface-container-highest":"#dae2fd","on-primary-container":"#f2f2ff","tertiary":"#006443","secondary-fixed":"#d8e2ff","surface-container-low":"#f2f3ff","surface-variant":"#dae2fd","on-secondary-fixed-variant":"#3b4761","on-surface":"#131b2e","surface-dim":"#d2d9f4","on-surface-variant":"#424655","inverse-surface":"#283044","inverse-on-surface":"#eef0ff","surface-tint":"#0054d7","surface-bright":"#faf8ff","secondary-fixed-dim":"#bac6e6","tertiary-fixed":"#6ffbbe","on-secondary-fixed":"#0e1b33","primary-fixed":"#dbe1ff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-sm":"0.5rem","space-md":"1rem","space-lg":"1.5rem","space-xl":"2.5rem","gutter-mobile":"1rem","section-gap":"6rem","margin":"2rem","margin-mobile":"1.25rem","section-gap-mobile":"3.5rem","gutter":"1.5rem","space-xs":"0.25rem"},"fontFamily":{"body-sm":["Plus Jakarta Sans"],"hero-headline":["Plus Jakarta Sans"],"hero-headline-mobile":["Plus Jakarta Sans"],"card-title":["Plus Jakarta Sans"],"body-default":["Plus Jakarta Sans"],"eyebrow":["Plus Jakarta Sans"],"section-title":["Plus Jakarta Sans"],"section-title-mobile":["Plus Jakarta Sans"],"label-btn":["Plus Jakarta Sans"],"lead-description":["Plus Jakarta Sans"],"metric-stat":["Plus Jakarta Sans"]},"fontSize":{"body-sm":["14px",{"lineHeight":"20px","fontWeight":"400"}],"hero-headline":["64px",{"lineHeight":"72px","letterSpacing":"-0.035em","fontWeight":"800"}],"hero-headline-mobile":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"800"}],"card-title":["20px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-default":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"eyebrow":["14px",{"lineHeight":"20px","letterSpacing":"0.06em","fontWeight":"600"}],"section-title":["40px",{"lineHeight":"48px","letterSpacing":"-0.025em","fontWeight":"700"}],"section-title-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-btn":["15px",{"lineHeight":"20px","letterSpacing":"-0.005em","fontWeight":"600"}],"lead-description":["18px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"400"}],"metric-stat":["32px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"700"}]}}}};</script></head><body class="bg-surface font-body-default text-body-default text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgeOCwgUEhUSaPjaTJ69gK5B5BUiNoqpDTV57nyNvrsIxJZKQl__wqwNsmnJMdmtAfPRALai9xIbNvoOH6t-opyI63dUIAxZZwmH79AuEqQhpmNgb8gj1Lc2knmA4zn68qbro7QOx-XQ-2mYqTTpgb3bY-Y6uwzJ9ch1Obrkp0tm3-YwSnd5rUQI_SUlC6QBo_uLlluYP0Ud9e27iocTAkB0yyAWeV_oMnyanCWmKp1vWvFv8EKgtthg" alt="LeadZam" class="h-8 w-auto object-contain"><span class="bg-secondary-container text-on-secondary-container font-eyebrow text-[11px] px-space-xs py-0.5 rounded-full uppercase tracking-wider font-semibold">Beta</span></div></div><div class="px-space-md py-space-sm"><div class="px-space-sm pb-space-xs font-eyebrow text-[11px] text-outline uppercase tracking-wider">Workspace</div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-medium rounded-lg shadow-sm"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-2.5 transition-all bg-primary-container text-on-primary-container font-medium rounded-lg shadow-sm" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant font-label-btn text-label-btn hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="leads-and-pipeline" href="#"><span class="material-symbols-outlined text-[20px]">filter_alt</span><span class="">Leads &amp; Pipeline</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant font-label-btn text-label-btn hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="automations" href="#"><span class="material-symbols-outlined text-[20px]">bolt</span><span class="">Automations</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant font-label-btn text-label-btn hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ad-accounts" href="#"><span class="material-symbols-outlined text-[20px]">campaign</span><span class="">Ad Accounts</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant font-label-btn text-label-btn hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reports-and-roas" href="#"><span class="material-symbols-outlined text-[20px]">query_stats</span><span class="">Reports &amp; ROAS</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant font-label-btn text-label-btn hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="integrations" href="#"><span class="material-symbols-outlined text-[20px]">sync_alt</span><span class="">Integrations</span></a><a class="flex items-center gap-space-sm px-space-md py-2.5 rounded-lg text-on-surface-variant font-label-btn text-label-btn hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="">Settings</span></a></nav></div></div><div class="p-space-md"><div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm"><div class="flex items-center justify-between"><span class="font-eyebrow text-[12px] text-on-surface-variant font-semibold">Monthly Leads</span><span class="font-body-sm text-body-sm text-primary font-bold">8,420 / 10k</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-primary-container rounded-full" style="width: 84%;"></div></div><p class="font-body-sm text-[12px] text-outline">Plan renews in 6 days</p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md w-96"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="w-full h-10 pl-9 pr-space-md bg-surface-container-low text-on-surface placeholder:text-outline rounded-lg font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest transition-colors" placeholder="Search leads, campaigns, companies..." type="search"></div></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-space-xs px-space-md py-1.5 bg-tertiary-container/10 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span class="font-body-sm text-[13px] text-tertiary font-medium">Live Sync: Meta &amp; Google</span></div><button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high rounded-lg transition-colors relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span></button><button class="flex items-center gap-1.5 px-space-md py-2 bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-btn text-label-btn rounded-lg transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">download</span><span class="">Export</span></button><button class="flex items-center gap-1.5 px-space-md py-2 bg-primary-container hover:bg-primary text-on-primary font-label-btn text-label-btn rounded-lg shadow-[0_8px_20px_-4px_rgba(18,100,245,0.4)] transition-all" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span class="">Add Lead</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-lg py-space-lg"><div class="flex flex-col w-full gap-space-lg pb-12">
+<!-- Top Command & Action Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-eyebrow text-eyebrow uppercase text-primary tracking-wider">Live Ingestion Active</span>
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+</div>
+<h1 class="font-card-title text-card-title text-on-surface text-2xl font-bold tracking-tight mt-0.5">
+        Dashboard Overview
+      </h1>
+<p class="font-body-sm text-body-sm text-secondary">
+        Real-time ad lead ingestion, automated routing, and pipeline velocity across Meta &amp; Google Ads.
+      </p>
+</div>
+<!-- Controls & Quick Actions -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Date Range Pills -->
+<div class="inline-flex p-1 bg-surface-container-low rounded-lg shadow-sm">
+<button class="px-3 py-1.5 rounded bg-surface-container-lowest text-primary font-label-btn text-body-sm font-semibold shadow-xs" type="button">
+          Today (Live)
+        </button>
+<button class="px-3 py-1.5 rounded text-secondary hover:text-on-surface font-label-btn text-body-sm transition-colors" type="button">
+          Last 7 Days
+        </button>
+<button class="px-3 py-1.5 rounded text-secondary hover:text-on-surface font-label-btn text-body-sm transition-colors" type="button">
+          Last 30 Days
+        </button>
+</div>
+<!-- Platform Filter Dropdown -->
+<div class="relative">
+<button class="flex items-center gap-2 px-3 py-2 bg-surface-container-lowest text-on-surface font-label-btn text-body-sm rounded-lg shadow-sm hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-primary text-[18px]">hub</span>
+<span class="">All Channels</span>
+<span class="material-symbols-outlined text-outline text-[16px]">expand_more</span>
+</button>
+</div>
+<!-- Live Sync Button -->
+<button class="flex items-center gap-2 px-3.5 py-2 bg-surface-container-lowest text-on-surface font-label-btn text-body-sm rounded-lg shadow-sm hover:bg-surface-container-low transition-colors group" type="button">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-tertiary"></span>
+</span>
+<span class="font-medium text-on-surface">Sync Now</span>
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:rotate-180 transition-transform">autorenew</span>
+</button>
+<!-- New Quick Lead -->
+<button class="flex items-center gap-1.5 px-4 py-2 bg-primary-container text-on-primary font-label-btn text-label-btn rounded-lg shadow-[0_8px_20px_-4px_rgba(18,100,245,0.4)] hover:bg-primary transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">+ New Quick Lead</span>
+</button>
+</div>
+</div>
+<!-- KPI Cards Grid (4 Columns) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Total Captured Leads -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.06)] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+<div class="flex items-center justify-between">
+<span class="font-eyebrow text-eyebrow text-secondary uppercase font-semibold text-xs tracking-wider">Total Captured Leads</span>
+<span class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">group_add</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-hero-headline text-metric-stat text-on-surface font-extrabold tracking-tight">2,846</span>
+<span class="inline-flex items-center text-tertiary font-body-sm font-semibold text-xs bg-tertiary-container/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_up</span>+18.4%
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-outline text-xs mt-1">vs. previous 7-day period</p>
+</div>
+<div class="pt-space-sm bg-surface-container-low/60 rounded-lg p-2 flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-body-sm text-xs text-secondary">Meta: <strong class="text-on-surface font-semibold">1,840</strong></span>
+</div>
+<div class="h-3 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-xs text-secondary">Google: <strong class="text-on-surface font-semibold">1,006</strong></span>
+</div>
+</div>
+</div>
+<!-- Card 2: Avg Response Velocity -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.06)] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+<div class="flex items-center justify-between">
+<span class="font-eyebrow text-eyebrow text-secondary uppercase font-semibold text-xs tracking-wider">Avg Response Velocity</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-eyebrow text-[11px] font-bold uppercase tracking-wider">
+          High Velocity
+        </span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-hero-headline text-metric-stat text-on-surface font-extrabold tracking-tight">1m 42s</span>
+<span class="inline-flex items-center text-tertiary font-body-sm font-semibold text-xs bg-tertiary-container/10 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] mr-0.5">arrow_downward</span>-34s speedup
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-outline text-xs mt-1">Target SLA: under 5 minutes</p>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<div class="flex-1 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 82%;"></div>
+</div>
+<span class="font-body-sm text-[12px] font-semibold text-on-surface">82% &lt; 2m</span>
+</div>
+</div>
+<!-- Card 3: Automated Follow-Up Rate -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.06)] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+<div class="flex items-center justify-between">
+<span class="font-eyebrow text-eyebrow text-secondary uppercase font-semibold text-xs tracking-wider">Instant Auto-Followup</span>
+<span class="w-8 h-8 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-hero-headline text-metric-stat text-on-surface font-extrabold tracking-tight">94.2%</span>
+<span class="inline-flex items-center text-primary font-body-sm font-semibold text-xs bg-primary/10 px-2 py-0.5 rounded-full">
+            2,681 Triggers
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-outline text-xs mt-1">Dispatched in ≤ 60 seconds</p>
+</div>
+<div class="flex items-center justify-between text-xs text-secondary bg-surface-container-low/60 rounded-lg p-2">
+<span class="flex items-center gap-1 font-medium"><span class="material-symbols-outlined text-[15px] text-tertiary">chat</span> WhatsApp: 1,940</span>
+<span class="flex items-center gap-1 font-medium"><span class="material-symbols-outlined text-[15px] text-primary">sms</span> SMS: 741</span>
+</div>
+</div>
+<!-- Card 4: Closed Revenue & ROAS -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.06)] flex flex-col justify-between hover:translate-y-[-2px] transition-all">
+<div class="flex items-center justify-between">
+<span class="font-eyebrow text-eyebrow text-secondary uppercase font-semibold text-xs tracking-wider">Closed Pipeline Rev</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-eyebrow text-[11px] font-bold">
+          4.8x ROAS
+        </span>
+</div>
+<div class="my-space-sm">
+<div class="flex items-baseline gap-2">
+<span class="font-hero-headline text-metric-stat text-on-surface font-extrabold tracking-tight">$142,500</span>
+<span class="inline-flex items-center text-tertiary font-body-sm font-semibold text-xs bg-tertiary-container/10 px-2 py-0.5 rounded-full">
+            +22.6% Conv
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-outline text-xs mt-1">Blended return across Meta &amp; Google</p>
+</div>
+<div class="flex items-center justify-between text-xs text-secondary pt-2">
+<span class="text-outline">CAC Payback: <strong class="text-on-surface">14 Days</strong></span>
+<span class="text-tertiary font-semibold flex items-center gap-0.5"><span class="material-symbols-outlined text-[14px]">verified</span> Profitable</span>
+</div>
+</div>
+</div>
+<!-- Main Content Split Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN (65% / 8 cols) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Live Ad Lead Ingestion & Queue Table Card -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.06)] p-space-lg flex flex-col gap-space-md">
+<!-- Table Header & Filter Tabs -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-card-title text-card-title text-on-surface font-bold text-lg">Live Ad Lead Ingestion &amp; Queue</h2>
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline text-xs mt-0.5">Automated webhooks with AI qualification and rep assignment</p>
+</div>
+<!-- Queue Filter Tabs -->
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-primary font-label-btn text-xs font-semibold shadow-xs" type="button">
+              All (2,846)
+            </button>
+<button class="px-2.5 py-1 rounded text-secondary hover:text-on-surface font-label-btn text-xs font-medium transition-colors flex items-center gap-1" type="button">
+<span class="">Action</span>
+<span class="w-4 h-4 rounded-full bg-error-container text-on-error-container flex items-center justify-center text-[10px] font-bold">14</span>
+</button>
+<button class="px-2.5 py-1 rounded text-secondary hover:text-on-surface font-label-btn text-xs font-medium transition-colors" type="button">
+              Auto Follow-up (182)
+            </button>
+<button class="px-2.5 py-1 rounded text-secondary hover:text-on-surface font-label-btn text-xs font-medium transition-colors" type="button">
+              Converted (412)
+            </button>
+</div>
+</div>
+<!-- Table View -->
+<div class="overflow-x-auto -mx-space-lg px-space-lg">
+<table class="w-full text-left text-body-sm">
+<thead>
+<tr class="text-outline text-xs uppercase font-eyebrow bg-surface-container-low/50">
+<th class="py-2.5 px-3 rounded-l-lg">Lead Details</th>
+<th class="py-2.5 px-3">Campaign Source</th>
+<th class="py-2.5 px-3">AI Score</th>
+<th class="py-2.5 px-3">Pipeline Status</th>
+<th class="py-2.5 px-3">Assigned Rep</th>
+<th class="py-2.5 px-3 rounded-r-lg text-right">Quick Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<!-- Lead Row 1 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container/10 text-primary font-bold flex items-center justify-center text-xs">
+                      SJ
+                    </div>
+<div>
+<div class="font-label-btn font-semibold text-on-surface text-sm flex items-center gap-1.5">
+                        Sarah Jenkins
+                        <span class="w-1.5 h-1.5 rounded-full bg-tertiary" title="Active now"></span>
+</div>
+<div class="text-xs text-outline font-body-sm">sarah.j@apexrenewables.co</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded flex items-center justify-center bg-primary-container text-on-primary text-[11px] font-bold">M</span>
+<div>
+<div class="text-xs font-medium text-on-surface">Meta Lead Form #4</div>
+<div class="text-[11px] text-outline">Solar Quote CBO</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<div class="px-2 py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-bold text-xs">
+                      94/100
+                    </div>
+<span class="text-[11px] font-semibold text-tertiary">VIP Intent</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary-container/10 text-tertiary text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">send</span>
+<span class="">WhatsApp Sent (2m ago)</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center text-[10px] font-bold">AR</div>
+<span class="text-xs text-on-surface font-medium">Alex Rivera</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-secondary transition-colors" title="Quick Dial" type="button">
+<span class="material-symbols-outlined text-[16px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-tertiary hover:text-on-tertiary text-secondary transition-colors" title="WhatsApp Chat" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-secondary transition-colors" title="Move Stage" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Lead Row 2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary/15 text-secondary font-bold flex items-center justify-center text-xs">
+                      MV
+                    </div>
+<div>
+<div class="font-label-btn font-semibold text-on-surface text-sm">Marcus Vance</div>
+<div class="text-xs text-outline font-body-sm">+1 (512) 884-2190</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded flex items-center justify-center bg-error-container text-on-error-container text-[11px] font-bold">G</span>
+<div>
+<div class="text-xs font-medium text-on-surface">Google Ads Search</div>
+<div class="text-[11px] text-outline">B2B SaaS Commercial</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<div class="px-2 py-0.5 rounded-full bg-primary-container/10 text-primary font-bold text-xs">
+                      89/100
+                    </div>
+<span class="text-[11px] font-semibold text-primary">High Intent</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container/10 text-primary text-xs font-medium animate-pulse">
+<span class="material-symbols-outlined text-[14px]">phone_in_talk</span>
+<span class="">Rep Assigned (Calling)</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center text-[10px] font-bold">PP</div>
+<span class="text-xs text-on-surface font-medium">Priya Patel</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-secondary transition-colors" title="Quick Dial" type="button">
+<span class="material-symbols-outlined text-[16px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-tertiary hover:text-on-tertiary text-secondary transition-colors" title="WhatsApp Chat" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-secondary transition-colors" title="Move Stage" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Lead Row 3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container/10 text-primary font-bold flex items-center justify-center text-xs">
+                      DZ
+                    </div>
+<div>
+<div class="font-label-btn font-semibold text-on-surface text-sm">David Zhao</div>
+<div class="text-xs text-outline font-body-sm">zhao.tech@cloudscale.io</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded flex items-center justify-center bg-primary-container text-on-primary text-[11px] font-bold">M</span>
+<div>
+<div class="text-xs font-medium text-on-surface">Meta Messenger Ad</div>
+<div class="text-[11px] text-outline">Scale Plan Inbound</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<div class="px-2 py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-bold text-xs">
+                      96/100
+                    </div>
+<span class="text-[11px] font-semibold text-tertiary">VIP Enterprise</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-tertiary/15 text-tertiary font-semibold text-xs">
+<span class="material-symbols-outlined text-[14px]">event_available</span>
+<span class="">Demo Booked</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center text-[10px] font-bold">AR</div>
+<span class="text-xs text-on-surface font-medium">Alex Rivera</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-secondary transition-colors" title="Quick Dial" type="button">
+<span class="material-symbols-outlined text-[16px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-tertiary hover:text-on-tertiary text-secondary transition-colors" title="WhatsApp Chat" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-secondary transition-colors" title="Move Stage" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Lead Row 4 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container font-bold flex items-center justify-center text-xs">
+                      ER
+                    </div>
+<div>
+<div class="font-label-btn font-semibold text-on-surface text-sm">Elena Rostova</div>
+<div class="text-xs text-outline font-body-sm">+44 7911 123456</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded flex items-center justify-center bg-error-container text-on-error-container text-[11px] font-bold">G</span>
+<div>
+<div class="text-xs font-medium text-on-surface">Google PMax Form</div>
+<div class="text-[11px] text-outline">Agency Bundle V2</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<div class="px-2 py-0.5 rounded-full bg-secondary-container text-secondary font-bold text-xs">
+                      78/100
+                    </div>
+<span class="text-[11px] font-medium text-secondary">Mid-Tier</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container/50 text-secondary text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">sms</span>
+<span class="">SMS Auto-Reply Sent</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">smart_toy</span>
+<span class="text-xs text-secondary font-medium">Automated Bot</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-secondary transition-colors" title="Quick Dial" type="button">
+<span class="material-symbols-outlined text-[16px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-tertiary hover:text-on-tertiary text-secondary transition-colors" title="WhatsApp Chat" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-secondary transition-colors" title="Move Stage" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Lead Row 5 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-3 px-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary font-bold flex items-center justify-center text-xs">
+                      MS
+                    </div>
+<div>
+<div class="font-label-btn font-semibold text-on-surface text-sm">Michael Scott</div>
+<div class="text-xs text-outline font-body-sm">michael@scrantoncorp.com</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded flex items-center justify-center bg-primary-container text-on-primary text-[11px] font-bold">M</span>
+<div>
+<div class="text-xs font-medium text-on-surface">Meta Retargeting</div>
+<div class="text-[11px] text-outline">Pricing Page Dropoff</div>
+</div>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<div class="px-2 py-0.5 rounded-full bg-surface-container-highest text-outline font-bold text-xs">
+                      62/100
+                    </div>
+<span class="text-[11px] font-medium text-outline">Nurture</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-highest text-secondary text-xs font-medium">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="">Nurture Sequence</span>
+</div>
+</td>
+<td class="py-3 px-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline">hourglass_empty</span>
+<span class="text-xs text-outline font-medium">Unassigned Queue</span>
+</div>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-primary-container hover:text-on-primary text-secondary transition-colors" title="Quick Dial" type="button">
+<span class="material-symbols-outlined text-[16px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-tertiary hover:text-on-tertiary text-secondary transition-colors" title="WhatsApp Chat" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-secondary transition-colors" title="Move Stage" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination / Summary Footer -->
+<div class="flex items-center justify-between pt-space-xs text-xs text-secondary">
+<span class="">Showing 5 of 2,846 real-time synchronized leads</span>
+<div class="flex items-center gap-2">
+<button class="px-2 py-1 bg-surface-container-low rounded hover:bg-surface-container-high transition-colors" type="button">Previous</button>
+<button class="px-2 py-1 bg-primary-container text-on-primary rounded font-semibold" type="button">1</button>
+<button class="px-2 py-1 bg-surface-container-low rounded hover:bg-surface-container-high transition-colors" type="button">2</button>
+<button class="px-2 py-1 bg-surface-container-low rounded hover:bg-surface-container-high transition-colors" type="button">Next</button>
+</div>
+</div>
+</div>
+<!-- Real-Time Lead Funnel & Conversion Velocity Card -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.06)] p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-card-title text-card-title text-on-surface font-bold text-base">Real-time Lead Funnel &amp; Velocity Dropoff</h3>
+<p class="font-body-sm text-body-sm text-outline text-xs mt-0.5">End-to-end journey from ad impression to closed-won revenue</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-eyebrow text-xs font-semibold text-tertiary bg-tertiary-container/10 px-2 py-1 rounded-full">
+              Overall Conv: 22.6%
+            </span>
+</div>
+</div>
+<!-- Inline Visual Funnel Horizontal Progress Bars -->
+<div class="flex flex-col gap-3 pt-2">
+<!-- Stage 1 -->
+<div>
+<div class="flex justify-between items-center text-xs mb-1">
+<span class="font-label-btn text-on-surface font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>1. Captured via Meta &amp; Google Forms
+              </span>
+<span class="text-secondary font-semibold">2,846 Leads (100%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Stage 2 -->
+<div>
+<div class="flex justify-between items-center text-xs mb-1">
+<span class="font-label-btn text-on-surface font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>2. AI Qualified (Score ≥ 70)
+              </span>
+<span class="text-secondary font-semibold">2,049 Leads (72.0%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 72%;"></div>
+</div>
+</div>
+<!-- Stage 3 -->
+<div>
+<div class="flex justify-between items-center text-xs mb-1">
+<span class="font-label-btn text-on-surface font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>3. Followed Up in &lt; 5 Minutes
+              </span>
+<span class="text-secondary font-semibold">1,821 Leads (64.0%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 64%;"></div>
+</div>
+</div>
+<!-- Stage 4 -->
+<div>
+<div class="flex justify-between items-center text-xs mb-1">
+<span class="font-label-btn text-on-surface font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>4. Sales Opportunity / Demo Scheduled
+              </span>
+<span class="text-secondary font-semibold">1,081 Leads (38.0%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 38%;"></div>
+</div>
+</div>
+<!-- Stage 5 -->
+<div>
+<div class="flex justify-between items-center text-xs mb-1">
+<span class="font-label-btn text-on-surface font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>5. Closed Won Deal
+              </span>
+<span class="text-tertiary font-bold">643 Deals (22.6%)</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 22.6%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">lightbulb</span>
+<span class="text-on-surface font-medium">Leads engaged under 90 seconds convert at a <strong>3.4x higher rate</strong> than 10m+ follow-ups.</span>
+</div>
+<button class="text-primary font-semibold hover:underline flex items-center gap-0.5" type="button">
+            Optimize Speed <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (35% / 4 cols) -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Instant Automation Triggers & Health -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.06)] p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-card-title text-card-title text-on-surface font-bold text-base flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+            System Health &amp; Ingestion
+          </h3>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-eyebrow text-[11px] font-bold">
+            All Systems Go
+          </span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Meta Webhook Item -->
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">
+                M
+              </div>
+<div>
+<div class="font-label-btn text-xs font-bold text-on-surface">Meta Webhook Ingestion</div>
+<div class="text-[11px] text-outline">Real-time instant triggers</div>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-tertiary bg-tertiary-container/10 px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> 1.2s avg
+              </span>
+</div>
+</div>
+<!-- Google Ads Webhook Item -->
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-error text-on-error flex items-center justify-center font-bold text-xs">
+                G
+              </div>
+<div>
+<div class="font-label-btn text-xs font-bold text-on-surface">Google Ads Webhook</div>
+<div class="text-[11px] text-outline">Search &amp; PMax Form fills</div>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-tertiary bg-tertiary-container/10 px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> 1.8s avg
+              </span>
+</div>
+</div>
+<!-- WhatsApp Cloud API Item -->
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<div>
+<div class="font-label-btn text-xs font-bold text-on-surface">WhatsApp Cloud API</div>
+<div class="text-[11px] text-outline">99.8% delivery rate • 42 queued</div>
+</div>
+</div>
+<span class="text-xs font-bold text-primary">Connected</span>
+</div>
+<!-- Spam & Duplicate Shield -->
+<div class="p-3 rounded-xl bg-secondary-container/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest text-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</div>
+<div>
+<div class="font-label-btn text-xs font-bold text-on-surface">Spam &amp; Bot Shield</div>
+<div class="text-[11px] text-secondary">124 invalid fills auto-filtered</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-xs font-bold text-tertiary">Saved $620</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Campaign Performance & Channel ROAS -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.06)] p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-card-title text-card-title text-on-surface font-bold text-base flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">analytics</span>
+            Live Campaign ROAS
+          </h3>
+<span class="font-eyebrow text-xs text-outline font-semibold">Today</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Campaign 1 -->
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-4 h-4 rounded bg-primary-container text-on-primary text-[9px] font-bold flex items-center justify-center">M</span>
+<span class="font-label-btn text-xs font-bold text-on-surface truncate max-w-[150px]">Meta Retargeting</span>
+</div>
+<span class="text-xs font-extrabold text-tertiary bg-tertiary-container/10 px-2 py-0.5 rounded">5.2x ROAS</span>
+</div>
+<div class="flex items-center justify-between text-xs text-secondary">
+<span class="">Spend: <strong class="text-on-surface font-semibold">$18,400</strong></span>
+<span class="">Leads: <strong class="text-on-surface font-semibold">612</strong> ($30.06/lead)</span>
+</div>
+</div>
+<!-- Campaign 2 -->
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-4 h-4 rounded bg-error text-on-error text-[9px] font-bold flex items-center justify-center">G</span>
+<span class="font-label-btn text-xs font-bold text-on-surface truncate max-w-[150px]">Google Search Top KW</span>
+</div>
+<span class="text-xs font-extrabold text-tertiary bg-tertiary-container/10 px-2 py-0.5 rounded">4.4x ROAS</span>
+</div>
+<div class="flex items-center justify-between text-xs text-secondary">
+<span class="">Spend: <strong class="text-on-surface font-semibold">$24,100</strong></span>
+<span class="">Leads: <strong class="text-on-surface font-semibold">420</strong> ($57.38/lead)</span>
+</div>
+</div>
+<!-- Campaign 3 -->
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-4 h-4 rounded bg-primary-container text-on-primary text-[9px] font-bold flex items-center justify-center">M</span>
+<span class="font-label-btn text-xs font-bold text-on-surface truncate max-w-[150px]">Lookalike 1% Scale</span>
+</div>
+<span class="text-xs font-extrabold text-tertiary bg-tertiary-container/10 px-2 py-0.5 rounded">3.9x ROAS</span>
+</div>
+<div class="flex items-center justify-between text-xs text-secondary">
+<span class="">Spend: <strong class="text-on-surface font-semibold">$12,200</strong></span>
+<span class="">Leads: <strong class="text-on-surface font-semibold">380</strong> ($32.10/lead)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Team Rep Availability & Fast Dialing -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.06)] p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h3 class="font-card-title text-card-title text-on-surface font-bold text-base flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">headset_mic</span>
+            Rep Live Fast-Dialing
+          </h3>
+<span class="font-body-sm text-xs font-semibold text-secondary">3 Active</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Rep 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold text-xs flex items-center justify-center">AR</div>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container absolute bottom-0 right-0 border-2 border-surface-container-lowest"></span>
+</div>
+<div>
+<div class="text-xs font-bold text-on-surface">Alex Rivera</div>
+<div class="text-[11px] text-outline">Lead: Sarah J. (01:24)</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-primary-container/10 text-primary">
+              On Call
+            </span>
+</div>
+<!-- Rep 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-xs flex items-center justify-center">PP</div>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary absolute bottom-0 right-0 border-2 border-surface-container-lowest animate-pulse"></span>
+</div>
+<div>
+<div class="text-xs font-bold text-on-surface">Priya Patel</div>
+<div class="text-[11px] text-outline">Ready for next hot lead</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-tertiary-container/15 text-tertiary">
+              Ready
+            </span>
+</div>
+<!-- Rep 3 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-secondary font-bold text-xs flex items-center justify-center">CM</div>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary absolute bottom-0 right-0 border-2 border-surface-container-lowest"></span>
+</div>
+<div>
+<div class="text-xs font-bold text-on-surface">Carlos M.</div>
+<div class="text-[11px] text-outline">Available in 12m</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-surface-container-highest text-secondary">
+              In Meeting
+            </span>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container-low hover:bg-surface-container-high text-primary font-label-btn text-xs font-semibold rounded-lg text-center transition-colors" type="button">
+          Manage Shift Routing &amp; Round-Robin
+        </button>
+</div>
+</div>
+</div>
+</div></main></div>
+
+</body></html>

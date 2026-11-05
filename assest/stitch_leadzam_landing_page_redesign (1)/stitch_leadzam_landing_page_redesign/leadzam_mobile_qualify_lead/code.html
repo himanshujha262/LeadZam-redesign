@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary": "#525e7a", "background": "#faf8ff", "tertiary-fixed-dim": "#4edea3", "on-tertiary": "#ffffff", "tertiary": "#006443", "on-error": "#ffffff", "surface-bright": "#faf8ff", "surface": "#faf8ff", "surface-tint": "#0054d7", "primary": "#004dc6", "on-primary-container": "#f2f2ff", "surface-container-high": "#e2e7ff", "on-secondary-fixed-variant": "#3b4761", "primary-fixed-dim": "#b3c5ff", "primary-container": "#1264f5", "on-secondary-container": "#55617c", "secondary-fixed-dim": "#bac6e6", "surface-container-low": "#f2f3ff", "on-primary-fixed": "#001849", "tertiary-fixed": "#6ffbbe", "on-surface": "#131b2e", "surface-variant": "#dae2fd", "on-background": "#131b2e", "on-tertiary-fixed": "#002113", "surface-container-lowest": "#ffffff", "error": "#ba1a1a", "primary-fixed": "dbe1ff", "surface-container": "#eaedff", "on-surface-variant": "#424655", "secondary-fixed": "#d8e2ff", "on-tertiary-container": "#ccffe2", "on-tertiary-fixed-variant": "#005236", "error-container": "#ffdad6", "on-secondary": "#ffffff", "inverse-on-surface": "#eef0ff", "outline-variant": "#c2c6d8", "inverse-primary": "#b3c5ff", "outline": "#737687", "inverse-surface": "#283044", "surface-dim": "#d2d9f4", "surface-container-highest": "#dae2fd", "on-primary-fixed-variant": "#003fa5", "on-primary": "#ffffff", "secondary-container": "#d0ddfd", "tertiary-container": "#007f57", "on-secondary-fixed": "#0e1b33", "on-error-container": "#93000a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "margin": "2rem", "section-gap": "6rem", "gutter-mobile": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "space-md": "1rem", "section-gap-mobile": "3.5rem", "gutter": "1.5rem", "margin-mobile": "1.25rem" }, "fontFamily": { "section-title-mobile": ["Plus Jakarta Sans"], "label-btn": ["Plus Jakarta Sans"], "section-title": ["Plus Jakarta Sans"], "card-title": ["Plus Jakarta Sans"], "hero-headline-mobile": ["Plus Jakarta Sans"], "eyebrow": ["Plus Jakarta Sans"], "lead-description": ["Plus Jakarta Sans"], "body-default": ["Plus Jakarta Sans"], "hero-headline": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "metric-stat": ["Plus Jakarta Sans"] }, "fontSize": { "section-title-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-btn": ["15px", { "lineHeight": "20px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "section-title": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "card-title": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "hero-headline-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "eyebrow": ["14px", { "lineHeight": "20px", "letterSpacing": "0.06em", "fontWeight": "600" }], "lead-description": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-default": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "hero-headline": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.035em", "fontWeight": "800" }], "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "metric-stat": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-default text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-14 px-margin-mobile flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-xs flex-1 min-w-0"><button aria-label="Go back" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors flex-shrink-0" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="logo.png" class="h-7 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1VzovcQwT4hEMlnuAKc0lg3ix9oflcemlcpg5p6WHuXYK8jEZ0eSt2U7L6-jkIDjWkk-1lT3U3urh9t5a5693uR0_Yp4ROIbSapXeT-1Bli07wMtYt60j0WBK84Iqs7jNIkUIhDhh5TDofnY7rVFAhzMt8YZD-QGTolM0ByajoV9FufeEEifylKwDi6RvfEAK76U01w1WzYUykyGwgMz1BWNfhEyEHGCwcn2Imt4j6Rv5GeNsdvhfu2EOsx"/><h1 class="font-card-title text-card-title text-on-surface truncate">Lead Qualification Modal</h1></div><div class="flex items-center gap-space-xs flex-shrink-0"><button aria-label="More actions" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-[24px]">more_vert</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XOvmtpPui5oE6PqvXg4NxZMngcgg5ERABTdT39ns0XPRc6T9buFqjdAWjxQ_A624iHg6YWgbQ0DwsGRx13j9fIrGofm4mKU3XI5oSC2Ppd7WE49NIMmfv_M_8evEF30eq0ZOTdiCA4kXwVWrIZWADGNiyb4wowlDmuPwc0Jg4_Dr2wtpsjHCi2I7nhpPdkT4AxczgEoV2DK5vTL9Wom-vl6wYJyZzg7i2L-LlAjUmhwGsks574fM_MaJBv"/></div></div></header><main class="flex flex-col relative w-full pt-14 bg-surface min-h-screen"><div class="flex flex-col w-full relative pb-32">
+<div class="px-margin-mobile pt-space-md">
+<div class="flex items-center gap-space-sm mb-space-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+<span class="font-eyebrow text-eyebrow uppercase tracking-wider text-primary">Sales Pipeline Stage 2</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -top-6 w-24 h-24 bg-primary/5 rounded-full pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary font-card-title text-card-title flex items-center justify-center flex-shrink-0 shadow-sm">
+            RS
+          </div>
+<div class="flex flex-col min-w-0">
+<h2 class="font-card-title text-card-title text-on-surface truncate">Rahul Sharma</h2>
+<p class="font-body-sm text-body-sm text-secondary truncate">VP of Growth • NexaFlow Tech</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-container text-on-secondary-container flex-shrink-0">
+          New
+        </span>
+</div>
+<div class="mt-space-md pt-space-sm grid grid-cols-2 gap-space-sm bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex flex-col">
+<span class="text-xs text-secondary font-medium">Lead Score</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-metric-stat text-lg leading-tight font-bold text-primary">72</span>
+<span class="text-xs text-secondary font-medium">/ 100</span>
+<span class="material-symbols-outlined text-tertiary text-[16px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-secondary font-medium">Intent Velocity</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-xs font-semibold text-tertiary">High Activity</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-margin-mobile mt-space-lg">
+<div class="mb-space-md">
+<h3 class="font-card-title text-card-title text-on-surface font-bold">Qualify this lead?</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Add a few details before moving this lead to Qualified.</p>
+</div>
+<form class="flex flex-col gap-space-md" id="qualification-form">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-btn text-label-btn text-on-surface text-sm flex items-center justify-between" for="company-size">
+<span>Company Size</span>
+<span class="text-xs text-secondary font-normal">Verified via Clearbit</span>
+</label>
+<div class="relative bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">corporate_fare</span>
+</div>
+<select class="w-full h-12 pl-11 pr-10 bg-transparent text-on-surface font-body-default text-sm rounded-xl appearance-none focus:outline-none focus:bg-surface-container-high/40 transition-colors" id="company-size">
+<option value="1-10">1–10 employees</option>
+<option value="11-50">11–50 employees</option>
+<option selected="" value="50-200">50–200 employees</option>
+<option value="201-500">201–500 employees</option>
+<option value="500+">500+ employees</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-btn text-label-btn text-on-surface text-sm flex items-center justify-between" for="budget">
+<span>Budget Allocated</span>
+<span class="text-xs text-secondary font-normal">Annualized estimate</span>
+</label>
+<div class="relative bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<select class="w-full h-12 pl-11 pr-10 bg-transparent text-on-surface font-body-default text-sm rounded-xl appearance-none focus:outline-none focus:bg-surface-container-high/40 transition-colors" id="budget">
+<option value="&lt;1L">&lt; ₹1L</option>
+<option selected="" value="1L-5L">₹1L – ₹5L</option>
+<option value="5L-15L">₹5L – ₹15L</option>
+<option value="15L+">₹15L+</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-btn text-label-btn text-on-surface text-sm flex items-center justify-between" for="timeline">
+<span>Purchase Timeline</span>
+<span class="text-xs text-secondary font-normal">Expected close</span>
+</label>
+<div class="relative bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">event_available</span>
+</div>
+<select class="w-full h-12 pl-11 pr-10 bg-transparent text-on-surface font-body-default text-sm rounded-xl appearance-none focus:outline-none focus:bg-surface-container-high/40 transition-colors" id="timeline">
+<option value="immediately">Immediate (under 7 days)</option>
+<option selected="" value="this-month">This month</option>
+<option value="next-quarter">Next quarter (Q3)</option>
+<option value="exploratory">Exploratory / Unsure</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="font-label-btn text-label-btn text-on-surface text-sm">Interest Level</label>
+<span class="text-xs font-semibold text-tertiary flex items-center gap-0.5" id="score-impact">
+<span class="material-symbols-outlined text-[14px]">add_circle</span> +15 pts impact
+          </span>
+</div>
+<div aria-label="Interest Level" class="grid grid-cols-3 gap-2 bg-surface-container-low p-1.5 rounded-xl" role="radiogroup">
+<button class="interest-pill py-2.5 px-3 rounded-lg text-xs font-semibold flex flex-col items-center justify-center gap-1 transition-all text-secondary hover:text-on-surface" data-level="low" type="button">
+<span>Low</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+</button>
+<button class="interest-pill py-2.5 px-3 rounded-lg text-xs font-semibold flex flex-col items-center justify-center gap-1 transition-all text-secondary hover:text-on-surface" data-level="medium" type="button">
+<span>Medium</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+</button>
+<button class="interest-pill py-2.5 px-3 rounded-lg text-xs font-semibold flex flex-col items-center justify-center gap-1 transition-all bg-primary-container text-on-primary shadow-sm" data-level="high" type="button">
+<span>High</span>
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</button>
+</div>
+</div>
+<div class="mt-space-xs bg-surface-container-low/70 rounded-xl p-3 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] flex-shrink-0 mt-0.5">info</span>
+<p class="text-xs text-secondary leading-relaxed">
+          Qualification automatically notifies Account Executive <span class="font-semibold text-on-surface">Ananya Roy</span> and schedules an introductory cadenced briefing.
+        </p>
+</div>
+</form>
+</div>
+<div class="fixed bottom-0 left-0 right-0 w-full z-40 bg-surface-container-lowest shadow-[0_-4px_20px_rgba(19,27,46,0.06)] px-margin-mobile pt-3.5 pb-safe">
+<div class="flex flex-col gap-2 max-w-[390px] mx-auto pb-2">
+<button class="w-full bg-primary-container hover:bg-primary active:scale-[0.98] text-on-primary py-3.5 px-4 rounded-xl font-semibold text-base shadow-sm transition-all flex items-center justify-center gap-2" id="submit-qualification" type="button">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+<span>Confirm Qualification</span>
+</button>
+<button class="w-full py-2.5 text-center text-sm font-semibold text-secondary hover:text-on-surface transition-colors" id="cancel-qualification" onclick="history.back()" type="button">
+        Cancel
+      </button>
+</div>
+</div>
+<div class="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-full shadow-lg text-xs font-semibold flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-2" id="toast">
+<span class="material-symbols-outlined text-tertiary-fixed text-[18px]">check_circle</span>
+<span>Lead moved to Qualified</span>
+</div>
+</div>
+<script>
+  (function() {
+    const pills = document.querySelectorAll('.interest-pill');
+    const scoreImpact = document.getElementById('score-impact');
+
+    const impacts = {
+      low: '-10 pts impact',
+      medium: '+5 pts impact',
+      high: '+15 pts impact'
+    };
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => {
+          p.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+          p.classList.add('text-secondary');
+          const dot = p.querySelector('span:last-child');
+          if (dot) {
+            dot.classList.remove('bg-white');
+            dot.classList.add('bg-outline-variant');
+          }
+        });
+
+        pill.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+        pill.classList.remove('text-secondary');
+        const activeDot = pill.querySelector('span:last-child');
+        if (activeDot) {
+          activeDot.classList.add('bg-white');
+          activeDot.classList.remove('bg-outline-variant');
+        }
+
+        const level = pill.getAttribute('data-level');
+        if (scoreImpact && impacts[level]) {
+          scoreImpact.innerHTML = `<span class="material-symbols-outlined text-[14px]">tune</span> ${impacts[level]}`;
+        }
+      });
+    });
+
+    const submitBtn = document.getElementById('submit-qualification');
+    const toast = document.getElementById('toast');
+
+    if (submitBtn && toast) {
+      submitBtn.addEventListener('click', () => {
+        submitBtn.innerHTML = `
+          <span class="inline-block w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin"></span>
+          <span>Qualifying...</span>
+        `;
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+          toast.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
+          toast.classList.add('opacity-100', 'translate-y-0');
+
+          setTimeout(() => {
+            history.back();
+          }, 1100);
+        }, 600);
+      });
+    }
+  })();
+</script></main></body></html>

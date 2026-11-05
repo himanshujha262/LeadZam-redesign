@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LeadZam — Turn More Ad Leads Into Customers</title>
+<meta content="The CRM built for teams running Meta &amp; Google lead campaigns. Capture leads automatically, automate follow-ups, and track campaign performance." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#EFF6FF',
+              100: '#DBEAFE',
+              200: '#BFDBFE',
+              500: '#1264F5',
+              600: '#0B52D4',
+              700: '#0940AA',
+            },
+            slate: {
+              850: '#0F172A',
+              900: '#0B132B',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+        color: #0F172A;
+        background-color: #FFFFFF;
+      }
+    }
+    .custom-glow {
+      background: radial-gradient(circle at 50% 50%, rgba(18, 100, 245, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+  </style>
+</head>
+<body class="bg-white text-[#0F172A] antialiased selection:bg-[#1264F5] selection:text-white">
+<!-- =========================================================================
+       1. NAVBAR (64-72px, Sticky, Blur, Logo + Beta, Centered Nav, CTA)
+       ========================================================================= -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-[#E2E8F0]">
+<div class="max-w-[1280px] h-[70px] mx-auto px-6 flex items-center justify-between">
+<!-- Left: Logo + Beta Badge -->
+<div class="flex items-center gap-3">
+<a class="flex items-center" href="#">
+<img alt="LeadZam Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYAGxbbA4evx5tlHiM75ckH8CyQ66PRucFeyKrOSmi5W5Vggjz0SWxKh1TBLJike9e_Kh2M5votNwZfUeKiRbOoEJlsnR9YubWYfWAMhUC_Rlss355TM5od_zTTB6O799Ok9TqlSANWjqwu3U99bkiiVOxf6uCsZvRUze1TF5g3Vpcro_0hvvOJQgsmm-d6eGT9ysRcJHDm2m-FPvr4pmxjz14qkai4d832Ok_6u63BXg5U80iNROXSA"/>
+</a>
+<span class="rounded-full bg-blue-100/80 text-blue-700 text-xs font-semibold px-2.5 py-0.5 border border-blue-200 uppercase tracking-wide">
+          BETA
+        </span>
+</div>
+<!-- Center Nav Links -->
+<nav class="hidden lg:flex items-center gap-1 text-[15px] font-medium text-[#64748B]">
+<a class="px-3.5 py-1.5 rounded-lg bg-[#DCE8FF] text-[#1264F5] font-semibold transition-all" href="#features">Features</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#0F172A] hover:bg-slate-50 transition-colors" href="#workflow">Workflow</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#0F172A] hover:bg-slate-50 transition-colors" href="#dashboard">Dashboard</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#0F172A] hover:bg-slate-50 transition-colors" href="#integrations">Integrations</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#0F172A] hover:bg-slate-50 transition-colors" href="#founder">About Founder</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#0F172A] hover:bg-slate-50 transition-colors" href="#faq">FAQ</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#0F172A] hover:bg-slate-50 transition-colors" href="#pricing">Pricing</a>
+</nav>
+<!-- Right CTAs -->
+<div class="flex items-center gap-3">
+<a class="text-sm font-semibold text-[#64748B] hover:text-[#0F172A] px-3 py-2 rounded-lg transition-colors" href="#login">
+          Login
+        </a>
+<a class="inline-flex items-center gap-1.5 bg-[#1264F5] hover:bg-blue-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all" href="#get-started">
+<span>Get Started Free</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</header>
+<main class="pt-[70px]">
+<!-- =========================================================================
+         2. HERO SECTION (2-Column, High-fidelity Realistic CRM Mockup)
+         ========================================================================= -->
+<section class="relative w-full bg-gradient-to-b from-[#EFF6FF]/60 via-white to-white py-14 lg:py-20 overflow-hidden">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Column -->
+<div class="lg:col-span-6 flex flex-col items-start">
+<!-- Eyebrow -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-5">
+<span class="w-2 h-2 rounded-full bg-[#1264F5] animate-pulse"></span>
+<span>CRM FOR GROWTH TEAMS</span>
+</div>
+<!-- Headline -->
+<h1 class="text-4xl sm:text-5xl lg:text-[56px] leading-[1.1] font-extrabold text-[#0F172A] tracking-[-0.03em]">
+              Turn more ad leads into customers.
+            </h1>
+<!-- Supporting headline -->
+<h2 class="text-xl text-[#0F172A] font-medium mt-4">
+              The CRM built for teams running Meta &amp; Google lead campaigns.
+            </h2>
+<!-- Supporting description -->
+<p class="text-[#64748B] text-base leading-relaxed mt-4 max-w-lg">
+              Capture leads automatically, manage conversations, automate follow-ups, and track campaign performance from one simple CRM.
+            </p>
+<!-- CTA Group -->
+<div class="flex flex-wrap items-center gap-3.5 mt-8 w-full sm:w-auto">
+<a class="bg-[#1264F5] hover:bg-blue-600 text-white px-6 py-3.5 rounded-xl font-medium shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2" href="#get-started">
+<span>Get Started Free</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="border border-slate-200 bg-white text-slate-800 px-6 py-3.5 rounded-xl font-medium hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-sm" href="#demo">
+<span class="material-symbols-outlined text-[18px] text-[#64748B]">calendar_today</span>
+<span>Book a Demo</span>
+</a>
+</div>
+<!-- Trust Statement -->
+<div class="mt-6 flex items-center gap-2 text-sm text-[#64748B] font-medium">
+<span class="material-symbols-outlined text-[18px] text-emerald-600">check_circle</span>
+<span>Built for modern performance marketing teams</span>
+</div>
+<!-- Mini ratings tag -->
+<div class="mt-8 pt-6 border-t border-slate-200/80 flex items-center gap-3 text-xs text-[#64748B]">
+<div class="flex text-amber-400">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-bold text-[#0F172A]">4.9/5 rating</span>
+<span>•</span>
+<span>Trusted by 420+ performance agencies</span>
+</div>
+</div>
+<!-- Right Column: Realistic SaaS CRM dashboard mockup card -->
+<div class="lg:col-span-6 relative">
+<div class="absolute -top-12 -right-12 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="rounded-3xl bg-white border border-[#E2E8F0] shadow-xl p-5 sm:p-6 space-y-4 relative z-10">
+<!-- Top Mockup Header -->
+<div class="flex items-center justify-between pb-3 border-b border-slate-100">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-[#EFF6FF] flex items-center justify-center text-[#1264F5] font-bold text-sm">
+                    LZ
+                  </div>
+<div>
+<h3 class="text-xs font-bold text-[#0F172A] leading-tight">LeadZam Workspace</h3>
+<p class="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      Real-time Sync Active
+                    </p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 bg-slate-100 px-2.5 py-1 rounded-lg text-xs text-slate-500 font-medium">
+<span class="material-symbols-outlined text-[14px]">search</span>
+<span class="text-[11px]">Filter leads...</span>
+</div>
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+</div>
+</div>
+<!-- Key Metrics Grid (4 items) -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+<!-- Metric 1 -->
+<div class="p-3 rounded-2xl bg-[#EFF6FF]/70 border border-blue-100/60 flex flex-col justify-between">
+<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Total Leads</span>
+<div class="mt-1 flex items-baseline justify-between">
+<span class="text-lg font-extrabold text-[#0F172A]">2,846</span>
+<span class="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-1 py-0.5 rounded">+18.4%</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-3 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between">
+<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Qualified</span>
+<div class="mt-1 flex items-baseline justify-between">
+<span class="text-lg font-extrabold text-[#0F172A]">642</span>
+<span class="text-[10px] text-blue-600 font-medium">22.6%</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-3 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between">
+<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Conversion</span>
+<div class="mt-1 flex items-baseline justify-between">
+<span class="text-lg font-extrabold text-blue-600">22.6%</span>
+<span class="material-symbols-outlined text-[14px] text-blue-600">trending_up</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-3 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between">
+<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Follow-ups</span>
+<div class="mt-1 flex items-baseline justify-between">
+<span class="text-lg font-extrabold text-amber-600">184</span>
+<span class="text-[10px] text-slate-400 font-medium">today</span>
+</div>
+</div>
+</div>
+<!-- Mini Analytics Sparkline / Graph Strip -->
+<div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex flex-col gap-2">
+<div class="flex items-center justify-between text-xs">
+<span class="font-bold text-slate-800 text-[11px] uppercase tracking-wide">Weekly Lead Acquisition</span>
+<span class="text-[11px] font-semibold text-blue-600">+34% vs last week</span>
+</div>
+<div class="h-10 flex items-end gap-1.5 pt-1">
+<div class="flex-1 bg-blue-200 rounded-t h-[40%] hover:bg-blue-300 transition-colors"></div>
+<div class="flex-1 bg-blue-300 rounded-t h-[55%] hover:bg-blue-400 transition-colors"></div>
+<div class="flex-1 bg-blue-200 rounded-t h-[48%] hover:bg-blue-300 transition-colors"></div>
+<div class="flex-1 bg-blue-400 rounded-t h-[70%] hover:bg-blue-500 transition-colors"></div>
+<div class="flex-1 bg-blue-300 rounded-t h-[65%] hover:bg-blue-400 transition-colors"></div>
+<div class="flex-1 bg-[#1264F5] rounded-t h-[95%] shadow-sm"></div>
+<div class="flex-1 bg-blue-200 rounded-t h-[50%] hover:bg-blue-300 transition-colors"></div>
+</div>
+</div>
+<!-- Recent Leads Snippet Table -->
+<div class="overflow-x-auto rounded-xl border border-slate-100">
+<table class="w-full text-left text-xs">
+<thead class="bg-slate-50/80 text-[10px] uppercase font-semibold text-slate-500 tracking-wider">
+<tr>
+<th class="py-2.5 px-3">Lead</th>
+<th class="py-2.5 px-2">Channel</th>
+<th class="py-2.5 px-2">Status</th>
+<th class="py-2.5 px-3 text-right">Speed to lead</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-[11px]">
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-2.5 px-3 font-semibold text-[#0F172A] flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 font-bold text-[10px] flex items-center justify-center">LS</div>
+<span>Liam Scott</span>
+</td>
+<td class="py-2.5 px-2 text-slate-600">
+<span class="inline-flex items-center gap-1 font-medium text-[10px] px-2 py-0.5 rounded bg-blue-50 text-blue-700">Meta Ads</span>
+</td>
+<td class="py-2.5 px-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700">
+                          Qualified
+                        </span>
+</td>
+<td class="py-2.5 px-3 text-right font-bold text-emerald-600">&lt; 3s</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="py-2.5 px-3 font-semibold text-[#0F172A] flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-purple-100 text-purple-700 font-bold text-[10px] flex items-center justify-center">SM</div>
+<span>Sarah Miller</span>
+</td>
+<td class="py-2.5 px-2 text-slate-600">
+<span class="inline-flex items-center gap-1 font-medium text-[10px] px-2 py-0.5 rounded bg-red-50 text-red-700">Google Ads</span>
+</td>
+<td class="py-2.5 px-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-50 text-blue-700">
+                          Meeting Booked
+                        </span>
+</td>
+<td class="py-2.5 px-3 text-right font-bold text-emerald-600">4s</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Micro Stat -->
+<div class="pt-1 flex items-center justify-between text-[11px] text-[#64748B]">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#1264F5]"></span>
+                  Automated WhatsApp sequence fired instantly
+                </span>
+<span class="font-semibold text-slate-800">100% Delivery</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+         3. SOCIAL PROOF (Compact Trust Badges)
+         ========================================================================= -->
+<section class="w-full bg-white py-12 border-y border-[#E2E8F0]">
+<div class="max-w-[1280px] mx-auto px-6 text-center">
+<p class="text-xs uppercase tracking-widest font-bold text-[#64748B] mb-8">
+          Works with the platforms your marketing team already uses
+        </p>
+<!-- Horizontal Logo Cards -->
+<div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+<!-- Meta Ads -->
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#E2E8F0] bg-slate-50/60 shadow-sm hover:border-blue-300 transition-all">
+<div class="w-6 h-6 rounded bg-[#1877F2] text-white flex items-center justify-center text-xs font-bold">f</div>
+<span class="text-sm font-semibold text-[#0F172A]">Meta Ads</span>
+</div>
+<!-- Google Ads -->
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#E2E8F0] bg-slate-50/60 shadow-sm hover:border-blue-300 transition-all">
+<div class="w-6 h-6 rounded bg-amber-500 text-white flex items-center justify-center text-xs font-bold">G</div>
+<span class="text-sm font-semibold text-[#0F172A]">Google Ads</span>
+</div>
+<!-- WhatsApp -->
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#E2E8F0] bg-slate-50/60 shadow-sm hover:border-blue-300 transition-all">
+<div class="w-6 h-6 rounded bg-emerald-500 text-white flex items-center justify-center text-xs font-bold">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</div>
+<span class="text-sm font-semibold text-[#0F172A]">WhatsApp</span>
+</div>
+<!-- Gmail -->
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#E2E8F0] bg-slate-50/60 shadow-sm hover:border-blue-300 transition-all">
+<div class="w-6 h-6 rounded bg-rose-500 text-white flex items-center justify-center text-xs font-bold">M</div>
+<span class="text-sm font-semibold text-[#0F172A]">Gmail</span>
+</div>
+<!-- Google Sheets -->
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#E2E8F0] bg-slate-50/60 shadow-sm hover:border-blue-300 transition-all">
+<div class="w-6 h-6 rounded bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">⊞</div>
+<span class="text-sm font-semibold text-[#0F172A]">Google Sheets</span>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+         4. FEATURES SECTION (3-Column Desktop Grid, 6 Cards)
+         ========================================================================= -->
+<section class="w-full bg-white py-20" id="features">
+<div class="max-w-[1280px] mx-auto px-6">
+<!-- Section Header -->
+<div class="text-center max-w-3xl mx-auto mb-16">
+<span class="text-xs font-bold uppercase tracking-widest text-[#1264F5] bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+            Core Features
+          </span>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-3 tracking-tight">
+            Everything you need to turn leads into customers
+          </h2>
+<p class="text-[#64748B] text-lg mt-3">
+            LeadZam brings your lead generation, qualification, follow-ups, and reporting into one simple workspace.
+          </p>
+</div>
+<!-- 6 Feature Cards (3x2 Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Feature 1 -->
+<div class="rounded-[20px] bg-white border border-[#E2E8F0] p-7 shadow-sm hover:shadow-md hover:border-blue-200 transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#1264F5] flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[26px]">person_add</span>
+</div>
+<h3 class="text-xl font-bold text-[#0F172A] mb-2.5">Capture Leads Automatically</h3>
+<p class="text-sm text-[#64748B] leading-relaxed">
+                Direct native integrations with Meta and Google Ads ingest every form submission within seconds, eliminating dropped leads.
+              </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-sm font-semibold text-[#1264F5] group-hover:gap-2 transition-all">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="rounded-[20px] bg-white border border-[#E2E8F0] p-7 shadow-sm hover:shadow-md hover:border-blue-200 transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#1264F5] flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[26px]">filter_alt</span>
+</div>
+<h3 class="text-xl font-bold text-[#0F172A] mb-2.5">Manage &amp; Qualify Leads</h3>
+<p class="text-sm text-[#64748B] leading-relaxed">
+                Filter by intent, assign rep ownership automatically, and prioritize high-value prospects before your competition responds.
+              </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-sm font-semibold text-[#1264F5] group-hover:gap-2 transition-all">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="rounded-[20px] bg-white border border-[#E2E8F0] p-7 shadow-sm hover:shadow-md hover:border-blue-200 transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#1264F5] flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[26px]">bolt</span>
+</div>
+<h3 class="text-xl font-bold text-[#0F172A] mb-2.5">Automate Follow-ups</h3>
+<p class="text-sm text-[#64748B] leading-relaxed">
+                Trigger personalized WhatsApp messages and email sequences the instant a form is filled out to reduce dropped deals.
+              </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-sm font-semibold text-[#1264F5] group-hover:gap-2 transition-all">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="rounded-[20px] bg-white border border-[#E2E8F0] p-7 shadow-sm hover:shadow-md hover:border-blue-200 transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#1264F5] flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[26px]">insights</span>
+</div>
+<h3 class="text-xl font-bold text-[#0F172A] mb-2.5">Track Campaign Performance</h3>
+<p class="text-sm text-[#64748B] leading-relaxed">
+                Connect actual closed revenue back to specific campaigns, ad sets, and keywords for true marketing ROAS clarity.
+              </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-sm font-semibold text-[#1264F5] group-hover:gap-2 transition-all">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+<!-- Feature 5 -->
+<div class="rounded-[20px] bg-white border border-[#E2E8F0] p-7 shadow-sm hover:shadow-md hover:border-blue-200 transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#1264F5] flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[26px]">group</span>
+</div>
+<h3 class="text-xl font-bold text-[#0F172A] mb-2.5">Collaborate With Your Team</h3>
+<p class="text-sm text-[#64748B] leading-relaxed">
+                Give your media buyers and sales reps a unified dashboard with shared notes, stage tags, and live notification alerts.
+              </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-sm font-semibold text-[#1264F5] group-hover:gap-2 transition-all">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+<!-- Feature 6 -->
+<div class="rounded-[20px] bg-white border border-[#E2E8F0] p-7 shadow-sm hover:shadow-md hover:border-blue-200 transition-all flex flex-col justify-between group">
+<div>
+<div class="w-12 h-12 rounded-xl bg-[#EFF6FF] text-[#1264F5] flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[26px]">hub</span>
+</div>
+<h3 class="text-xl font-bold text-[#0F172A] mb-2.5">Connect Your Tools</h3>
+<p class="text-sm text-[#64748B] leading-relaxed">
+                Effortlessly sync with Meta, Google Ads, WhatsApp, Gmail, Slack, and Google Sheets without brittle webhook setups.
+              </p>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 flex items-center text-sm font-semibold text-[#1264F5] group-hover:gap-2 transition-all">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+         5. PRODUCT WORKFLOW SECTION (4-Step Horizontal Process)
+         ========================================================================= -->
+<section class="w-full bg-[#EFF6FF]/50 py-20 border-y border-[#E2E8F0]" id="workflow">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="text-xs font-bold uppercase tracking-widest text-[#1264F5]">Clear Pipeline</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-2">
+            From ad click to customer — in one workflow
+          </h2>
+<p class="text-[#64748B] text-base mt-2">
+            A frictionless automated chain from the instant someone submits a lead form to revenue in your bank.
+          </p>
+</div>
+<!-- 4 Steps with Connector Line -->
+<div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Step 1 -->
+<div class="relative bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-2xl font-black text-blue-600">01</span>
+<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700">Capture</span>
+</div>
+<h4 class="text-lg font-bold text-[#0F172A] mb-2">Meta &amp; Google Leads Ingested</h4>
+<p class="text-sm text-[#64748B]">
+                Leads automatically enter LeadZam in under 3 seconds via native server-level hooks.
+              </p>
+</div>
+<div class="mt-6 flex items-center gap-1.5 text-xs font-semibold text-emerald-600">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Zero webhook drops</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-2xl font-black text-blue-600">02</span>
+<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700">Qualify</span>
+</div>
+<h4 class="text-lg font-bold text-[#0F172A] mb-2">Organize, Score &amp; Route</h4>
+<p class="text-sm text-[#64748B]">
+                Leads are classified by intent, tagged, and routed instantly to active closers.
+              </p>
+</div>
+<div class="mt-6 flex items-center gap-1.5 text-xs font-semibold text-emerald-600">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Intelligent assignment</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-2xl font-black text-blue-600">03</span>
+<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700">Follow Up</span>
+</div>
+<h4 class="text-lg font-bold text-[#0F172A] mb-2">Instant Automated Touchpoints</h4>
+<p class="text-sm text-[#64748B]">
+                Automate personalized WhatsApp and email prompts before lead interest goes cold.
+              </p>
+</div>
+<div class="mt-6 flex items-center gap-1.5 text-xs font-semibold text-emerald-600">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>&lt; 60s speed-to-lead</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="text-2xl font-black text-blue-600">04</span>
+<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700">Convert</span>
+</div>
+<h4 class="text-lg font-bold text-[#0F172A] mb-2">Close &amp; Measure True ROI</h4>
+<p class="text-sm text-[#64748B]">
+                Mark won deals and feed conversion signals back into campaigns to scale winning ad sets.
+              </p>
+</div>
+<div class="mt-6 flex items-center gap-1.5 text-xs font-semibold text-emerald-600">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>Full-funnel attribution</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+         6. DASHBOARD SHOWCASE (High-Fidelity Large Desktop CRM Window)
+         ========================================================================= -->
+<section class="w-full bg-white py-20" id="dashboard">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<span class="text-xs font-bold uppercase tracking-widest text-[#1264F5] bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+            Work In Action
+          </span>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-3">
+            See every lead. Know every opportunity.
+          </h2>
+<p class="text-[#64748B] text-lg mt-2">
+            A single workspace for your entire lead-generation operation.
+          </p>
+</div>
+<!-- Full Desktop Window Mockup Frame -->
+<div class="rounded-3xl border border-[#E2E8F0] shadow-2xl bg-white overflow-hidden">
+<!-- Browser / Window Chrome Header -->
+<div class="bg-slate-100/90 border-b border-[#E2E8F0] px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-rose-400"></div>
+<div class="w-3 h-3 rounded-full bg-amber-400"></div>
+<div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+<div class="ml-4 text-xs font-medium text-slate-500 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>app.leadzam.com/dashboard/pipeline</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-600">
+<span class="px-2 py-0.5 rounded bg-white border border-slate-200 font-medium">Q3 Growth Cohort</span>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+</div>
+<!-- Dashboard Body: Sidebar + Workspace -->
+<div class="grid grid-cols-12 min-h-[520px]">
+<!-- Left Sidebar -->
+<div class="col-span-12 md:col-span-3 lg:col-span-2 bg-slate-50/70 border-r border-[#E2E8F0] p-4 flex flex-col justify-between">
+<div class="space-y-6">
+<!-- Org Badge -->
+<div class="flex items-center gap-2 px-2 py-1.5">
+<div class="w-7 h-7 rounded-lg bg-[#1264F5] text-white flex items-center justify-center font-bold text-xs">LZ</div>
+<div>
+<div class="text-xs font-bold text-slate-900 leading-none">Apex Agency</div>
+<div class="text-[10px] text-slate-500">Growth Plan</div>
+</div>
+</div>
+<!-- Navigation List -->
+<div class="space-y-1 text-xs font-semibold">
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-xl bg-[#DCE8FF] text-[#1264F5]" href="#">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span>Leads</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+<span>Campaigns</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Automations</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:bg-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</div>
+<!-- Sidebar User footer -->
+<div class="pt-4 border-t border-slate-200/80 flex items-center gap-2.5 px-2">
+<div class="w-7 h-7 rounded-full bg-slate-300 text-slate-700 flex items-center justify-center text-xs font-bold">HM</div>
+<div class="text-xs">
+<div class="font-bold text-slate-800">Himanshu M.</div>
+<div class="text-[10px] text-slate-500">Admin</div>
+</div>
+</div>
+</div>
+<!-- Main Workspace -->
+<div class="col-span-12 md:col-span-9 lg:col-span-10 p-6 flex flex-col gap-5 bg-white">
+<!-- Workspace Controls Bar -->
+<div class="flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2 flex-1 max-w-sm">
+<div class="flex items-center gap-2 w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+<span class="material-symbols-outlined text-[16px] text-slate-400">search</span>
+<input class="bg-transparent border-none outline-none w-full text-xs text-slate-800 placeholder-slate-400 p-0 focus:ring-0" placeholder="Search leads by name, email, phone..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<!-- Channel Filter -->
+<div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs font-medium">
+<button class="px-2.5 py-1 rounded-lg bg-white shadow-xs text-slate-900 font-semibold">All Channels</button>
+<button class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900">Meta Ads</button>
+<button class="px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900">Google Ads</button>
+</div>
+<!-- Date Range -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white">
+<span class="material-symbols-outlined text-[16px] text-slate-500">calendar_month</span>
+<span>Last 30 Days</span>
+</div>
+<!-- Export Button -->
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[14px]">download</span>
+<span>Export</span>
+</button>
+</div>
+</div>
+<!-- Comprehensive Leads Table -->
+<div class="rounded-xl border border-[#E2E8F0] overflow-hidden">
+<table class="w-full text-left text-xs">
+<thead class="bg-slate-50 border-b border-[#E2E8F0] text-slate-500 font-semibold uppercase tracking-wider text-[11px]">
+<tr>
+<th class="py-3 px-4">Lead</th>
+<th class="py-3 px-3">Source &amp; Campaign</th>
+<th class="py-3 px-3">Lead Owner</th>
+<th class="py-3 px-3">Status</th>
+<th class="py-3 px-3">Last Activity</th>
+<th class="py-3 px-3">Probability</th>
+<th class="py-3 px-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-slate-700">
+<!-- Row 1 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-bold text-[#0F172A]">Liam Scott</div>
+<div class="text-[11px] text-slate-400">liam@growthpartner.io</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-slate-900 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span> Meta Ads
+                        </div>
+<div class="text-[10px] text-slate-400">Scale_Retargeting_V2</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-1.5 font-medium text-slate-800">
+<div class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-[10px] font-bold">AK</div>
+<span>Alex K.</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                          Qualified
+                        </span>
+</td>
+<td class="py-3.5 px-3 text-slate-500">2 mins ago via WhatsApp</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-1.5 font-bold text-slate-900">
+<div class="w-12 bg-slate-200 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-full w-[85%]"></div>
+</div>
+<span>85%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded-lg border border-slate-200 text-[#1264F5] font-semibold hover:bg-blue-50">View</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-bold text-[#0F172A]">Sarah Miller</div>
+<div class="text-[11px] text-slate-400">sarah@nexussaas.co</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-slate-900 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-red-500"></span> Google Ads
+                        </div>
+<div class="text-[10px] text-slate-400">PMax_Enterprise_Demo</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-1.5 font-medium text-slate-800">
+<div class="w-5 h-5 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-[10px] font-bold">MV</div>
+<span>Maria V.</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">
+                          Contacted
+                        </span>
+</td>
+<td class="py-3.5 px-3 text-slate-500">14 mins ago via Email</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-1.5 font-bold text-slate-900">
+<div class="w-12 bg-slate-200 rounded-full h-1.5 overflow-hidden">
+<div class="bg-blue-500 h-full w-[65%]"></div>
+</div>
+<span>65%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded-lg border border-slate-200 text-[#1264F5] font-semibold hover:bg-blue-50">View</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-bold text-[#0F172A]">David Chang</div>
+<div class="text-[11px] text-slate-400">d.chang@ventures.com</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-slate-900 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span> Meta Ads
+                        </div>
+<div class="text-[10px] text-slate-400">FB_LeadGen_DirectForm</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-1.5 font-medium text-slate-800">
+<div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] font-bold">PP</div>
+<span>Peter P.</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-800">
+                          New
+                        </span>
+</td>
+<td class="py-3.5 px-3 text-emerald-600 font-semibold">Just now (&lt; 3s)</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-1.5 font-bold text-slate-900">
+<div class="w-12 bg-slate-200 rounded-full h-1.5 overflow-hidden">
+<div class="bg-amber-500 h-full w-[45%]"></div>
+</div>
+<span>45%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded-lg border border-slate-200 text-[#1264F5] font-semibold hover:bg-blue-50">View</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-bold text-[#0F172A]">Elena Rostova</div>
+<div class="text-[11px] text-slate-400">elena@meditech.de</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="font-medium text-slate-900 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-red-500"></span> Google Ads
+                        </div>
+<div class="text-[10px] text-slate-400">Search_HighIntent_Brand</div>
+</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-1.5 font-medium text-slate-800">
+<div class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-[10px] font-bold">AK</div>
+<span>Alex K.</span>
+</div>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-purple-100 text-purple-800">
+                          Closed Won
+                        </span>
+</td>
+<td class="py-3.5 px-3 text-slate-500">1 hour ago</td>
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-1.5 font-bold text-emerald-600">
+<div class="w-12 bg-slate-200 rounded-full h-1.5 overflow-hidden">
+<div class="bg-emerald-500 h-full w-[100%]"></div>
+</div>
+<span>100%</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="px-2.5 py-1 rounded-lg border border-slate-200 text-[#1264F5] font-semibold hover:bg-blue-50">View</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Summary Footer -->
+<div class="flex items-center justify-between text-xs text-slate-500 pt-1">
+<span>Showing 4 of 2,846 live campaign leads</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 border border-slate-200 rounded-lg bg-white disabled:opacity-50">Prev</button>
+<button class="px-2.5 py-1 border border-slate-200 rounded-lg bg-[#1264F5] text-white font-semibold">1</button>
+<button class="px-2.5 py-1 border border-slate-200 rounded-lg bg-white hover:bg-slate-50">2</button>
+<button class="px-2.5 py-1 border border-slate-200 rounded-lg bg-white hover:bg-slate-50">Next</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+         7. INTEGRATIONS SECTION (5 Dedicated Cards + Connected Badges)
+         ========================================================================= -->
+<section class="w-full bg-[#EFF6FF]/40 py-20 border-y border-[#E2E8F0]" id="integrations">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="text-xs font-bold uppercase tracking-widest text-[#1264F5]">Native Stack</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-2">
+            Connected to the tools your team already uses
+          </h2>
+<p class="text-[#64748B] text-base mt-2">
+            No messy Zapier overhead or fragile API scripts. Click once, authorize, and your pipeline is connected.
+          </p>
+</div>
+<!-- Grid of 5 Dedicated Integration Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+<!-- Card 1: Meta Ads -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-6 shadow-sm flex flex-col justify-between hover:border-blue-300 transition-all">
+<div>
+<div class="w-12 h-12 rounded-xl bg-blue-50 text-[#1877F2] flex items-center justify-center font-bold text-2xl mb-4">
+                f
+              </div>
+<h3 class="text-base font-bold text-[#0F172A] mb-1">Meta Ads</h3>
+<p class="text-xs text-[#64748B] leading-relaxed">
+                Automatically sync incoming instant form leads from Facebook &amp; Instagram.
+              </p>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+<span class="inline-flex items-center gap-1.5 text-emerald-600 font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Connected
+              </span>
+<span class="text-[10px] text-slate-400">Live</span>
+</div>
+</div>
+<!-- Card 2: Google Ads -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-6 shadow-sm flex flex-col justify-between hover:border-blue-300 transition-all">
+<div>
+<div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-2xl mb-4">
+                G
+              </div>
+<h3 class="text-base font-bold text-[#0F172A] mb-1">Google Ads</h3>
+<p class="text-xs text-[#64748B] leading-relaxed">
+                Ingest search form extensions and Performance Max submissions in real-time.
+              </p>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+<span class="inline-flex items-center gap-1.5 text-emerald-600 font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Connected
+              </span>
+<span class="text-[10px] text-slate-400">Live</span>
+</div>
+</div>
+<!-- Card 3: WhatsApp -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-6 shadow-sm flex flex-col justify-between hover:border-blue-300 transition-all">
+<div>
+<div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[24px]">chat</span>
+</div>
+<h3 class="text-base font-bold text-[#0F172A] mb-1">WhatsApp</h3>
+<p class="text-xs text-[#64748B] leading-relaxed">
+                Send instant template chats and automated sequences via Cloud Business API.
+              </p>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+<span class="inline-flex items-center gap-1.5 text-emerald-600 font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Connected
+              </span>
+<span class="text-[10px] text-slate-400">&lt;60s</span>
+</div>
+</div>
+<!-- Card 4: Gmail -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-6 shadow-sm flex flex-col justify-between hover:border-blue-300 transition-all">
+<div>
+<div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold text-2xl mb-4">
+                M
+              </div>
+<h3 class="text-base font-bold text-[#0F172A] mb-1">Gmail</h3>
+<p class="text-xs text-[#64748B] leading-relaxed">
+                Log two-way customer communication, reply from LeadZam, and sync calendars.
+              </p>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+<span class="inline-flex items-center gap-1.5 text-emerald-600 font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Connected
+              </span>
+<span class="text-[10px] text-slate-400">2-Way</span>
+</div>
+</div>
+<!-- Card 5: Google Sheets -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-6 shadow-sm flex flex-col justify-between hover:border-blue-300 transition-all">
+<div>
+<div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-2xl mb-4">
+                ⊞
+              </div>
+<h3 class="text-base font-bold text-[#0F172A] mb-1">Google Sheets</h3>
+<p class="text-xs text-[#64748B] leading-relaxed">
+                Instant continuous two-way sync for executive spreadsheet backups and reporting.
+              </p>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+<span class="inline-flex items-center gap-1.5 text-emerald-600 font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Connected
+              </span>
+<span class="text-[10px] text-slate-400">Auto-sync</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+         8. FOUNDER & TRUST SECTION (Himanshu Mishra)
+         ========================================================================= -->
+<section class="w-full bg-white py-20" id="founder">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="max-w-4xl mx-auto rounded-3xl bg-slate-50 border border-[#E2E8F0] p-8 sm:p-12 shadow-sm">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<!-- Left: Founder Photo / Avatar Ring -->
+<div class="md:col-span-4 flex flex-col items-center text-center">
+<div class="relative w-44 h-44 sm:w-48 sm:h-48 rounded-full p-1.5 bg-gradient-to-tr from-[#1264F5] via-blue-400 to-emerald-400 shadow-md">
+<div class="w-full h-full rounded-full overflow-hidden bg-slate-200 border-4 border-white">
+<img alt="Himanshu Mishra, Founder &amp; CEO of LeadZam" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr3TX2yToDQszRKHwKTHoU-LyZStrc-lBCjvEHMBqVAa1_cW7b3b0TxUTCwH3mrSxm9HIAoOmEYMXCVu0gcdpVNrGy37df-QyKy4_aAoPclwoP_OVuYacWeZnXxqAWOlVs0CanAEYjVHaEFKoOY1U6_3Rc8I4o5xr2Bq2fQ8HdavxZLJBc-AwLWxrW5j-rhHOhDfKWPX6EkeVjw77mVI-29K-F3-yiVl1JQd3mjOX6"/>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-emerald-600">verified</span>
+<span class="text-xs font-bold text-slate-700">Verified Growth Operator</span>
+</div>
+</div>
+<!-- Right: Founder Narrative -->
+<div class="md:col-span-8 flex flex-col">
+<span class="text-xs font-bold uppercase tracking-widest text-[#1264F5] mb-2">
+                Built by people who understand lead generation
+              </span>
+<h3 class="text-2xl font-extrabold text-[#0F172A] leading-tight">
+                Himanshu Mishra
+              </h3>
+<p class="text-xs font-semibold text-slate-500 mb-4">
+                Founder &amp; CEO, LeadZam
+              </p>
+<blockquote class="text-[#0F172A]/90 text-sm sm:text-base leading-relaxed italic border-l-2 border-blue-500 pl-4 py-1 mb-6">
+                “As performance marketers running seven figures in Meta and Google ad spend, we felt the frustration of lead leakage firsthand. Leads taking hours to reach reps, fragmented spreadsheets, and zero feedback loop between sales closing and ad optimization. We built LeadZam to give growth teams instant speed-to-lead and complete clarity from impression to revenue.”
+              </blockquote>
+<div class="flex items-center gap-4">
+<a class="inline-flex items-center gap-2 text-sm font-bold text-[#1264F5] hover:text-blue-700 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>LinkedIn →</span>
+</a>
+<span class="text-slate-300">•</span>
+<span class="text-xs text-[#64748B]">Over $12M+ managed in ad campaigns</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+         9. FAQ SECTION (Accordion with 6 Specified Questions)
+         ========================================================================= -->
+<section class="w-full bg-[#EFF6FF]/30 py-20 border-t border-[#E2E8F0]" id="faq">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="text-xs font-bold uppercase tracking-widest text-[#1264F5]">Have Questions?</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-2">
+            Frequently asked questions
+          </h2>
+<p class="text-[#64748B] text-base mt-2">
+            Clear answers about setting up, connecting tools, and growing with LeadZam.
+          </p>
+</div>
+<div class="max-w-3xl mx-auto space-y-3.5">
+<!-- Q1: Open by default -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
+<button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+<span>What is LeadZam?</span>
+<div class="w-7 h-7 rounded-full bg-blue-100 text-[#1264F5] flex items-center justify-center shrink-0 toggle-badge">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</div>
+</button>
+<div class="faq-content mt-3 text-sm text-[#64748B] leading-relaxed">
+              LeadZam is a high-velocity CRM engineered specifically for marketing and sales teams running paid Meta and Google lead campaigns. It combines instant lead ingestion, automated WhatsApp/SMS response pipelines, and closed-loop revenue reporting inside one clean workspace.
+            </div>
+</div>
+<!-- Q2 -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
+<button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+<span>Which platforms can I connect?</span>
+<div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</div>
+</button>
+<div class="faq-content hidden mt-3 text-sm text-[#64748B] leading-relaxed">
+              LeadZam connects natively to Meta Ads (Facebook &amp; Instagram Lead Ads), Google Ads (Lead Extensions &amp; Search forms), WhatsApp Business Cloud API, Gmail, Microsoft Outlook, and Google Sheets. We also offer incoming webhook endpoints for custom landing pages.
+            </div>
+</div>
+<!-- Q3 -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
+<button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+<span>How does LeadZam capture leads?</span>
+<div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</div>
+</button>
+<div class="faq-content hidden mt-3 text-sm text-[#64748B] leading-relaxed">
+              We leverage direct official OAuth webhooks from Meta Graph API and Google Ads API. When a prospect taps "Submit" on an ad form, the data is pushed to your LeadZam workspace in under 3 seconds without delayed polling cycles.
+            </div>
+</div>
+<!-- Q4 -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
+<button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+<span>Can I automate follow-ups?</span>
+<div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</div>
+</button>
+<div class="faq-content hidden mt-3 text-sm text-[#64748B] leading-relaxed">
+              Yes! You can configure multi-step automated sequences including immediate WhatsApp templates, SMS confirmation, calendar booking links, and email autoresponders that trigger instantly based on campaign type or lead score.
+            </div>
+</div>
+<!-- Q5 -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
+<button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+<span>Does LeadZam provide campaign analytics?</span>
+<div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</div>
+</button>
+<div class="faq-content hidden mt-3 text-sm text-[#64748B] leading-relaxed">
+              Absolutely. LeadZam tracks the complete journey from initial ad click and creative ID down to closed revenue. You can view conversion rates by ad set, rep closing speeds, and calculated Return on Ad Spend (ROAS).
+            </div>
+</div>
+<!-- Q6 -->
+<div class="rounded-2xl bg-white border border-[#E2E8F0] p-5 sm:p-6 shadow-sm faq-item transition-all">
+<button class="w-full flex items-center justify-between text-left gap-4 font-bold text-base sm:text-lg text-[#0F172A] focus:outline-none" onclick="toggleFaq(this)">
+<span>Is there a free trial?</span>
+<div class="w-7 h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 toggle-badge">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</div>
+</button>
+<div class="faq-content hidden mt-3 text-sm text-[#64748B] leading-relaxed">
+              Yes, we offer a 14-day fully featured free trial with no credit card required. You can connect your ad accounts, configure WhatsApp, and test live lead routing within minutes.
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+         10. FINAL CTA BANNER (#1264F5 Vibrant Blue, Subtle Glow)
+         ========================================================================= -->
+<section class="w-full bg-[#1264F5] py-20 text-white relative overflow-hidden">
+<!-- Background Data Grid / Radial Accents -->
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-[1280px] mx-auto px-6 relative z-10 text-center">
+<div class="max-w-3xl mx-auto flex flex-col items-center">
+<h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+            Ready to turn more leads into customers?
+          </h2>
+<p class="text-blue-100 text-base sm:text-lg mt-4 max-w-xl">
+            Manage your leads, automate follow-ups, and optimize your campaigns from one CRM.
+          </p>
+<!-- Buttons -->
+<div class="flex flex-wrap items-center justify-center gap-4 mt-8 w-full sm:w-auto">
+<a class="bg-white hover:bg-slate-50 text-[#1264F5] px-7 py-3.5 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all flex items-center gap-2" href="#get-started">
+<span>Get Started Free</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="border border-white/30 hover:bg-white/10 text-white px-6 py-3.5 rounded-xl font-semibold transition-all flex items-center gap-2" href="#demo">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span>Book a Demo</span>
+</a>
+</div>
+<!-- Micro Guarantees -->
+<div class="flex flex-wrap items-center justify-center gap-6 mt-8 text-xs text-blue-100 font-medium">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+              14-day free trial
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+              No credit card required
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+              Cancel anytime
+            </span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- =========================================================================
+       11. FOOTER (Dark Navy #0B132B / #0F172A)
+       ========================================================================= -->
+<footer class="w-full bg-[#0B132B] text-slate-300 py-16 border-t border-slate-800">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+<!-- Branding column -->
+<div class="lg:col-span-2 flex flex-col items-start gap-4">
+<div class="bg-white px-3 py-1.5 rounded-xl inline-block">
+<img alt="LeadZam Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYAGxbbA4evx5tlHiM75ckH8CyQ66PRucFeyKrOSmi5W5Vggjz0SWxKh1TBLJike9e_Kh2M5votNwZfUeKiRbOoEJlsnR9YubWYfWAMhUC_Rlss355TM5od_zTTB6O799Ok9TqlSANWjqwu3U99bkiiVOxf6uCsZvRUze1TF5g3Vpcro_0hvvOJQgsmm-d6eGT9ysRcJHDm2m-FPvr4pmxjz14qkai4d832Ok_6u63BXg5U80iNROXSA"/>
+</div>
+<p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+            The CRM for teams running Meta &amp; Google lead campaigns. High-velocity routing, instant follow-up automations, and full-funnel marketing attribution.
+          </p>
+<div class="flex items-center gap-3 pt-2">
+<a aria-label="Twitter" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</a>
+<a aria-label="LinkedIn" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">share</span>
+</a>
+<a aria-label="YouTube" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">smart_display</span>
+</a>
+</div>
+</div>
+<!-- Col 1: Product -->
+<div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Product</h4>
+<ul class="space-y-2.5 text-sm text-slate-400">
+<li><a class="hover:text-white transition-colors" href="#features">Features</a></li>
+<li><a class="hover:text-white transition-colors" href="#dashboard">Dashboard</a></li>
+<li><a class="hover:text-white transition-colors" href="#integrations">Integrations</a></li>
+<li><a class="hover:text-white transition-colors" href="#pricing">Pricing</a></li>
+</ul>
+</div>
+<!-- Col 2: Company -->
+<div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Company</h4>
+<ul class="space-y-2.5 text-sm text-slate-400">
+<li><a class="hover:text-white transition-colors" href="#founder">About</a></li>
+<li><a class="hover:text-white transition-colors" href="#founder">Founder</a></li>
+<li><a class="hover:text-white transition-colors" href="#contact">Contact</a></li>
+<li><a class="hover:text-white transition-colors" href="#careers">Careers</a></li>
+</ul>
+</div>
+<!-- Col 3: Resources -->
+<div>
+<h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Resources</h4>
+<ul class="space-y-2.5 text-sm text-slate-400">
+<li><a class="hover:text-white transition-colors" href="#faq">FAQ</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Documentation</a></li>
+<li><a class="hover:text-white transition-colors" href="#">API Docs</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+<p>© 2026 LeadZam. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-slate-300 transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-slate-300 transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-slate-300 transition-colors" href="#">Security</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- FAQ Accordion Script -->
+<script>
+    function toggleFaq(btn) {
+      const parent = btn.closest('.faq-item');
+      const content = parent.querySelector('.faq-content');
+      const badge = parent.querySelector('.toggle-badge');
+      const icon = badge.querySelector('span');
+
+      const isHidden = content.classList.contains('hidden');
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.textContent = 'remove';
+        badge.classList.remove('bg-slate-100', 'text-slate-600');
+        badge.classList.add('bg-blue-100', 'text-[#1264F5]');
+      } else {
+        content.classList.add('hidden');
+        icon.textContent = 'add';
+        badge.classList.remove('bg-blue-100', 'text-[#1264F5]');
+        badge.classList.add('bg-slate-100', 'text-slate-600');
+      }
+    }
+  </script>
+</body></html>

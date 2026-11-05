@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LeadZam CRM — Modern Lead Management</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#EFF6FF',
+              100: '#DBEAFE',
+              200: '#BFDBFE',
+              500: '#1264F5',
+              600: '#0F52CC',
+              700: '#0B3E9E',
+            },
+            slate: {
+              850: '#0F172A',
+              900: '#0B1120',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', Inter, sans-serif; background-color: #F8FAFC; color: #0F172A; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    .drawer-shadow { box-shadow: -10px 0 35px -5px rgba(15, 23, 42, 0.12); }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .skeleton-shimmer {
+      background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[#F8FAFC] antialiased text-[#0F172A] select-none sm:select-auto">
+
+  <!-- =========================================================================
+       2. MAIN APP SHELL
+       ========================================================================= -->
+  <div class="flex flex-1 min-h-screen relative overflow-x-hidden">
+    
+    <!-- 240px Left Sidebar -->
+    <aside class="w-[240px] bg-white border-r border-[#E2E8F0] hidden md:flex flex-col shrink-0 select-none z-20 justify-between">
+      <div class="flex flex-col">
+        <!-- Brand Header -->
+        <div class="h-16 px-5 flex items-center justify-between border-b border-slate-100">
+          <a href="index.html" class="flex items-center gap-2">
+            <img src="assets/images/logo.png" alt="LeadZam" class="h-7 w-auto object-contain"/>
+            <span class="bg-blue-50 text-[#1264F5] text-[10px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider border border-blue-100">Beta</span>
+          </a>
+        </div>
+
+        <!-- Workspace Switcher -->
+        <div class="px-3 pt-4 pb-2">
+          <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+            <div class="flex items-center gap-2 min-w-0">
+              <div class="w-6 h-6 rounded-md bg-[#1264F5] text-white font-bold text-xs flex items-center justify-center shrink-0">AP</div>
+              <div class="truncate">
+                <div class="text-xs font-bold text-[#0F172A] truncate">Acme Performance</div>
+                <div class="text-[10px] text-emerald-600 font-medium">Growth Pro Plan</div>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-slate-400 text-[18px]">unfold_more</span>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="px-3 py-2 space-y-1 text-xs font-semibold">
+          <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Workspace</div>
+          
+          <button onclick="switchView('overview')" id="nav-overview" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined text-[20px]">dashboard</span>
+            <span>Dashboard Overview</span>
+          </button>
+
+          <button onclick="switchView('leads')" id="nav-leads" class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-blue-50 text-[#1264F5] transition-all">
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[20px]">filter_alt</span>
+              <span>Leads &amp; Pipeline</span>
+            </div>
+            <span class="bg-[#1264F5] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full" id="sidebar-lead-count">8</span>
+          </button>
+
+          <button onclick="switchView('automations')" id="nav-automations" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined text-[20px]">bolt</span>
+            <span>Automations</span>
+            <span class="ml-auto w-2 h-2 rounded-full bg-emerald-500"></span>
+          </button>
+
+          <button onclick="switchView('adaccounts')" id="nav-adaccounts" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined text-[20px]">campaign</span>
+            <span>Ad Accounts</span>
+          </button>
+
+          <button onclick="switchView('reports')" id="nav-reports" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined text-[20px]">query_stats</span>
+            <span>Reports &amp; ROAS</span>
+          </button>
+
+          <button onclick="switchView('integrations')" id="nav-integrations" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined text-[20px]">sync_alt</span>
+            <span>Integrations</span>
+          </button>
+
+          <button onclick="switchView('settings')" id="nav-settings" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined text-[20px]">settings</span>
+            <span>Settings</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Quota Card & User Profile -->
+      <div class="p-3 border-t border-slate-100 space-y-3">
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200/80 text-xs">
+          <div class="flex items-center justify-between font-semibold text-slate-700">
+            <span>Monthly Leads</span>
+            <span class="text-[#1264F5] font-bold">8,420 / 10k</span>
+          </div>
+          <div class="w-full bg-slate-200 h-1.5 rounded-full mt-2 overflow-hidden">
+            <div class="bg-[#1264F5] h-full rounded-full" style="width: 84%"></div>
+          </div>
+          <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+            <span>84% utilized</span>
+            <span>Renews in 6 days</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-1">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-slate-900 text-white font-bold text-xs flex items-center justify-center">
+              HM
+            </div>
+            <div class="text-xs">
+              <div class="font-bold text-[#0F172A] leading-tight">Himanshu M.</div>
+              <div class="text-[10px] text-slate-400">Founder &amp; CEO</div>
+            </div>
+          </div>
+          <a href="index.html" title="Sign Out" class="text-slate-400 hover:text-red-600 transition">
+            <span class="material-symbols-outlined text-[18px]">logout</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-w-0 bg-[#F8FAFC]">
+      
+      <!-- Top Application Header Bar -->
+      <header class="h-16 bg-white border-b border-[#E2E8F0] px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
+        <!-- Left: Search & Live Sync Status -->
+        <div class="flex items-center gap-3 flex-1 max-w-xl">
+          <div class="relative w-full max-w-xs sm:max-w-sm">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[18px]">search</span>
+            <input id="lead-search-input" oninput="handleSearch(this.value)" class="w-full h-9 pl-9 pr-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#1264F5] transition" placeholder="Search leads by name, email, company..."/>
+          </div>
+
+          <div class="hidden sm:flex items-center gap-2 px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-semibold shrink-0">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Live Sync: Meta &amp; Google Ads</span>
+          </div>
+        </div>
+
+        <!-- Right Quick Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Simulate Ingestion Button -->
+          <button onclick="simulateIncomingLead()" class="hidden md:inline-flex items-center gap-1.5 px-3 py-2 bg-blue-50 hover:bg-blue-100 text-[#1264F5] text-xs font-bold rounded-lg border border-blue-200 transition active:scale-95 shadow-xs" title="Simulate a new lead being submitted via Meta Ads right now!">
+            <span class="material-symbols-outlined text-[16px] animate-spin">sync</span>
+            <span>+ Simulate Ad Lead</span>
+          </button>
+
+          <!-- Export CSV -->
+          <button onclick="exportLeadsCSV()" class="inline-flex items-center gap-1 px-3 py-2 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg border border-slate-200 transition shadow-xs">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span class="hidden sm:inline">Export</span>
+          </button>
+
+          <!-- Add Quick Lead -->
+          <button onclick="openAddLeadModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm hover:shadow transition active:scale-95">
+            <span class="material-symbols-outlined text-[16px]">add</span>
+            <span>+ Add Lead</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Container -->
+      <main class="flex-1 p-4 sm:p-6 space-y-6">
+
+        <!-- =========================================================================
+             VIEW 1: LEADS & PIPELINE (Active Table & Kanban)
+             ========================================================================= -->
+        <div id="view-leads-container" class="space-y-4">
+          
+          <!-- View Header & Controls -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="text-xl font-bold text-[#0F172A]">Leads Pipeline</h1>
+                <span class="bg-blue-50 text-[#1264F5] text-xs font-bold px-2 py-0.5 rounded-full border border-blue-100" id="lead-total-pill">8 Leads active</span>
+              </div>
+              <p class="text-xs text-[#64748B] mt-0.5">Real-time incoming leads from Meta Lead Ads, Google Search, and Webhooks.</p>
+            </div>
+
+            <!-- View Switcher (Table vs Kanban) & Filter Options -->
+            <div class="flex items-center gap-2">
+              <div class="inline-flex p-1 bg-slate-100 rounded-lg text-xs font-semibold">
+                <button onclick="setPipelineLayout('table')" id="layout-table-btn" class="px-2.5 py-1 rounded bg-white text-[#1264F5] shadow-xs flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[15px]">table_rows</span>
+                  <span>Table</span>
+                </button>
+                <button onclick="setPipelineLayout('kanban')" id="layout-kanban-btn" class="px-2.5 py-1 rounded text-slate-500 hover:text-slate-800 transition flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[15px]">view_kanban</span>
+                  <span>Kanban</span>
+                </button>
+              </div>
+
+              <!-- Channel Filter Dropdown -->
+              <select id="channel-filter" onchange="filterByChannel(this.value)" class="text-xs font-semibold bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#1264F5]">
+                <option value="all">All Ad Channels</option>
+                <option value="Meta Ads">Meta Lead Ads</option>
+                <option value="Google Ads">Google Ads</option>
+                <option value="Organic">Organic / Direct</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Status Filter Tabs -->
+          <div class="flex items-center border-b border-slate-200 overflow-x-auto text-xs font-semibold gap-1">
+            <button onclick="filterByStatus('all', this)" class="tab-btn px-4 py-2.5 text-[#1264F5] border-b-2 border-[#1264F5] flex items-center gap-1.5 transition -mb-px">
+              <span>All Leads</span>
+              <span class="bg-blue-100 text-[#1264F5] px-1.5 py-0.2 rounded-full text-[10px]" id="count-all">8</span>
+            </button>
+            <button onclick="filterByStatus('New', this)" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+              <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+              <span>New</span>
+              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-new">2</span>
+            </button>
+            <button onclick="filterByStatus('Qualified', this)" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+              <span>Qualified</span>
+              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-qualified">3</span>
+            </button>
+            <button onclick="filterByStatus('Follow-up', this)" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+              <span>Follow-up</span>
+              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-followup">2</span>
+            </button>
+            <button onclick="filterByStatus('Meeting Booked', this)" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+              <span>Meeting Booked</span>
+              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-meeting">1</span>
+            </button>
+          </div>
+
+          <!-- TABLE VIEW -->
+          <div id="pipeline-table-view" class="bg-white rounded-2xl border border-[#E2E8F0] shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead class="bg-slate-50/90 text-slate-500 uppercase tracking-wider text-[10px] font-bold border-b border-slate-100">
+                  <tr>
+                    <th class="py-3 px-4 w-10">
+                      <input type="checkbox" onchange="toggleSelectAll(this)" class="rounded border-slate-300 text-[#1264F5]"/>
+                    </th>
+                    <th class="py-3 px-4">Lead &amp; Company</th>
+                    <th class="py-3 px-3">Ad Channel &amp; Campaign</th>
+                    <th class="py-3 px-3">Status</th>
+                    <th class="py-3 px-3">Speed to Lead</th>
+                    <th class="py-3 px-3">Assigned Owner</th>
+                    <th class="py-3 px-3 text-center">Score</th>
+                    <th class="py-3 px-4 text-right">Quick Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="leads-table-body" class="divide-y divide-slate-100">
+                  <!-- Leads injected dynamically via renderLeads() -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Table Footer -->
+            <div class="px-4 py-3 bg-slate-50/50 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+              <div class="flex items-center gap-2">
+                <span>Showing <strong class="text-slate-800" id="visible-leads-count">8</strong> leads</span>
+                <span>•</span>
+                <span class="text-emerald-600 font-medium">Average Response Latency: 14s</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <button class="px-2.5 py-1 rounded border border-slate-200 bg-white text-slate-400 cursor-not-allowed">Previous</button>
+                <button class="px-2.5 py-1 rounded bg-[#1264F5] text-white font-bold">1</button>
+                <button class="px-2.5 py-1 rounded border border-slate-200 bg-white text-slate-600 hover:bg-slate-50">Next</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- KANBAN VIEW (Hidden by default) -->
+          <div id="pipeline-kanban-view" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Col 1: New Leads -->
+            <div class="bg-slate-100/70 p-3.5 rounded-2xl border border-slate-200/80 flex flex-col gap-3">
+              <div class="flex items-center justify-between font-bold text-xs text-[#0F172A]">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                  <span>New Leads</span>
+                </div>
+                <span class="bg-blue-100 text-[#1264F5] px-2 py-0.5 rounded-full text-[10px]" id="kanban-count-new">2</span>
+              </div>
+              <div id="kanban-col-new" class="space-y-3 min-h-[200px]"></div>
+            </div>
+
+            <!-- Col 2: Follow-up -->
+            <div class="bg-slate-100/70 p-3.5 rounded-2xl border border-slate-200/80 flex flex-col gap-3">
+              <div class="flex items-center justify-between font-bold text-xs text-[#0F172A]">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span>Follow-up</span>
+                </div>
+                <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full text-[10px]" id="kanban-count-followup">2</span>
+              </div>
+              <div id="kanban-col-followup" class="space-y-3 min-h-[200px]"></div>
+            </div>
+
+            <!-- Col 3: Qualified -->
+            <div class="bg-slate-100/70 p-3.5 rounded-2xl border border-slate-200/80 flex flex-col gap-3">
+              <div class="flex items-center justify-between font-bold text-xs text-[#0F172A]">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span>Qualified</span>
+                </div>
+                <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full text-[10px]" id="kanban-count-qualified">3</span>
+              </div>
+              <div id="kanban-col-qualified" class="space-y-3 min-h-[200px]"></div>
+            </div>
+
+            <!-- Col 4: Meeting Booked -->
+            <div class="bg-slate-100/70 p-3.5 rounded-2xl border border-slate-200/80 flex flex-col gap-3">
+              <div class="flex items-center justify-between font-bold text-xs text-[#0F172A]">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                  <span>Meeting Booked</span>
+                </div>
+                <span class="bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full text-[10px]" id="kanban-count-meeting">1</span>
+              </div>
+              <div id="kanban-col-meeting" class="space-y-3 min-h-[200px]"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- =========================================================================
+             VIEW 2: DASHBOARD OVERVIEW (Summary & Charts)
+             ========================================================================= -->
+        <div id="view-overview-container" class="hidden space-y-6">
+          <!-- Top Title Bar -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h2 class="text-xl font-bold text-[#0F172A]">Performance Overview</h2>
+              <p class="text-xs text-slate-500">Full-funnel attribution from ad click to revenue.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-xs">
+                📅 Last 7 Days (Live)
+              </span>
+            </div>
+          </div>
+
+          <!-- 4 KPI Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-white p-5 rounded-2xl border border-[#E2E8F0] shadow-sm">
+              <div class="flex items-center justify-between text-xs text-slate-400 font-bold uppercase">
+                <span>Total Captured Leads</span>
+                <span class="w-8 h-8 rounded-lg bg-blue-50 text-[#1264F5] flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[18px]">group_add</span>
+                </span>
+              </div>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="text-2xl font-black text-[#0F172A]">2,846</span>
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">+18.4%</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">vs. previous period</div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-[#E2E8F0] shadow-sm">
+              <div class="flex items-center justify-between text-xs text-slate-400 font-bold uppercase">
+                <span>Qualification Rate</span>
+                <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[18px]">verified</span>
+                </span>
+              </div>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="text-2xl font-black text-emerald-600">22.6%</span>
+                <span class="text-xs font-bold text-slate-500">642 leads</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">+3.2% vs target benchmark</div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-[#E2E8F0] shadow-sm">
+              <div class="flex items-center justify-between text-xs text-slate-400 font-bold uppercase">
+                <span>Speed-To-Lead Latency</span>
+                <span class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[18px]">timer</span>
+                </span>
+              </div>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="text-2xl font-black text-blue-600">14 sec</span>
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Top 1%</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">Automated WhatsApp instant response</div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-[#E2E8F0] shadow-sm">
+              <div class="flex items-center justify-between text-xs text-slate-400 font-bold uppercase">
+                <span>Attributed Pipeline</span>
+                <span class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[18px]">payments</span>
+                </span>
+              </div>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="text-2xl font-black text-[#0F172A]">$142,500</span>
+                <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">3.8x ROAS</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1">Closed-loop Meta/Google ROI</div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Weekly Chart -->
+            <div class="lg:col-span-8 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm flex flex-col justify-between">
+              <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div>
+                  <h3 class="text-sm font-bold text-[#0F172A]">Weekly Lead Volume &amp; Ingestion</h3>
+                  <p class="text-xs text-slate-400">Total lead submissions per day across connected ad accounts.</p>
+                </div>
+                <span class="text-xs font-bold text-[#1264F5] bg-blue-50 px-2.5 py-1 rounded-full">+34% vs last week</span>
+              </div>
+
+              <!-- Bar graph illustration -->
+              <div class="h-44 flex items-end justify-between gap-4 pt-6 px-2">
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <span class="text-[10px] text-slate-500 font-semibold">24</span>
+                  <div class="w-full bg-blue-100 hover:bg-blue-200 rounded-t-lg transition h-[35%]"></div>
+                  <span class="text-[11px] text-slate-400 font-medium">Mon</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <span class="text-[10px] text-slate-500 font-semibold">38</span>
+                  <div class="w-full bg-blue-200 hover:bg-blue-300 rounded-t-lg transition h-[55%]"></div>
+                  <span class="text-[11px] text-slate-400 font-medium">Tue</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <span class="text-[10px] text-slate-500 font-semibold">32</span>
+                  <div class="w-full bg-blue-200 hover:bg-blue-300 rounded-t-lg transition h-[48%]"></div>
+                  <span class="text-[11px] text-slate-400 font-medium">Wed</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <span class="text-[10px] text-slate-500 font-semibold">51</span>
+                  <div class="w-full bg-blue-300 hover:bg-blue-400 rounded-t-lg transition h-[75%]"></div>
+                  <span class="text-[11px] text-slate-400 font-medium">Thu</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <span class="text-[10px] text-slate-500 font-semibold">46</span>
+                  <div class="w-full bg-blue-200 hover:bg-blue-300 rounded-t-lg transition h-[68%]"></div>
+                  <span class="text-[11px] text-slate-400 font-medium">Fri</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <span class="text-[10px] text-[#1264F5] font-bold">72</span>
+                  <div class="w-full bg-[#1264F5] rounded-t-lg shadow-sm h-[95%]"></div>
+                  <span class="text-[11px] font-bold text-[#1264F5]">Sat</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                  <span class="text-[10px] text-slate-500 font-semibold">35</span>
+                  <div class="w-full bg-blue-200 hover:bg-blue-300 rounded-t-lg transition h-[50%]"></div>
+                  <span class="text-[11px] text-slate-400 font-medium">Sun</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Channel Share Breakdown -->
+            <div class="lg:col-span-4 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm flex flex-col justify-between">
+              <div>
+                <h3 class="text-sm font-bold text-[#0F172A]">Ad Channel Breakdown</h3>
+                <p class="text-xs text-slate-400">Share of high-intent qualified leads.</p>
+
+                <div class="mt-6 space-y-4 text-xs font-semibold">
+                  <div>
+                    <div class="flex justify-between mb-1 text-slate-700">
+                      <span class="flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#1877F2]"></span>
+                        <span>Meta Lead Ads</span>
+                      </span>
+                      <span>64% (1,840)</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                      <div class="bg-[#1877F2] h-full" style="width: 64%"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="flex justify-between mb-1 text-slate-700">
+                      <span class="flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                        <span>Google Search Ads</span>
+                      </span>
+                      <span>28% (822)</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                      <div class="bg-amber-500 h-full" style="width: 28%"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="flex justify-between mb-1 text-slate-700">
+                      <span class="flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                        <span>Direct &amp; Webhooks</span>
+                      </span>
+                      <span>8% (184)</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                      <div class="bg-emerald-500 h-full" style="width: 8%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span>Webhook Health: <strong>100%</strong></span>
+                <span class="text-emerald-600 font-bold">0 dropped leads</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================================
+             VIEW 3: AUTOMATIONS (WhatsApp Triggers & Rules)
+             ========================================================================= -->
+        <div id="view-automations-container" class="hidden space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-xl font-bold text-[#0F172A]">Speed-To-Lead Automations</h2>
+              <p class="text-xs text-slate-500">Instantly trigger multi-channel sequences the moment an ad form is submitted.</p>
+            </div>
+            <button onclick="alert('New automation workflow builder activated.')" class="px-3.5 py-2 bg-[#1264F5] text-white text-xs font-bold rounded-lg shadow-xs hover:bg-blue-600 transition">
+              + New Automation Rule
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Automation Card 1 -->
+            <div class="bg-white p-5 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Active Sequence
+                </span>
+                <span class="material-symbols-outlined text-emerald-600">chat</span>
+              </div>
+              <h3 class="font-bold text-sm text-[#0F172A]">Instant WhatsApp Template</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Sends personalized greeting with calendar booking link within 5 seconds of Meta ad form submit.
+              </p>
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+                <span>Fired: <strong>2,410 times</strong></span>
+                <span class="text-emerald-600 font-bold">98.2% open rate</span>
+              </div>
+            </div>
+
+            <!-- Automation Card 2 -->
+            <div class="bg-white p-5 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Active Rule
+                </span>
+                <span class="material-symbols-outlined text-blue-600">roundabout_right</span>
+              </div>
+              <h3 class="font-bold text-sm text-[#0F172A]">Round-Robin Lead Routing</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Evenly distributes incoming qualified leads across available sales reps (Amit Verma, Priya Sharma).
+              </p>
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+                <span>Reps Assigned: <strong>4</strong></span>
+                <span class="text-blue-600 font-bold">Balanced</span>
+              </div>
+            </div>
+
+            <!-- Automation Card 3 -->
+            <div class="bg-white p-5 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Active Trigger
+                </span>
+                <span class="material-symbols-outlined text-amber-600">notifications_active</span>
+              </div>
+              <h3 class="font-bold text-sm text-[#0F172A]">SLA Breach Alert (> 5 min)</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Pings manager on Slack if any high-intent ad lead is not claimed within 5 minutes.
+              </p>
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+                <span>Breaches (7d): <strong>0</strong></span>
+                <span class="text-emerald-600 font-bold">100% SLA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================================
+             VIEW 4: AD ACCOUNTS & WEBHOOKS
+             ========================================================================= -->
+        <div id="view-adaccounts-container" class="hidden space-y-4">
+          <div>
+            <h2 class="text-xl font-bold text-[#0F172A]">Connected Ad Accounts</h2>
+            <p class="text-xs text-slate-500">Live webhook links into Meta Graph API and Google Ads.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-[#1877F2] text-white flex items-center justify-center font-bold text-lg">f</div>
+                  <div>
+                    <h3 class="font-bold text-sm text-[#0F172A]">Meta Lead Ads — Growth Campaign</h3>
+                    <p class="text-xs text-slate-400">Account ID: act_84920491823</p>
+                  </div>
+                </div>
+                <span class="bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full border border-emerald-200">Connected</span>
+              </div>
+              <div class="text-xs text-slate-600 space-y-1">
+                <div>Active Forms: <strong>3 Meta Instant Forms</strong></div>
+                <div>Last Lead Ingested: <strong class="text-emerald-600">2 minutes ago</strong></div>
+                <div>Total Synced Leads: <strong>1,840</strong></div>
+              </div>
+              <button onclick="alert('Meta OAuth credentials verified and synced.')" class="w-full py-2 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50">
+                Manage Meta Webhooks
+              </button>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold text-lg">G</div>
+                  <div>
+                    <h3 class="font-bold text-sm text-[#0F172A]">Google Search &amp; Display Ads</h3>
+                    <p class="text-xs text-slate-400">Customer ID: 782-941-8932</p>
+                  </div>
+                </div>
+                <span class="bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full border border-emerald-200">Connected</span>
+              </div>
+              <div class="text-xs text-slate-600 space-y-1">
+                <div>Active Campaigns: <strong>2 Search Campaigns</strong></div>
+                <div>Last Lead Ingested: <strong class="text-emerald-600">14 minutes ago</strong></div>
+                <div>Total Synced Leads: <strong>822</strong></div>
+              </div>
+              <button onclick="alert('Google Ads OAuth credentials verified and synced.')" class="w-full py-2 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50">
+                Manage Google Webhooks
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================================
+             STATE SIMULATION VIEWS (Empty, Skeleton, Error)
+             ========================================================================= -->
+        <!-- Empty State Container -->
+        <div id="state-empty-container" class="hidden bg-white p-12 rounded-2xl border border-[#E2E8F0] shadow-sm text-center max-w-lg mx-auto my-8">
+          <div class="w-16 h-16 rounded-2xl bg-blue-50 text-[#1264F5] flex items-center justify-center mx-auto mb-4">
+            <span class="material-symbols-outlined text-[32px]">folder_off</span>
+          </div>
+          <h3 class="text-lg font-bold text-[#0F172A]">No leads found</h3>
+          <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto leading-relaxed">
+            Your pipeline is currently empty or no leads match your filter. Connect your Meta or Google ad accounts to ingest leads instantly.
+          </p>
+          <div class="mt-6 flex flex-wrap justify-center gap-2">
+            <button onclick="setState('default')" class="px-4 py-2 bg-[#1264F5] text-white text-xs font-bold rounded-lg shadow-sm hover:bg-blue-600">
+              Restore Sample Leads
+            </button>
+            <button onclick="simulateIncomingLead()" class="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-200">
+              + Simulate Incoming Lead
+            </button>
+          </div>
+        </div>
+
+        <!-- Skeleton Loading Container -->
+        <div id="state-loading-container" class="hidden bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm space-y-4">
+          <div class="flex justify-between items-center pb-4 border-b border-slate-100">
+            <div class="h-6 w-48 rounded skeleton-shimmer"></div>
+            <div class="h-8 w-28 rounded-lg skeleton-shimmer"></div>
+          </div>
+          <div class="space-y-3">
+            <div class="h-10 w-full rounded-lg skeleton-shimmer"></div>
+            <div class="h-10 w-full rounded-lg skeleton-shimmer"></div>
+            <div class="h-10 w-full rounded-lg skeleton-shimmer"></div>
+            <div class="h-10 w-full rounded-lg skeleton-shimmer"></div>
+            <div class="h-10 w-full rounded-lg skeleton-shimmer"></div>
+          </div>
+          <div class="pt-4 text-center">
+            <button onclick="setState('default')" class="text-xs font-bold text-[#1264F5] hover:underline">
+              ← Return to live data
+            </button>
+          </div>
+        </div>
+
+        <!-- Error State Container -->
+        <div id="state-error-container" class="hidden bg-white p-10 rounded-2xl border border-red-200 shadow-sm text-center max-w-lg mx-auto my-8">
+          <div class="w-16 h-16 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mx-auto mb-4">
+            <span class="material-symbols-outlined text-[32px]">sync_problem</span>
+          </div>
+          <h3 class="text-lg font-bold text-red-700">Webhook Connection Interrupted</h3>
+          <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto leading-relaxed">
+            Meta Graph API returned token expiration error [Code 190]. Live webhook ingestion is currently paused.
+          </p>
+          <div class="mt-6 flex justify-center gap-3">
+            <button onclick="retryConnection()" class="px-4 py-2 bg-red-600 text-white text-xs font-bold rounded-lg shadow-sm hover:bg-red-700">
+              Re-authenticate Meta OAuth
+            </button>
+            <button onclick="setState('default')" class="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-semibold rounded-lg hover:bg-slate-200">
+              Dismiss &amp; View Cached Leads
+            </button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       3. CONTEXT-PRESERVING LEAD DRAWER (Sliding Panel)
+       ========================================================================= -->
+  <div id="drawer-backdrop" onclick="closeLeadDrawer()" class="fixed inset-0 bg-slate-900/30 backdrop-blur-xs z-40 hidden transition-opacity"></div>
+  
+  <div id="lead-drawer" class="fixed right-0 top-0 h-full w-full max-w-[540px] bg-white z-50 shadow-2xl drawer-shadow transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between">
+    
+    <!-- Drawer Header -->
+    <div class="p-6 border-b border-slate-100 flex items-start justify-between bg-slate-50/60">
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-blue-100 text-[#1264F5] font-extrabold text-base flex items-center justify-center" id="drawer-avatar">
+          RS
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 class="text-lg font-bold text-[#0F172A]" id="drawer-name">Rahul Sharma</h2>
+            <span id="drawer-status-badge" class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              ● Qualified
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 mt-0.5" id="drawer-company">Vertex Technologies • Delhi, IN</p>
+        </div>
+      </div>
+
+      <button onclick="closeLeadDrawer()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/50 transition">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+
+    <!-- Drawer Body (Scrollable) -->
+    <div class="flex-1 overflow-y-auto p-6 space-y-6 text-xs">
+      
+      <!-- Instant Outreach Action Bar -->
+      <div class="grid grid-cols-4 gap-2">
+        <button onclick="openWhatsAppComposer()" class="p-2.5 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 font-bold flex flex-col items-center gap-1 hover:bg-emerald-100 transition shadow-xs">
+          <span class="material-symbols-outlined text-[20px] text-emerald-600">chat</span>
+          <span>WhatsApp</span>
+        </button>
+        <button onclick="logCall()" class="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold flex flex-col items-center gap-1 hover:bg-slate-50 transition shadow-xs">
+          <span class="material-symbols-outlined text-[20px] text-blue-600">call</span>
+          <span>Call Lead</span>
+        </button>
+        <button onclick="openQualifyModalFromDrawer()" class="p-2.5 rounded-xl border border-blue-200 bg-blue-50 text-[#1264F5] font-bold flex flex-col items-center gap-1 hover:bg-blue-100 transition shadow-xs">
+          <span class="material-symbols-outlined text-[20px]">verified</span>
+          <span>Qualify</span>
+        </button>
+        <button onclick="disqualifyCurrentLead()" class="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold flex flex-col items-center gap-1 hover:bg-red-50 hover:text-red-600 transition shadow-xs">
+          <span class="material-symbols-outlined text-[20px] text-slate-400">block</span>
+          <span>Disqualify</span>
+        </button>
+      </div>
+
+      <!-- Lead Details Grid -->
+      <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-3">
+        <div class="font-bold text-slate-800 text-xs uppercase tracking-wider">Contact &amp; Attribution Metadata</div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <span class="text-slate-400 text-[11px]">Work Email:</span>
+            <div class="font-semibold text-slate-900 mt-0.5 truncate" id="drawer-email">rahul.sharma@vertextech.in</div>
+          </div>
+          <div>
+            <span class="text-slate-400 text-[11px]">Direct Phone:</span>
+            <div class="font-semibold text-slate-900 mt-0.5" id="drawer-phone">+91 98712 34567</div>
+          </div>
+          <div>
+            <span class="text-slate-400 text-[11px]">Ad Channel:</span>
+            <div class="font-semibold text-blue-600 mt-0.5" id="drawer-source">Meta Lead Ads</div>
+          </div>
+          <div>
+            <span class="text-slate-400 text-[11px]">Campaign Origin:</span>
+            <div class="font-semibold text-slate-900 mt-0.5 truncate" id="drawer-campaign">Solar Inverter High Intent</div>
+          </div>
+          <div>
+            <span class="text-slate-400 text-[11px]">Assigned Rep:</span>
+            <div class="font-semibold text-slate-900 mt-0.5" id="drawer-owner">Amit Verma</div>
+          </div>
+          <div>
+            <span class="text-slate-400 text-[11px]">Lead Quality Score:</span>
+            <div class="font-bold text-emerald-600 mt-0.5" id="drawer-score">88 / 100 (Tier A)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Qualification Checklist -->
+      <div class="space-y-2">
+        <div class="font-bold text-slate-800 text-xs uppercase tracking-wider">Qualification Checklist (BANT)</div>
+        <div class="space-y-1.5">
+          <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer">
+            <input type="checkbox" checked class="rounded text-[#1264F5]"/>
+            <span class="text-slate-800 font-medium">Budget verified &gt; $10,000 / month</span>
+          </label>
+          <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer">
+            <input type="checkbox" checked class="rounded text-[#1264F5]"/>
+            <span class="text-slate-800 font-medium">Identified Primary Decision Maker (VP / Director)</span>
+          </label>
+          <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer">
+            <input type="checkbox" checked class="rounded text-[#1264F5]"/>
+            <span class="text-slate-800 font-medium">Timeline immediate (deployment within 30 days)</span>
+          </label>
+          <label class="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-200 cursor-pointer">
+            <input type="checkbox" checked class="rounded text-[#1264F5]"/>
+            <span class="text-slate-800 font-medium">High technical product compatibility</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Instant WhatsApp Template Selector & Sender -->
+      <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-200 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="font-bold text-emerald-950 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-emerald-600">send</span>
+            <span>Send Instant WhatsApp Message</span>
+          </div>
+          <span class="text-[10px] text-emerald-700 bg-emerald-100 font-bold px-2 py-0.5 rounded">Cloud API Ready</span>
+        </div>
+        <select id="wa-template-select" onchange="applyWhatsAppTemplate(this.value)" class="w-full text-xs bg-white border border-emerald-300 rounded-lg p-2 font-medium">
+          <option value="1">Template: Immediate Inquiry Follow-up &amp; Booking</option>
+          <option value="2">Template: Meeting Reschedule / Confirmation</option>
+          <option value="3">Template: Growth Case Study &amp; Pricing PDF</option>
+        </select>
+        <textarea id="wa-message-text" rows="3" class="w-full text-xs p-2.5 rounded-lg border border-emerald-200 bg-white focus:outline-none focus:border-emerald-500">Hi Rahul, thank you for requesting details on LeadZam from our Meta campaign. Would tomorrow at 11:00 AM work for a quick 10-minute demo?</textarea>
+        <button onclick="sendWhatsAppMessage()" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition flex items-center justify-center gap-1.5 shadow-xs">
+          <span>Deliver WhatsApp Now</span>
+          <span class="material-symbols-outlined text-[16px]">check</span>
+        </button>
+      </div>
+
+      <!-- Real-time Activity Timeline -->
+      <div class="space-y-3">
+        <div class="font-bold text-slate-800 text-xs uppercase tracking-wider">Touchpoint History &amp; Logs</div>
+        <div class="space-y-3 border-l-2 border-slate-200 pl-4 ml-2" id="drawer-timeline">
+          <!-- Timeline items -->
+          <div class="relative">
+            <div class="absolute -left-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-4 ring-white"></div>
+            <div class="text-[11px] text-slate-400">Today at 10:42 AM • WhatsApp Cloud API</div>
+            <div class="font-semibold text-slate-800">Automated WhatsApp template delivered in 14 seconds</div>
+          </div>
+          <div class="relative">
+            <div class="absolute -left-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-[#1264F5] ring-4 ring-white"></div>
+            <div class="text-[11px] text-slate-400">Today at 10:41 AM • Meta Graph API</div>
+            <div class="font-semibold text-slate-800">Instant Lead Form submitted from ad creative #solar-lead-04</div>
+          </div>
+        </div>
+
+        <!-- Add Custom Note Input -->
+        <div class="pt-2 flex gap-2">
+          <input id="new-note-input" class="flex-1 text-xs bg-white border border-slate-200 rounded-lg px-3 py-2" placeholder="Add an internal rep note..."/>
+          <button onclick="addLeadNote()" class="px-3 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition">
+            Post Note
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="p-4 border-t border-slate-200 bg-white flex items-center justify-between">
+      <button onclick="closeLeadDrawer()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg transition">
+        Close Drawer
+      </button>
+      <div class="flex items-center gap-2">
+        <button onclick="openQualifyModalFromDrawer()" class="px-4 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm transition">
+          Qualify &amp; Assign →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       4. QUALIFY LEAD MODAL
+       ========================================================================= -->
+  <div id="qualify-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full border border-slate-200 shadow-2xl p-6 space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+            <span class="material-symbols-outlined text-[20px]">verified</span>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-[#0F172A]">Qualify Lead</h3>
+            <p class="text-[11px] text-slate-400" id="qualify-lead-subtitle">Lead: Rahul Sharma</p>
+          </div>
+        </div>
+        <button onclick="closeQualifyModal()" class="text-slate-400 hover:text-slate-600">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Estimated Monthly Ad Spend / Budget</label>
+          <select id="qualify-budget" class="w-full p-2.5 rounded-lg border border-slate-200 bg-white">
+            <option value="15k">$10,000 - $25,000 / month (High Intent)</option>
+            <option value="50k">$25,000 - $50,000 / month (Enterprise)</option>
+            <option value="5k">&lt; $10,000 / month (Mid-tier)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Assign to Sales Representative</label>
+          <select id="qualify-owner" class="w-full p-2.5 rounded-lg border border-slate-200 bg-white">
+            <option value="Amit Verma">Amit Verma (Account Executive)</option>
+            <option value="Priya Sharma">Priya Sharma (Senior Closer)</option>
+            <option value="Marcus Vance">Marcus Vance (Enterprise Rep)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Schedule First Consultation Call</label>
+          <input type="datetime-local" id="qualify-time" class="w-full p-2 rounded-lg border border-slate-200 bg-white" value="2026-11-07T10:00"/>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
+        <button onclick="closeQualifyModal()" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+        <button onclick="confirmQualification()" class="px-4 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm">
+          Confirm Qualification
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       5. ADD LEAD MODAL
+       ========================================================================= -->
+  <div id="add-lead-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full border border-slate-200 shadow-2xl p-6 space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 class="text-sm font-bold text-[#0F172A]">Add New Lead Manually</h3>
+        <button onclick="closeAddLeadModal()" class="text-slate-400 hover:text-slate-600">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <form onsubmit="handleManualAddLead(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Full Name</label>
+          <input id="add-lead-name" required placeholder="Elena Rostova" class="w-full p-2.5 rounded-lg border border-slate-200 bg-white"/>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Work Email</label>
+          <input id="add-lead-email" required type="email" placeholder="elena@rostova.io" class="w-full p-2.5 rounded-lg border border-slate-200 bg-white"/>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Company</label>
+          <input id="add-lead-company" required placeholder="Rostova Design Co." class="w-full p-2.5 rounded-lg border border-slate-200 bg-white"/>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Ad Source / Channel</label>
+          <select id="add-lead-source" class="w-full p-2.5 rounded-lg border border-slate-200 bg-white">
+            <option value="Meta Ads">Meta Lead Ads</option>
+            <option value="Google Ads">Google Ads</option>
+            <option value="Organic">Organic Inbound</option>
+          </select>
+        </div>
+        <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
+          <button type="button" onclick="closeAddLeadModal()" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold rounded-lg shadow-sm">
+            Save Lead
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       6. SUCCESS FEEDBACK TOAST
+       ========================================================================= -->
+  <div id="success-toast" class="fixed bottom-6 right-6 max-w-sm bg-slate-900 text-white p-4 rounded-2xl shadow-2xl border border-slate-800 z-50 flex items-start gap-3 transition-all duration-300 transform translate-y-24 opacity-0 pointer-events-none">
+    <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+      <span class="material-symbols-outlined text-[18px]">check_circle</span>
+    </div>
+    <div class="flex-1 text-xs">
+      <h4 class="font-bold text-white" id="toast-title">Lead Qualified Successfully!</h4>
+      <p class="text-slate-400 mt-0.5 leading-relaxed" id="toast-desc">Lead has been routed to Amit Verma and consultation scheduled.</p>
+      <div class="mt-2.5 flex items-center gap-2">
+        <button onclick="alert('Google Calendar invite dispatched to lead and rep.')" class="px-2.5 py-1 bg-[#1264F5] text-white rounded font-bold hover:bg-blue-600 transition">
+          Send Invite
+        </button>
+        <button onclick="dismissSuccessToast()" class="text-slate-400 hover:text-white font-medium">
+          Dismiss
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       7. MOBILE VIEW SIMULATOR MODAL (Phone Frame)
+       ========================================================================= -->
+  <div id="mobile-view-container" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="relative w-[360px] h-[720px] bg-white rounded-[40px] border-[8px] border-slate-800 shadow-2xl overflow-hidden flex flex-col">
+      <!-- Notch -->
+      <div class="w-32 h-4 bg-slate-800 rounded-b-xl mx-auto flex items-center justify-center">
+        <span class="w-2.5 h-2.5 rounded-full bg-slate-900"></span>
+      </div>
+
+      <!-- Mobile Top Bar -->
+      <div class="px-4 py-3 bg-white border-b border-slate-100 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <img src="assets/images/logo.png" alt="LeadZam" class="h-5 w-auto"/>
+          <span class="text-[9px] bg-blue-50 text-[#1264F5] px-1 py-0.2 rounded font-bold">Mobile</span>
+        </div>
+        <button onclick="toggleMobileView()" class="text-slate-400 hover:text-slate-700 text-xs font-bold">✕</button>
+      </div>
+
+      <!-- Mobile Content Area -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-3 text-xs bg-[#FAF8FF]" id="mobile-leads-list">
+        <!-- Rendered mobile lead cards -->
+      </div>
+
+      <!-- Mobile Bottom Tab Bar -->
+      <div class="h-14 bg-white border-t border-slate-200 flex items-center justify-around text-[10px] text-slate-500 font-semibold">
+        <div class="flex flex-col items-center text-[#1264F5]">
+          <span class="material-symbols-outlined text-[18px]">filter_alt</span>
+          <span>Leads</span>
+        </div>
+        <div class="flex flex-col items-center hover:text-slate-900">
+          <span class="material-symbols-outlined text-[18px]">bolt</span>
+          <span>Automations</span>
+        </div>
+        <div class="flex flex-col items-center hover:text-slate-900">
+          <span class="material-symbols-outlined text-[18px]">query_stats</span>
+          <span>ROAS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       8. CORE APPLICATION LOGIC & DATA STORE
+       ========================================================================= -->
+  <script>
+    // In-memory reactive Lead Store based on stitch mockups
+    let leadsData = [
+      {
+        id: 1,
+        name: "Rahul Sharma",
+        company: "Vertex Technologies",
+        email: "rahul.sharma@vertextech.in",
+        phone: "+91 98712 34567",
+        source: "Meta Ads",
+        campaign: "Solar Inverter High Intent",
+        status: "Qualified",
+        speed: "< 3s",
+        owner: "Amit Verma",
+        score: 88,
+        selected: false
+      },
+      {
+        id: 2,
+        name: "Liam Scott",
+        company: "Scott Logistics",
+        email: "liam@scottlogistics.com",
+        phone: "+1 415 555-0192",
+        source: "Google Ads",
+        campaign: "Enterprise Fleet Search",
+        status: "Meeting Booked",
+        speed: "4s",
+        owner: "Priya Sharma",
+        score: 94,
+        selected: false
+      },
+      {
+        id: 3,
+        name: "Sarah Miller",
+        company: "Apex Healthcare",
+        email: "sarah@apexcare.org",
+        phone: "+1 212 555-8941",
+        source: "Meta Ads",
+        campaign: "Medical Clinic SaaS Funnel",
+        status: "New",
+        speed: "12s",
+        owner: "Unassigned",
+        score: 76,
+        selected: false
+      },
+      {
+        id: 4,
+        name: "Vikram Singh",
+        company: "Singh Real Estate Group",
+        email: "vikram@singhgroup.in",
+        phone: "+91 98100 23456",
+        source: "Meta Ads",
+        campaign: "Luxury Villa Pre-Launch",
+        status: "Follow-up",
+        speed: "18s",
+        owner: "Amit Verma",
+        score: 82,
+        selected: false
+      },
+      {
+        id: 5,
+        name: "Elena Rostova",
+        company: "Rostova E-Commerce",
+        email: "elena@rostovastore.com",
+        phone: "+44 20 7946 0912",
+        source: "Google Ads",
+        campaign: "Shopify Scaling Search",
+        status: "Qualified",
+        speed: "8s",
+        owner: "Marcus Vance",
+        score: 91,
+        selected: false
+      },
+      {
+        id: 6,
+        name: "Marcus Chen",
+        company: "Chen Logistics Inc.",
+        email: "marcus@chenlogistics.com",
+        phone: "+1 650 555-7821",
+        source: "Organic",
+        campaign: "Website Inbound Direct",
+        status: "New",
+        speed: "6s",
+        owner: "Unassigned",
+        score: 70,
+        selected: false
+      },
+      {
+        id: 7,
+        name: "Priya Patel",
+        company: "Nexus Fintech Solutions",
+        email: "priya@nexusfintech.io",
+        phone: "+91 98230 45678",
+        source: "Meta Ads",
+        campaign: "API Banking Launch Form",
+        status: "Qualified",
+        speed: "5s",
+        owner: "Priya Sharma",
+        score: 95,
+        selected: false
+      },
+      {
+        id: 8,
+        name: "David Vance",
+        company: "Vance Media Agency",
+        email: "david@vancemedia.co",
+        phone: "+1 310 555-4421",
+        source: "Google Ads",
+        campaign: "Performance CRM Retargeting",
+        status: "Follow-up",
+        speed: "14s",
+        owner: "Marcus Vance",
+        score: 85,
+        selected: false
+      }
+    ];
+
+    let currentFilterStatus = 'all';
+    let currentFilterChannel = 'all';
+    let searchQuery = '';
+    let currentActiveLead = leadsData[0];
+
+    // Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLeads();
+      renderKanban();
+      updateCounts();
+    });
+
+    // Render Leads Table
+    function renderLeads() {
+      const tbody = document.getElementById('leads-table-body');
+      tbody.innerHTML = '';
+
+      const filtered = leadsData.filter(lead => {
+        const matchesStatus = (currentFilterStatus === 'all' || lead.status === currentFilterStatus);
+        const matchesChannel = (currentFilterChannel === 'all' || lead.source === currentFilterChannel);
+        const matchesSearch = (!searchQuery || 
+          lead.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          lead.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          lead.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          lead.campaign.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        return matchesStatus && matchesChannel && matchesSearch;
+      });
+
+      document.getElementById('visible-leads-count').textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" class="text-center py-8 text-slate-400">
+              No leads match the selected filter criteria.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      filtered.forEach(lead => {
+        const initials = lead.name.split(' ').map(n => n[0]).join('');
+        
+        let statusBadge = '';
+        if (lead.status === 'New') {
+          statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-[#1264F5] border border-blue-200">● New</span>`;
+        } else if (lead.status === 'Qualified') {
+          statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">● Qualified</span>`;
+        } else if (lead.status === 'Follow-up') {
+          statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">● Follow-up</span>`;
+        } else if (lead.status === 'Meeting Booked') {
+          statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200">● Meeting Booked</span>`;
+        } else {
+          statusBadge = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700">● ${lead.status}</span>`;
+        }
+
+        let channelBadge = '';
+        if (lead.source === 'Meta Ads') {
+          channelBadge = `<span class="inline-flex items-center gap-1 font-semibold text-[10px] px-2 py-0.5 rounded bg-blue-50 text-blue-700">f Meta Ads</span>`;
+        } else if (lead.source === 'Google Ads') {
+          channelBadge = `<span class="inline-flex items-center gap-1 font-semibold text-[10px] px-2 py-0.5 rounded bg-amber-50 text-amber-800">G Google Ads</span>`;
+        } else {
+          channelBadge = `<span class="inline-flex items-center gap-1 font-semibold text-[10px] px-2 py-0.5 rounded bg-slate-100 text-slate-700">Direct</span>`;
+        }
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-blue-50/40 transition-colors group cursor-pointer";
+        tr.onclick = (e) => {
+          if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
+            openLeadDrawer(lead);
+          }
+        };
+
+        tr.innerHTML = `
+          <td class="py-3 px-4">
+            <input type="checkbox" ${lead.selected ? 'checked' : ''} onchange="toggleSelect(${lead.id}, this)" class="rounded border-slate-300 text-[#1264F5]"/>
+          </td>
+          <td class="py-3 px-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center shrink-0">
+                ${initials}
+              </div>
+              <div class="min-w-0">
+                <div class="font-bold text-[#0F172A] hover:text-[#1264F5] truncate">${lead.name}</div>
+                <div class="text-[11px] text-slate-400 truncate">${lead.company}</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3 px-3">
+            <div>
+              ${channelBadge}
+              <div class="text-[10px] text-slate-400 mt-0.5 truncate max-w-[160px]">${lead.campaign}</div>
+            </div>
+          </td>
+          <td class="py-3 px-3">${statusBadge}</td>
+          <td class="py-3 px-3">
+            <span class="font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">${lead.speed}</span>
+          </td>
+          <td class="py-3 px-3 text-slate-700 font-medium">
+            <div class="flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded-full bg-slate-200 text-[9px] font-bold flex items-center justify-center text-slate-600">
+                ${lead.owner !== 'Unassigned' ? lead.owner.split(' ').map(n=>n[0]).join('') : '?'}
+              </span>
+              <span>${lead.owner}</span>
+            </div>
+          </td>
+          <td class="py-3 px-3 text-center">
+            <span class="font-extrabold ${lead.score >= 85 ? 'text-emerald-600' : 'text-slate-700'}">${lead.score}</span>
+          </td>
+          <td class="py-3 px-4 text-right">
+            <div class="flex items-center justify-end gap-1.5 opacity-90 group-hover:opacity-100">
+              <button onclick="openLeadDrawerById(${lead.id})" class="p-1 rounded bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-[#1264F5] transition" title="Inspect Lead">
+                <span class="material-symbols-outlined text-[16px]">visibility</span>
+              </button>
+              <button onclick="triggerQuickWhatsApp('${lead.phone}', '${lead.name}')" class="p-1 rounded bg-emerald-50 hover:bg-emerald-100 text-emerald-600 transition" title="Send WhatsApp">
+                <span class="material-symbols-outlined text-[16px]">chat</span>
+              </button>
+              <button onclick="openQualifyModalForLead(${lead.id})" class="px-2 py-1 rounded bg-blue-50 hover:bg-blue-100 text-[#1264F5] font-bold text-[10px] transition">
+                Qualify
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Render Kanban Columns
+    function renderKanban() {
+      const colNew = document.getElementById('kanban-col-new');
+      const colFollowup = document.getElementById('kanban-col-followup');
+      const colQualified = document.getElementById('kanban-col-qualified');
+      const colMeeting = document.getElementById('kanban-col-meeting');
+
+      colNew.innerHTML = '';
+      colFollowup.innerHTML = '';
+      colQualified.innerHTML = '';
+      colMeeting.innerHTML = '';
+
+      leadsData.forEach(lead => {
+        const card = document.createElement('div');
+        card.className = "bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs hover:shadow-md transition cursor-pointer space-y-2";
+        card.onclick = () => openLeadDrawer(lead);
+        card.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">${lead.source}</span>
+            <span class="text-[11px] font-bold text-emerald-600">${lead.score}/100</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs text-[#0F172A]">${lead.name}</h4>
+            <p class="text-[11px] text-slate-400 truncate">${lead.company}</p>
+          </div>
+          <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[10px] text-slate-500">
+            <span>Rep: ${lead.owner}</span>
+            <span class="font-bold text-emerald-600">${lead.speed}</span>
+          </div>
+        `;
+
+        if (lead.status === 'New') colNew.appendChild(card);
+        else if (lead.status === 'Follow-up') colFollowup.appendChild(card);
+        else if (lead.status === 'Qualified') colQualified.appendChild(card);
+        else if (lead.status === 'Meeting Booked') colMeeting.appendChild(card);
+      });
+    }
+
+    // Update Counter Badges
+    function updateCounts() {
+      const total = leadsData.length;
+      const countNew = leadsData.filter(l => l.status === 'New').length;
+      const countQual = leadsData.filter(l => l.status === 'Qualified').length;
+      const countFollow = leadsData.filter(l => l.status === 'Follow-up').length;
+      const countMeet = leadsData.filter(l => l.status === 'Meeting Booked').length;
+
+      document.getElementById('count-all').textContent = total;
+      document.getElementById('count-new').textContent = countNew;
+      document.getElementById('count-qualified').textContent = countQual;
+      document.getElementById('count-followup').textContent = countFollow;
+      document.getElementById('count-meeting').textContent = countMeet;
+      
+      document.getElementById('sidebar-lead-count').textContent = total;
+      document.getElementById('lead-total-pill').textContent = `${total} Leads active`;
+
+      document.getElementById('kanban-count-new').textContent = countNew;
+      document.getElementById('kanban-count-followup').textContent = countFollow;
+      document.getElementById('kanban-count-qualified').textContent = countQual;
+      document.getElementById('kanban-count-meeting').textContent = countMeet;
+    }
+
+    // Filters
+    function filterByStatus(status, btn) {
+      currentFilterStatus = status;
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.className = "tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px";
+      });
+      btn.className = "tab-btn px-4 py-2.5 text-[#1264F5] border-b-2 border-[#1264F5] flex items-center gap-1.5 transition -mb-px";
+      renderLeads();
+    }
+
+    function filterByChannel(channel) {
+      currentFilterChannel = channel;
+      renderLeads();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val;
+      renderLeads();
+    }
+
+    // Pipeline Layout Toggle
+    function setPipelineLayout(layout) {
+      const table = document.getElementById('pipeline-table-view');
+      const kanban = document.getElementById('pipeline-kanban-view');
+      const btnTable = document.getElementById('layout-table-btn');
+      const btnKanban = document.getElementById('layout-kanban-btn');
+
+      if (layout === 'kanban') {
+        table.classList.add('hidden');
+        kanban.classList.remove('hidden');
+        btnKanban.className = "px-2.5 py-1 rounded bg-white text-[#1264F5] shadow-xs flex items-center gap-1";
+        btnTable.className = "px-2.5 py-1 rounded text-slate-500 hover:text-slate-800 transition flex items-center gap-1";
+        renderKanban();
+      } else {
+        kanban.classList.add('hidden');
+        table.classList.remove('hidden');
+        btnTable.className = "px-2.5 py-1 rounded bg-white text-[#1264F5] shadow-xs flex items-center gap-1";
+        btnKanban.className = "px-2.5 py-1 rounded text-slate-500 hover:text-slate-800 transition flex items-center gap-1";
+        renderLeads();
+      }
+    }
+
+    // Switch Primary Navigation Views
+    function switchView(viewName) {
+      document.getElementById('view-leads-container').classList.add('hidden');
+      document.getElementById('view-overview-container').classList.add('hidden');
+      document.getElementById('view-automations-container').classList.add('hidden');
+      document.getElementById('view-adaccounts-container').classList.add('hidden');
+
+      // reset nav buttons
+      ['overview', 'leads', 'automations', 'adaccounts', 'reports', 'integrations', 'settings'].forEach(id => {
+        const btn = document.getElementById('nav-' + id);
+        if (btn) btn.className = "w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-50 transition-all";
+      });
+
+      const activeBtn = document.getElementById('nav-' + viewName);
+      if (activeBtn) activeBtn.className = "w-full flex items-center gap-2.5 px-3 py-2 rounded-xl bg-blue-50 text-[#1264F5] transition-all font-bold";
+
+      if (viewName === 'overview' || viewName === 'reports') {
+        document.getElementById('view-overview-container').classList.remove('hidden');
+      } else if (viewName === 'automations') {
+        document.getElementById('view-automations-container').classList.remove('hidden');
+      } else if (viewName === 'adaccounts' || viewName === 'integrations') {
+        document.getElementById('view-adaccounts-container').classList.remove('hidden');
+      } else {
+        document.getElementById('view-leads-container').classList.remove('hidden');
+      }
+    }
+
+    // Lead Drawer Controls
+    function openLeadDrawer(lead) {
+      currentActiveLead = lead;
+      document.getElementById('drawer-name').textContent = lead.name;
+      document.getElementById('drawer-company').textContent = `${lead.company} • Verified Inbound`;
+      document.getElementById('drawer-email').textContent = lead.email;
+      document.getElementById('drawer-phone').textContent = lead.phone;
+      document.getElementById('drawer-source').textContent = lead.source;
+      document.getElementById('drawer-campaign').textContent = lead.campaign;
+      document.getElementById('drawer-owner').textContent = lead.owner;
+      document.getElementById('drawer-score').textContent = `${lead.score} / 100 (Tier A)`;
+      document.getElementById('drawer-avatar').textContent = lead.name.split(' ').map(n=>n[0]).join('');
+
+      const badge = document.getElementById('drawer-status-badge');
+      badge.textContent = `● ${lead.status}`;
+
+      document.getElementById('drawer-backdrop').classList.remove('hidden');
+      document.getElementById('lead-drawer').classList.remove('translate-x-full');
+    }
+
+    function openLeadDrawerById(id) {
+      const lead = leadsData.find(l => l.id === id);
+      if (lead) openLeadDrawer(lead);
+    }
+
+    function closeLeadDrawer() {
+      document.getElementById('drawer-backdrop').classList.add('hidden');
+      document.getElementById('lead-drawer').classList.add('translate-x-full');
+    }
+
+    function addLeadNote() {
+      const input = document.getElementById('new-note-input');
+      const val = input.value.trim();
+      if (!val) return;
+
+      const timeline = document.getElementById('drawer-timeline');
+      const item = document.createElement('div');
+      item.className = "relative";
+      item.innerHTML = `
+        <div class="absolute -left-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-slate-900 ring-4 ring-white"></div>
+        <div class="text-[11px] text-slate-400">Just now • Added by You</div>
+        <div class="font-semibold text-slate-800">${val}</div>
+      `;
+      timeline.prepend(item);
+      input.value = '';
+    }
+
+    // WhatsApp Message Triggers
+    function applyWhatsAppTemplate(tmplId) {
+      const textarea = document.getElementById('wa-message-text');
+      const lead = currentActiveLead;
+      if (tmplId === '1') {
+        textarea.value = `Hi ${lead.name}, thank you for requesting details on LeadZam from our ${lead.source} campaign. Would tomorrow at 11:00 AM work for a quick 10-minute demo?`;
+      } else if (tmplId === '2') {
+        textarea.value = `Hi ${lead.name}, confirming our upcoming product consultation call with ${lead.owner}. Looking forward to connecting!`;
+      } else {
+        textarea.value = `Hi ${lead.name}, here is the case study on how we achieved 3.8x ROAS for teams in ${lead.company}'s industry. Let me know when you'd like to review the breakdown.`;
+      }
+    }
+
+    function sendWhatsAppMessage() {
+      showToast("WhatsApp Message Sent!", `Delivered template to ${currentActiveLead.name} (${currentActiveLead.phone})`);
+      closeLeadDrawer();
+    }
+
+    function triggerQuickWhatsApp(phone, name) {
+      showToast("WhatsApp Window Ready", `Opening conversation thread with ${name} (${phone})`);
+    }
+
+    function logCall() {
+      alert(`Call logged with ${currentActiveLead.name}. Connected for 4m 12s. Next follow-up marked.`);
+    }
+
+    function disqualifyCurrentLead() {
+      if (confirm(`Disqualify lead "${currentActiveLead.name}"?`)) {
+        currentActiveLead.status = "Disqualified";
+        closeLeadDrawer();
+        renderLeads();
+        updateCounts();
+        showToast("Lead Disqualified", `${currentActiveLead.name} moved to disqualified archive.`);
+      }
+    }
+
+    // Qualify Modal Controls
+    function openQualifyModalFromDrawer() {
+      closeLeadDrawer();
+      openQualifyModalForLead(currentActiveLead.id);
+    }
+
+    function openQualifyModalForLead(id) {
+      const lead = leadsData.find(l => l.id === id);
+      if (!lead) return;
+      currentActiveLead = lead;
+      document.getElementById('qualify-lead-subtitle').textContent = `Lead: ${lead.name} (${lead.company})`;
+      document.getElementById('qualify-modal').classList.remove('hidden');
+    }
+
+    function closeQualifyModal() {
+      document.getElementById('qualify-modal').classList.add('hidden');
+    }
+
+    function confirmQualification() {
+      const owner = document.getElementById('qualify-owner').value;
+      currentActiveLead.status = "Qualified";
+      currentActiveLead.owner = owner;
+      currentActiveLead.score = Math.max(currentActiveLead.score, 90);
+      
+      closeQualifyModal();
+      renderLeads();
+      renderKanban();
+      updateCounts();
+      
+      showToast("Lead Qualified!", `${currentActiveLead.name} assigned to ${owner}. Consultation locked.`);
+    }
+
+    // Add Lead Modal Controls
+    function openAddLeadModal() {
+      document.getElementById('add-lead-modal').classList.remove('hidden');
+    }
+
+    function closeAddLeadModal() {
+      document.getElementById('add-lead-modal').classList.add('hidden');
+    }
+
+    function handleManualAddLead(e) {
+      e.preventDefault();
+      const name = document.getElementById('add-lead-name').value;
+      const email = document.getElementById('add-lead-email').value;
+      const company = document.getElementById('add-lead-company').value;
+      const source = document.getElementById('add-lead-source').value;
+
+      const newLead = {
+        id: Date.now(),
+        name,
+        company,
+        email,
+        phone: "+1 555-0199",
+        source,
+        campaign: "Manual Custom Ingestion",
+        status: "New",
+        speed: "< 1s",
+        owner: "Unassigned",
+        score: 80,
+        selected: false
+      };
+
+      leadsData.unshift(newLead);
+      closeAddLeadModal();
+      renderLeads();
+      renderKanban();
+      updateCounts();
+      showToast("Lead Added!", `${name} from ${company} ingested into pipeline.`);
+    }
+
+    // Simulate Ingestion (Live Ad Lead arrives!)
+    function simulateIncomingLead() {
+      const names = ["Aarav Mehta", "Jessica Alba", "Rohan Gupta", "Chloe Martin", "Ananya Deshmukh"];
+      const companies = ["Solaris Tech", "Alba Real Estate", "Gupta Logistics", "Martin Media Group", "Deshmukh Finance"];
+      const channels = ["Meta Ads", "Google Ads"];
+      
+      const randomName = names[Math.floor(Math.random() * names.length)];
+      const randomCompany = companies[Math.floor(Math.random() * companies.length)];
+      const randomChannel = channels[Math.floor(Math.random() * channels.length)];
+
+      const simulatedLead = {
+        id: Date.now(),
+        name: randomName,
+        company: randomCompany,
+        email: `${randomName.toLowerCase().replace(' ', '.')}@${randomCompany.toLowerCase().replace(' ', '')}.com`,
+        phone: "+91 99999 88888",
+        source: randomChannel,
+        campaign: "High-Intent Lead Form (Live Ingest)",
+        status: "New",
+        speed: "< 2s",
+        owner: "Unassigned",
+        score: Math.floor(Math.random() * 20) + 75,
+        selected: false
+      };
+
+      leadsData.unshift(simulatedLead);
+      renderLeads();
+      renderKanban();
+      updateCounts();
+
+      showToast("🚀 New Ad Lead Ingested!", `${simulatedLead.name} just submitted form on ${simulatedLead.source}. Speed-to-lead: < 2s!`);
+    }
+
+    // Export CSV
+    function exportLeadsCSV() {
+      let csv = "ID,Name,Company,Email,Phone,Source,Campaign,Status,Speed,Owner,Score\n";
+      leadsData.forEach(l => {
+        csv += `"${l.id}","${l.name}","${l.company}","${l.email}","${l.phone}","${l.source}","${l.campaign}","${l.status}","${l.speed}","${l.owner}","${l.score}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `LeadZam_Leads_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("CSV Downloaded", "Leads exported successfully.");
+    }
+
+    // Toast Engine
+    function showToast(title, desc) {
+      const toast = document.getElementById('success-toast');
+      document.getElementById('toast-title').textContent = title;
+      document.getElementById('toast-desc').textContent = desc;
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+
+      setTimeout(() => {
+        dismissSuccessToast();
+      }, 5000);
+    }
+
+    function dismissSuccessToast() {
+      const toast = document.getElementById('success-toast');
+      toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+    }
+
+    // UX Review State Switcher Engine
+    function setState(stateName) {
+      // Reset UI state styles
+      const states = ['default', 'drawer', 'qualify', 'success', 'empty', 'loading', 'error'];
+      states.forEach(s => {
+        const btn = document.getElementById('btn-' + s);
+        if (btn) btn.className = "px-2.5 py-1 rounded font-medium transition text-slate-300 hover:text-white hover:bg-slate-700";
+      });
+      const activeBtn = document.getElementById('btn-' + stateName);
+      if (activeBtn) activeBtn.className = "px-2.5 py-1 rounded font-semibold transition bg-[#1264F5] text-white shadow-xs";
+
+      // Hide simulator containers
+      document.getElementById('view-leads-container').classList.remove('hidden');
+      document.getElementById('state-empty-container').classList.add('hidden');
+      document.getElementById('state-loading-container').classList.add('hidden');
+      document.getElementById('state-error-container').classList.add('hidden');
+
+      if (stateName === 'drawer') {
+        openLeadDrawer(leadsData[0]);
+      } else if (stateName === 'qualify') {
+        closeLeadDrawer();
+        openQualifyModalForLead(leadsData[0].id);
+      } else if (stateName === 'success') {
+        closeLeadDrawer();
+        closeQualifyModal();
+        showToast("Lead Qualified Successfully!", "Rahul Sharma assigned to Amit Verma. WhatsApp sequence dispatched.");
+      } else if (stateName === 'empty') {
+        closeLeadDrawer();
+        closeQualifyModal();
+        document.getElementById('view-leads-container').classList.add('hidden');
+        document.getElementById('state-empty-container').classList.remove('hidden');
+      } else if (stateName === 'loading') {
+        closeLeadDrawer();
+        closeQualifyModal();
+        document.getElementById('view-leads-container').classList.add('hidden');
+        document.getElementById('state-loading-container').classList.remove('hidden');
+      } else if (stateName === 'error') {
+        closeLeadDrawer();
+        closeQualifyModal();
+        document.getElementById('view-leads-container').classList.add('hidden');
+        document.getElementById('state-error-container').classList.remove('hidden');
+      } else {
+        closeLeadDrawer();
+        closeQualifyModal();
+        renderLeads();
+      }
+    }
+
+    function retryConnection() {
+      showToast("Reconnecting...", "Restoring Meta Ads Graph webhook subscription.");
+      setTimeout(() => {
+        setState('default');
+        showToast("Webhooks Restored", "All live ingestion endpoints operating normally.");
+      }, 1000);
+    }
+
+    // Mobile View Toggle
+    function toggleMobileView() {
+      const container = document.getElementById('mobile-view-container');
+      const isHidden = container.classList.contains('hidden');
+      if (isHidden) {
+        renderMobileLeads();
+        container.classList.remove('hidden');
+      } else {
+        container.classList.add('hidden');
+      }
+    }
+
+    function renderMobileLeads() {
+      const list = document.getElementById('mobile-leads-list');
+      list.innerHTML = `
+        <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+          <span class="font-bold text-slate-800 text-xs">Active Leads (${leadsData.length})</span>
+          <span class="text-[10px] text-emerald-600 font-bold">Live Sync</span>
+        </div>
+      `;
+
+      leadsData.slice(0, 5).forEach(l => {
+        const item = document.createElement('div');
+        item.className = "bg-white p-3 rounded-xl border border-slate-200 shadow-xs space-y-1.5 cursor-pointer";
+        item.onclick = () => {
+          toggleMobileView();
+          openLeadDrawer(l);
+        };
+        item.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-slate-900">${l.name}</span>
+            <span class="text-[10px] font-bold text-emerald-600">${l.speed}</span>
+          </div>
+          <div class="text-[11px] text-slate-500">${l.company} • ${l.source}</div>
+          <div class="flex items-center justify-between text-[10px] pt-1 border-t border-slate-100">
+            <span class="text-blue-600 font-bold">● ${l.status}</span>
+            <span class="text-slate-400">Score: ${l.score}</span>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    function toggleSelectAll(masterCheckbox) {
+      leadsData.forEach(l => l.selected = masterCheckbox.checked);
+      renderLeads();
+    }
+
+    function toggleSelect(id, checkbox) {
+      const lead = leadsData.find(l => l.id === id);
+      if (lead) lead.selected = checkbox.checked;
+    }
+  </script>
+</body>
+</html>
+

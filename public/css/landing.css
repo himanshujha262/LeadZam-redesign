@@ -1,23 +1,24 @@
-/* LeadZam Landing Page Stylesheet */
+/* ==========================================================================
+   LeadZam — Marketing Landing Page Stylesheet (css/landing.css)
+   ========================================================================== */
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Plus Jakarta Sans', Inter, sans-serif;
-  color: #0F172A;
   background-color: #FFFFFF;
   scroll-behavior: smooth;
 }
 
+/* Hero Background Glow */
 .custom-glow {
   background: radial-gradient(circle at 50% 50%, rgba(18, 100, 245, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
 }
 
+/* CRM Hero Window Elevation */
 .crm-card-shadow {
   box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.06), 0 20px 48px -12px rgba(18, 100, 245, 0.12), 0 32px 64px -16px rgba(15, 23, 42, 0.14);
 }
 
+/* Star Rating Icon Settings */
 .star-filled {
   font-variation-settings: 'FILL' 1;
 }

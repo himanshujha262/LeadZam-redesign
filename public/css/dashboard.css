@@ -1,33 +1,13 @@
-/* LeadZam CRM Dashboard Stylesheet */
+/* ==========================================================================
+   LeadZam — CRM Dashboard Stylesheet (css/dashboard.css)
+   ========================================================================== */
 
-body {
-  font-family: 'Plus Jakarta Sans', Inter, sans-serif;
-  background-color: #F8FAFC;
-  color: #0F172A;
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
-}
-
+/* Drawer Shadow Effect */
 .drawer-shadow {
   box-shadow: -10px 0 35px -5px rgba(15, 23, 42, 0.12);
 }
 
+/* Skeleton Shimmer Animation */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -43,6 +23,11 @@ body {
   animation: shimmer 1.5s infinite;
 }
 
+/* Progress Bar Metric Widths */
+.progress-benchmark-metric {
+  width: 84%;
+}
+
 .progress-meta-lead {
   width: 64%;
 }
@@ -53,8 +38,4 @@ body {
 
 .progress-direct-webhooks {
   width: 8%;
-}
-
-.progress-benchmark-metric {
-  width: 84%;
 }

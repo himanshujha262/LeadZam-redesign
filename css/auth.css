@@ -1,0 +1,12 @@
+/* ==========================================================================
+   LeadZam — Authentication Stylesheet (css/auth.css)
+   ========================================================================== */
+
+body {
+  background-color: #F8FAFC;
+}
+
+/* Card Elevation & Smooth Focus */
+.auth-card-shadow {
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+}

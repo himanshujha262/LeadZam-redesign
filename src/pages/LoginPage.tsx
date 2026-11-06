@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/Button';
-import { Eye, EyeOff, Sparkles, AlertCircle } from 'lucide-react';
+import { Eye, EyeOff, AlertCircle } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
-  const { login, demoLogin } = useAuth();
+  const { login } = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,11 +36,6 @@ export const LoginPage: React.FC = () => {
       setError('Invalid credentials. Please try again.');
       setIsSubmitting(false);
     }
-  };
-
-  const handleInstantDemo = () => {
-    demoLogin();
-    navigate('/leads');
   };
 
   const handleSocialAuth = (provider: string) => {
@@ -76,24 +71,6 @@ export const LoginPage: React.FC = () => {
           <p className="text-xs sm:text-sm text-[#64748B] mt-1 leading-normal">
             Sign in to manage your leads and campaigns.
           </p>
-        </div>
-
-        {/* 1-Click Instant Demo Login Banner */}
-        <div className="mb-5 p-3.5 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200/80 flex items-center justify-between">
-          <div>
-            <span className="text-xs font-bold text-[#1264F5] flex items-center gap-1">
-              <Sparkles className="w-3.5 h-3.5 text-[#1264F5]" />
-              Instant Demo Access
-            </span>
-            <p className="text-[11px] text-[#64748B] mt-0.5">Explore the live CRM with sample data</p>
-          </div>
-          <button
-            type="button"
-            onClick={handleInstantDemo}
-            className="px-3 py-1.5 rounded-lg bg-[#1264F5] hover:bg-[#0E52CD] text-white text-xs font-semibold shadow-xs transition active:scale-95"
-          >
-            1-Click Demo →
-          </button>
         </div>
 
         {/* Social SSO Buttons */}

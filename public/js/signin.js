@@ -15,20 +15,6 @@ function togglePasswordVisibility() {
   }
 }
 
-function instantDemoLogin() {
-  const btn = document.getElementById('submit-btn');
-  const text = document.getElementById('btn-text');
-  const success = document.getElementById('success-banner');
-
-  if (btn) btn.disabled = true;
-  if (text) text.textContent = 'Connecting Demo Workspace...';
-  if (success) success.classList.remove('hidden');
-
-  setTimeout(() => {
-    window.location.href = 'dashboard.html';
-  }, 700);
-}
-
 function handleSocialAuth(provider) {
   const success = document.getElementById('success-banner');
   if (success) {
@@ -67,11 +53,6 @@ function handleFormSubmit(e) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const demoBtn = document.getElementById('demo-login-btn');
-  if (demoBtn) {
-    demoBtn.addEventListener('click', instantDemoLogin);
-  }
-
   const googleBtn = document.getElementById('google-login-btn');
   if (googleBtn) {
     googleBtn.addEventListener('click', () => handleSocialAuth('Google'));

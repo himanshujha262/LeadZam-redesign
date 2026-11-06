@@ -61,7 +61,7 @@ export const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-[#0F172A] font-sans antialiased selection:bg-[#1264F5] selection:text-white">
       {/* 1. STICKY NAVBAR */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-[#E2E8F0]">
+      <header className="fixed top-0 left-0 w-full z-50 bg-white border-b border-[#E2E8F0]">
         <div className="max-w-7xl h-[70px] mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo & Beta Pill */}
           <div className="flex items-center gap-3">
@@ -77,10 +77,7 @@ export const LandingPage: React.FC = () => {
           <nav className="hidden lg:flex items-center gap-1 text-sm font-medium text-[#64748B]">
             <a href="#features" className="px-3.5 py-1.5 rounded-lg hover:text-[#1264F5] hover:bg-blue-50/70 transition-all">Features</a>
             <a href="#workflow" className="px-3.5 py-1.5 rounded-lg hover:text-[#1264F5] hover:bg-blue-50/70 transition-all">Workflow</a>
-            <a href="#screens" className="px-3.5 py-1.5 rounded-lg hover:text-[#1264F5] hover:bg-blue-50/70 transition-all flex items-center gap-1.5">
-              <span>Screens &amp; Demo</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1264F5]"></span>
-            </a>
+            <a href="#screens" className="px-3.5 py-1.5 rounded-lg hover:text-[#1264F5] hover:bg-blue-50/70 transition-all">Screens &amp; Demo</a>
             <a href="#integrations" className="px-3.5 py-1.5 rounded-lg hover:text-[#1264F5] hover:bg-blue-50/70 transition-all">Integrations</a>
             <a href="#founder" className="px-3.5 py-1.5 rounded-lg hover:text-[#1264F5] hover:bg-blue-50/70 transition-all">Founder</a>
             <a href="#faq" className="px-3.5 py-1.5 rounded-lg hover:text-[#1264F5] hover:bg-blue-50/70 transition-all">FAQ</a>

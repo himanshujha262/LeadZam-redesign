@@ -118,7 +118,7 @@
               <div id="sidebar-user-role" class="text-[10px] text-slate-400">Founder &amp; CEO</div>
             </div>
           </div>
-          <a href="#" id="logout-btn" title="Sign Out" class="text-slate-400 hover:text-red-600 transition">
+          <a href="signin.html?logout=true" id="logout-btn" title="Sign Out" class="text-slate-400 hover:text-red-600 transition">
             <span class="material-symbols-outlined text-[18px]">logout</span>
           </a>
         </div>
@@ -162,6 +162,20 @@
             <span class="material-symbols-outlined text-[16px]">add</span>
             <span>+ Add Lead</span>
           </button>
+
+          <!-- User Profile & Header Sign Out -->
+          <div class="flex items-center gap-2 pl-2 sm:pl-3 border-l border-slate-200">
+            <div id="header-user-avatar" class="w-8 h-8 rounded-full bg-blue-100 text-[#1264F5] font-bold text-xs flex items-center justify-center shrink-0">
+              HK
+            </div>
+            <div class="hidden lg:block text-left text-xs">
+              <span id="header-user-name" class="font-semibold text-[#0F172A] block leading-tight">Himanshu Kumar</span>
+              <span id="header-user-role" class="text-[10px] text-[#64748B] block leading-tight">Sales Director</span>
+            </div>
+            <a href="signin.html?logout=true" id="header-logout-btn" title="Sign Out" class="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition flex items-center">
+              <span class="material-symbols-outlined text-[18px]">logout</span>
+            </a>
+          </div>
         </div>
       </header>
 
@@ -1026,6 +1040,10 @@
           <span class="material-symbols-outlined text-[18px]">query_stats</span>
           <span>ROAS</span>
         </div>
+        <a href="signin.html?logout=true" id="mobile-logout-btn" class="flex flex-col items-center text-slate-500 hover:text-red-600 transition">
+          <span class="material-symbols-outlined text-[18px]">logout</span>
+          <span>Sign Out</span>
+        </a>
       </div>
     </div>
   </div>

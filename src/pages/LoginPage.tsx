@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/Button';
-import { Eye, EyeOff, AlertCircle, Lock } from 'lucide-react';
+import { Eye, EyeOff, AlertCircle, Lock, CheckCircle } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -75,8 +75,16 @@ export const LoginPage: React.FC = () => {
           </p>
         </div>
 
+        {/* Logout Success Banner */}
+        {location.search.includes('logout=true') && (
+          <div className="mb-5 p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-800 text-xs flex items-center gap-2.5">
+            <CheckCircle className="w-4 h-4 text-[#1264F5] shrink-0" />
+            <span>You have been signed out of your LeadZam workspace.</span>
+          </div>
+        )}
+
         {/* Authentication Required Banner */}
-        {location.state?.from && (
+        {location.state?.from && !location.search.includes('logout=true') && (
           <div className="mb-5 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-center gap-2.5">
             <Lock className="w-4 h-4 text-amber-600 shrink-0" />
             <span>Authentication required. Please sign in or register to access the dashboard overview.</span>

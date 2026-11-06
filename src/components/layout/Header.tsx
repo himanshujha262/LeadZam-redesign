@@ -1,5 +1,6 @@
 import React from 'react';
-import { Menu, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Menu, Zap, LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 interface HeaderProps {
@@ -7,7 +8,13 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onOpenMobileNav }) => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login?logout=true', { replace: true });
+  };
 
   return (
     <header className="h-16 bg-white border-b border-[#E2E8F0] px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
@@ -35,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileNav }) => {
         </div>
 
         <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
-          <div className="w-8 h-8 rounded-full bg-blue-100 text-[#1264F5] font-bold text-xs flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-blue-100 text-[#1264F5] font-bold text-xs flex items-center justify-center shrink-0">
             {user ? user.name.slice(0, 2).toUpperCase() : 'HK'}
           </div>
           <div className="hidden lg:block text-left text-xs">
@@ -46,6 +53,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileNav }) => {
               {user ? user.role : 'Sales Director'}
             </span>
           </div>
+          <button
+            onClick={handleLogout}
+            title="Sign Out"
+            className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition ml-1"
+          >
+            <LogOut className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </header>

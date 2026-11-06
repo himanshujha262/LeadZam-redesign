@@ -89,6 +89,20 @@ function handleFormSubmit(e) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Check if redirected because user just logged out
+  if (window.location.search.includes('logout=true')) {
+    try {
+      localStorage.removeItem('leadzam_user');
+      localStorage.removeItem('leadzam_auth');
+      sessionStorage.removeItem('leadzam_redirect_after_login');
+    } catch (e) {}
+
+    const logoutBanner = document.getElementById('logout-banner');
+    if (logoutBanner) {
+      logoutBanner.classList.remove('hidden');
+    }
+  }
+
   // Check if redirected because authentication is required
   if (window.location.search.includes('auth_required=true')) {
     const authBanner = document.getElementById('auth-required-banner');

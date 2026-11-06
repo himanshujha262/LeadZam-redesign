@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useLeads } from '../../context/LeadContext';
 import { useAuth } from '../../context/AuthContext';
 import {
@@ -16,6 +16,12 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
   const { leads } = useLeads();
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login?logout=true', { replace: true });
+  };
 
   const activeCount = leads.length;
 
@@ -122,7 +128,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onCloseMobile }) => {
               </div>
             </div>
             <button
-              onClick={logout}
+              onClick={handleLogout}
               title="Sign Out"
               className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
             >

@@ -886,34 +886,43 @@
       const closeMobilePreviewBtn = document.getElementById('close-mobile-preview-btn');
       if (closeMobilePreviewBtn) closeMobilePreviewBtn.addEventListener('click', toggleMobileView);
 
-      // Populate authenticated user info
+      // Populate authenticated user info in sidebar & header
       try {
         const userStr = localStorage.getItem('leadzam_user');
         if (userStr) {
           const user = JSON.parse(userStr);
-          const nameEl = document.getElementById('sidebar-user-name');
-          const roleEl = document.getElementById('sidebar-user-role');
-          const avatarEl = document.getElementById('sidebar-user-avatar');
-          if (nameEl && user.name) nameEl.textContent = user.name;
-          if (roleEl && (user.role || user.company)) roleEl.textContent = user.role || user.company;
-          if (avatarEl && user.name) {
-            const initials = user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
-            avatarEl.textContent = initials || 'LZ';
+          const nameEls = [document.getElementById('sidebar-user-name'), document.getElementById('header-user-name')];
+          const roleEls = [document.getElementById('sidebar-user-role'), document.getElementById('header-user-role')];
+          const avatarEls = [document.getElementById('sidebar-user-avatar'), document.getElementById('header-user-avatar')];
+
+          if (user.name) {
+            nameEls.forEach(el => { if (el) el.textContent = user.name; });
+            const initials = user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'LZ';
+            avatarEls.forEach(el => { if (el) el.textContent = initials; });
+          }
+          if (user.role || user.company) {
+            roleEls.forEach(el => { if (el) el.textContent = user.role || user.company; });
           }
         }
       } catch (e) {}
 
-      // Logout handler
-      const logoutBtn = document.getElementById('logout-btn');
-      if (logoutBtn) {
-        logoutBtn.addEventListener('click', (e) => {
-          e.preventDefault();
+      // Logout handler (sidebar, header, mobile)
+      function performLogout(e) {
+        if (e) e.preventDefault();
+        try {
           localStorage.removeItem('leadzam_user');
           localStorage.removeItem('leadzam_auth');
           sessionStorage.removeItem('leadzam_redirect_after_login');
-          window.location.href = 'signin.html';
-        });
+        } catch (err) {}
+        window.location.href = 'signin.html?logout=true';
       }
+
+      ['logout-btn', 'header-logout-btn', 'mobile-logout-btn'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          btn.addEventListener('click', performLogout);
+        }
+      });
 
       // Initial render
       renderLeads();

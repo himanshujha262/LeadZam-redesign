@@ -468,12 +468,105 @@ export const LandingPage: React.FC = () => {
               )}
 
               {activeTab === 'dashboard' && (
-                <div key="dashboard-tab" className="screen-showcase-view space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                    <span className="font-bold text-sm text-slate-800">CRM Dashboard Overview View</span>
+                <div key="dashboard-tab" className="screen-showcase-view bg-[#F8FAFC] rounded-2xl border border-slate-200 overflow-hidden">
+                  <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-slate-200">
+                    <span className="font-bold text-sm text-slate-800">Production CRM Dashboard View</span>
                     <Link to="/dashboard" className="text-xs font-bold text-[#1264F5] hover:underline">Open Live Dashboard →</Link>
                   </div>
-                  <img src="./assets/images/crm-dashboard-screen.png" alt="CRM Dashboard" className="w-full rounded-2xl border border-slate-200" />
+                  
+                  {/* Fitted Leads Pipeline Table */}
+                  <div className="p-4 sm:p-6 space-y-4">
+                    <div className="bg-white p-3 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+                      <div className="font-bold text-slate-800 text-sm">Active Leads Pipeline (2,846 total)</div>
+                      <div className="flex items-center gap-2">
+                        <span className="px-2.5 py-1 bg-emerald-50 text-emerald-700 font-semibold rounded-full border border-emerald-200">● Ingestion Active</span>
+                        <Link to="/leads" className="px-3 py-1 bg-[#1264F5] text-white font-bold rounded-lg hover:bg-blue-600 transition">Manage Leads</Link>
+                      </div>
+                    </div>
+
+                    <div className="bg-white rounded-xl border border-slate-200 overflow-x-auto shadow-xs">
+                      <table className="w-full text-left text-xs border-collapse">
+                        <thead>
+                          <tr className="bg-[#F8FAFC] border-b border-slate-200 text-[#64748B] font-bold uppercase tracking-wider">
+                            <th className="py-3 px-4">Lead</th>
+                            <th className="py-3 px-3">Source</th>
+                            <th className="py-3 px-3">Campaign</th>
+                            <th className="py-3 px-3">Status</th>
+                            <th className="py-3 px-3">Owner</th>
+                            <th className="py-3 px-3">Last Activity</th>
+                            <th className="py-3 px-3">Next Follow-up</th>
+                            <th className="py-3 px-4 text-right">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          <tr className="hover:bg-blue-50/40 transition">
+                            <td className="py-3 px-4 font-bold text-slate-900">
+                              <div>Rahul Sharma</div>
+                              <div className="text-[10px] text-slate-400 font-normal">rahul.sharma@email.com</div>
+                            </td>
+                            <td className="py-3 px-3"><span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-semibold">Meta Ads</span></td>
+                            <td className="py-3 px-3 text-slate-700">Summer Sale</td>
+                            <td className="py-3 px-3"><span className="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 font-bold">New</span></td>
+                            <td className="py-3 px-3 text-slate-400 italic">Unassigned</td>
+                            <td className="py-3 px-3 text-emerald-600 font-medium">2 min ago</td>
+                            <td className="py-3 px-3 text-slate-400">Not scheduled</td>
+                            <td className="py-3 px-4 text-right">
+                              <Link to="/leads" className="px-2.5 py-1 text-[11px] font-bold text-[#1264F5] bg-blue-50 hover:bg-[#1264F5] hover:text-white rounded-lg transition border border-blue-200 inline-block">View Lead →</Link>
+                            </td>
+                          </tr>
+                          <tr className="hover:bg-blue-50/40 transition">
+                            <td className="py-3 px-4 font-bold text-slate-900">
+                              <div>Priya Singh</div>
+                              <div className="text-[10px] text-slate-400 font-normal">priya.singh@email.com</div>
+                            </td>
+                            <td className="py-3 px-3"><span className="px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-semibold">Google Ads</span></td>
+                            <td className="py-3 px-3 text-slate-700">Demo Campaign</td>
+                            <td className="py-3 px-3"><span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">Qualified</span></td>
+                            <td className="py-3 px-3 text-slate-700">Amit Verma</td>
+                            <td className="py-3 px-3 text-slate-500">18 min ago</td>
+                            <td className="py-3 px-3 text-emerald-700 font-medium">Today, 4:30 PM</td>
+                            <td className="py-3 px-4 text-right">
+                              <Link to="/leads" className="px-2.5 py-1 text-[11px] font-bold text-[#1264F5] bg-blue-50 hover:bg-[#1264F5] hover:text-white rounded-lg transition border border-blue-200 inline-block">View Lead →</Link>
+                            </td>
+                          </tr>
+                          <tr className="hover:bg-blue-50/40 transition">
+                            <td className="py-3 px-4 font-bold text-slate-900">
+                              <div>Aman Kumar</div>
+                              <div className="text-[10px] text-slate-400 font-normal">aman.kumar@email.com</div>
+                            </td>
+                            <td className="py-3 px-3"><span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-semibold">Meta Ads</span></td>
+                            <td className="py-3 px-3 text-slate-700">Product Ads</td>
+                            <td className="py-3 px-3"><span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold">Follow-up</span></td>
+                            <td className="py-3 px-3 text-slate-700">Neha Singh</td>
+                            <td className="py-3 px-3 text-slate-500">1 hour ago</td>
+                            <td className="py-3 px-3 text-amber-700 font-medium">Tomorrow, 10:00 AM</td>
+                            <td className="py-3 px-4 text-right">
+                              <Link to="/leads" className="px-2.5 py-1 text-[11px] font-bold text-[#1264F5] bg-blue-50 hover:bg-[#1264F5] hover:text-white rounded-lg transition border border-blue-200 inline-block">View Lead →</Link>
+                            </td>
+                          </tr>
+                          <tr className="hover:bg-blue-50/40 transition">
+                            <td className="py-3 px-4 font-bold text-slate-900">
+                              <div>Sneha Verma</div>
+                              <div className="text-[10px] text-slate-400 font-normal">sneha.verma@email.com</div>
+                            </td>
+                            <td className="py-3 px-3"><span className="px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-semibold">Google Ads</span></td>
+                            <td className="py-3 px-3 text-slate-700">Search Leads</td>
+                            <td className="py-3 px-3"><span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 font-bold">Converted</span></td>
+                            <td className="py-3 px-3 text-slate-700">Amit Verma</td>
+                            <td className="py-3 px-3 text-slate-500">Yesterday</td>
+                            <td className="py-3 px-3 text-slate-400">—</td>
+                            <td className="py-3 px-4 text-right">
+                              <Link to="/leads" className="px-2.5 py-1 text-[11px] font-bold text-[#1264F5] bg-blue-50 hover:bg-[#1264F5] hover:text-white rounded-lg transition border border-blue-200 inline-block">View Lead →</Link>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div className="p-3 bg-blue-50/80 border border-blue-200 rounded-xl text-xs text-slate-800 leading-relaxed">
+                      <strong className="text-[#1264F5]">High-Impact UX Improvement:</strong> Sales reps lose track of context when navigated away to individual full-page profile URLs. LeadZam's <strong>right-side Details Drawer</strong> maintains the user's filtered list position, allowing immediate lead evaluation, score review, assignment, and qualification confirmation in under 15 seconds.
+                    </div>
+                  </div>
                 </div>
               )}
 

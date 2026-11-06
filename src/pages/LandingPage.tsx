@@ -93,7 +93,16 @@ export const LandingPage: React.FC = () => {
       <main className="pt-[70px]">
         {/* 2. HERO SECTION */}
         <section className="relative w-full bg-gradient-to-b from-[#EFF6FF]/70 via-white to-white py-14 lg:py-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* Animated Background Orbs & Ambient Dot Matrix Grid */}
+          <div className="landing-bg-animation" aria-hidden="true">
+            <div className="landing-bg-grid" />
+            <div className="landing-orb landing-orb-1" />
+            <div className="landing-orb landing-orb-2" />
+            <div className="landing-orb landing-orb-3" />
+            <div className="landing-orb landing-orb-4" />
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left Column: Copy & Actions */}
               <div className="lg:col-span-6 flex flex-col items-start">

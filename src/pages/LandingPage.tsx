@@ -418,6 +418,254 @@ export const LandingPage: React.FC = () => {
           </div>
         </section>
 
+        {/* 5. NATIVE INTEGRATIONS (Animated Movement of Blocks from Left to Right) */}
+        <section id="integrations" className="w-full bg-[#EFF6FF]/40 py-20 border-t border-[#E2E8F0] overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-12">
+            <div className="text-center max-w-2xl mx-auto">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#1264F5]">Native Ecosystem</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-2">
+                Seamless integrations with your sales stack
+              </h2>
+              <p className="text-[#64748B] text-base mt-2">
+                One-click OAuth connection to your ad accounts, communication channels, and databases.
+              </p>
+            </div>
+          </div>
+
+          {/* Marquee Track Moving Left to Right */}
+          <div className="integrations-marquee-wrapper">
+            <div className="integrations-marquee-track">
+              {/* Slide Set 1 */}
+              <div className="integrations-slide flex items-stretch gap-6 px-3">
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-[#1877F2] text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    f
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Meta Lead Ads</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Direct Graph API webhooks with zero dropped instant forms.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Native OAuth
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    G
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Google Ads</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Search extension forms and YouTube lead ingestion in real time.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live Webhook
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-[24px]">chat</span>
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">WhatsApp Cloud</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Official Meta Business API for instant automated template messages.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Official Partner
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    ⊞
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Google Sheets</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Instant 2-way spreadsheet synchronization for backup &amp; reporting.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> 2-Way Sync
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-[24px]">api</span>
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">REST &amp; Webhooks</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Ingest leads from custom landing pages, WordPress, Webflow or Unbounce.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span> 99.99% Uptime
+                  </span>
+                </div>
+
+                {/* Repeat for wide screens */}
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-[#1877F2] text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    f
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Meta Lead Ads</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Direct Graph API webhooks with zero dropped instant forms.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Native OAuth
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    G
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Google Ads</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Search extension forms and YouTube lead ingestion in real time.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live Webhook
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-[24px]">chat</span>
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">WhatsApp Cloud</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Official Meta Business API for instant automated template messages.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Official Partner
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    ⊞
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Google Sheets</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Instant 2-way spreadsheet synchronization for backup &amp; reporting.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> 2-Way Sync
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-[24px]">api</span>
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">REST &amp; Webhooks</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Ingest leads from custom landing pages, WordPress, Webflow or Unbounce.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span> 99.99% Uptime
+                  </span>
+                </div>
+              </div>
+
+              {/* Slide Set 2 (Identical Clone for Seamless Infinite Loop) */}
+              <div className="integrations-slide flex items-stretch gap-6 px-3" aria-hidden="true">
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-[#1877F2] text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    f
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Meta Lead Ads</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Direct Graph API webhooks with zero dropped instant forms.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Native OAuth
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    G
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Google Ads</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Search extension forms and YouTube lead ingestion in real time.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live Webhook
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-[24px]">chat</span>
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">WhatsApp Cloud</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Official Meta Business API for instant automated template messages.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Official Partner
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    ⊞
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Google Sheets</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Instant 2-way spreadsheet synchronization for backup &amp; reporting.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> 2-Way Sync
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-[24px]">api</span>
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">REST &amp; Webhooks</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Ingest leads from custom landing pages, WordPress, Webflow or Unbounce.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span> 99.99% Uptime
+                  </span>
+                </div>
+
+                {/* Repeat for wide screens */}
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-[#1877F2] text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    f
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Meta Lead Ads</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Direct Graph API webhooks with zero dropped instant forms.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Native OAuth
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    G
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Google Ads</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Search extension forms and YouTube lead ingestion in real time.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Live Webhook
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-[24px]">chat</span>
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">WhatsApp Cloud</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Official Meta Business API for instant automated template messages.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Official Partner
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    ⊞
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">Google Sheets</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Instant 2-way spreadsheet synchronization for backup &amp; reporting.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> 2-Way Sync
+                  </span>
+                </div>
+
+                <div className="integration-card w-[260px] sm:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-xl hover:border-blue-400/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center select-none cursor-pointer group">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl font-bold mb-4 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-[24px]">api</span>
+                  </div>
+                  <h4 className="font-bold text-base text-[#0F172A] group-hover:text-[#1264F5] transition-colors">REST &amp; Webhooks</h4>
+                  <p className="text-xs text-[#64748B] mt-2 mb-4 leading-relaxed">Ingest leads from custom landing pages, WordPress, Webflow or Unbounce.</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100 shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span> 99.99% Uptime
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 5. ABOUT FOUNDER */}
         <section id="founder" className="py-16 sm:py-24 bg-white border-t border-[#E2E8F0]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">

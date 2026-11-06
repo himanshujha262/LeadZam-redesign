@@ -149,3 +149,43 @@ body {
   }
 }
 
+/* --------------------------------------------------------------------------
+   Integrations Marquee (Movement of blocks from Left to Right)
+   -------------------------------------------------------------------------- */
+.integrations-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.25rem 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.integrations-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-left-to-right 32s linear infinite;
+}
+
+.integrations-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-left-to-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .integrations-marquee-track {
+    animation: none;
+    transform: none;
+  }
+}
+
+

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { LeadProvider } from './context/LeadContext';
 import { AppLayout } from './components/layout/AppLayout';
+import { LandingPage } from './pages/LandingPage';
 import { LeadsPage } from './pages/LeadsPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { LoginPage } from './pages/LoginPage';
@@ -14,6 +15,10 @@ export const App: React.FC = () => {
       <AuthProvider>
         <LeadProvider>
           <Routes>
+            {/* Public Landing & Marketing Page */}
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/landing" element={<LandingPage />} />
+
             {/* Public Authentication Routes */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
@@ -25,9 +30,8 @@ export const App: React.FC = () => {
               <Route path="/leads/:id" element={<LeadsPage />} />
             </Route>
 
-            {/* Fallback & Root redirect */}
-            <Route path="/" element={<Navigate to="/leads" replace />} />
-            <Route path="*" element={<Navigate to="/leads" replace />} />
+            {/* Fallback */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </LeadProvider>
       </AuthProvider>
@@ -36,4 +40,3 @@ export const App: React.FC = () => {
 };
 
 export default App;
-

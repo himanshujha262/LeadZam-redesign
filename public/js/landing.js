@@ -2,12 +2,24 @@
  * LeadZam — Marketing Landing Page Scripts (js/landing.js)
  */
 
-function switchScreenTab(tabId) {
-  const views = ['live', 'dashboard-screen', 'qualify-screen'];
-  views.forEach((v) => {
+const screenTabs = ['live', 'dashboard-screen', 'qualify-screen'];
+let currentScreenIndex = 0;
+let autoTransitionTimer = null;
+let isUserInteracting = false;
+
+function switchScreenTab(tabId, isManual = false) {
+  const index = screenTabs.indexOf(tabId);
+  if (index !== -1) {
+    currentScreenIndex = index;
+  }
+
+  screenTabs.forEach((v) => {
     const el = document.getElementById('screen-view-' + v);
     const btn = document.getElementById('tab-btn-' + v);
-    if (el) el.classList.add('hidden');
+    if (el) {
+      el.classList.add('hidden');
+      el.classList.remove('screen-showcase-view');
+    }
     if (btn) {
       btn.className =
         'px-4 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-2';
@@ -16,10 +28,40 @@ function switchScreenTab(tabId) {
 
   const activeEl = document.getElementById('screen-view-' + tabId);
   const activeBtn = document.getElementById('tab-btn-' + tabId);
-  if (activeEl) activeEl.classList.remove('hidden');
+  if (activeEl) {
+    activeEl.classList.remove('hidden');
+    // Force DOM reflow to trigger smooth transition animation
+    void activeEl.offsetWidth;
+    activeEl.classList.add('screen-showcase-view');
+  }
   if (activeBtn) {
     activeBtn.className =
       'px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs bg-[#1264F5] text-white flex items-center gap-2';
+  }
+
+  if (isManual) {
+    stopAutoTransition();
+    autoTransitionTimer = setTimeout(() => {
+      startAutoTransition();
+    }, 4500);
+  }
+}
+
+function startAutoTransition() {
+  stopAutoTransition();
+  if (isUserInteracting) return;
+
+  autoTransitionTimer = setTimeout(() => {
+    currentScreenIndex = (currentScreenIndex + 1) % screenTabs.length;
+    switchScreenTab(screenTabs[currentScreenIndex], false);
+    startAutoTransition();
+  }, 1500);
+}
+
+function stopAutoTransition() {
+  if (autoTransitionTimer) {
+    clearTimeout(autoTransitionTimer);
+    autoTransitionTimer = null;
   }
 }
 
@@ -48,13 +90,28 @@ function toggleFaq(btn) {
 
 document.addEventListener('DOMContentLoaded', () => {
   // Screen tab switcher listeners
-  const tabs = ['live', 'dashboard-screen', 'qualify-screen'];
-  tabs.forEach((tabId) => {
+  screenTabs.forEach((tabId) => {
     const btn = document.getElementById('tab-btn-' + tabId);
     if (btn) {
-      btn.addEventListener('click', () => switchScreenTab(tabId));
+      btn.addEventListener('click', () => switchScreenTab(tabId, true));
     }
   });
+
+  // Showcase section hover pause/resume
+  const showcaseSection = document.getElementById('dashboard');
+  if (showcaseSection) {
+    showcaseSection.addEventListener('mouseenter', () => {
+      isUserInteracting = true;
+      stopAutoTransition();
+    });
+    showcaseSection.addEventListener('mouseleave', () => {
+      isUserInteracting = false;
+      startAutoTransition();
+    });
+  }
+
+  // Initial 1.5s auto transition
+  startAutoTransition();
 
   // Table rows navigation to dashboard.html
   const clickableRows = document.querySelectorAll('.demo-lead-row');
@@ -70,3 +127,4 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => toggleFaq(btn));
   });
 });
+

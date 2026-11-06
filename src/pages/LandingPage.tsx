@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
@@ -14,7 +14,22 @@ import {
 
 export const LandingPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'live' | 'dashboard' | 'qualify'>('live');
+  const [isHovered, setIsHovered] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  // Auto-transition screens after 1.5 seconds, paused on user hover
+  useEffect(() => {
+    if (isHovered) return;
+    const tabs: Array<'live' | 'dashboard' | 'qualify'> = ['live', 'dashboard', 'qualify'];
+    const timer = setTimeout(() => {
+      setActiveTab((prev) => {
+        const nextIndex = (tabs.indexOf(prev) + 1) % tabs.length;
+        return tabs[nextIndex];
+      });
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, [activeTab, isHovered]);
 
   const faqs = [
     {
@@ -328,10 +343,14 @@ export const LandingPage: React.FC = () => {
               </button>
             </div>
 
-            {/* Tab Containers */}
-            <div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-xl p-6 overflow-hidden">
+            {/* Tab Containers with Smooth 1.5s Transition & Pause on Hover */}
+            <div 
+              className="bg-white rounded-3xl border border-[#E2E8F0] shadow-xl p-6 overflow-hidden transition-all duration-300"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               {activeTab === 'live' && (
-                <div className="space-y-4">
+                <div key="live-tab" className="screen-showcase-view space-y-4">
                   <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                     <div>
                       <h3 className="font-bold text-base text-[#0F172A]">Live Ad Leads Queue</h3>
@@ -396,7 +415,7 @@ export const LandingPage: React.FC = () => {
               )}
 
               {activeTab === 'dashboard' && (
-                <div className="space-y-3">
+                <div key="dashboard-tab" className="screen-showcase-view space-y-3">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                     <span className="font-bold text-sm text-slate-800">CRM Dashboard Overview View</span>
                     <Link to="/dashboard" className="text-xs font-bold text-[#1264F5] hover:underline">Open Live Dashboard →</Link>
@@ -406,7 +425,7 @@ export const LandingPage: React.FC = () => {
               )}
 
               {activeTab === 'qualify' && (
-                <div className="space-y-3">
+                <div key="qualify-tab" className="screen-showcase-view space-y-3">
                   <div className="flex items-center justify-between pb-2 border-b border-slate-100">
                     <span className="font-bold text-sm text-slate-800">BANT Qualification &amp; Routing Modal</span>
                     <Link to="/leads" className="text-xs font-bold text-[#1264F5] hover:underline">Try Qualification Flow →</Link>

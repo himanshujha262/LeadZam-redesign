@@ -330,4 +330,24 @@
   }
 }
 
+/* --------------------------------------------------------------------------
+   Work In Action Screen Showcase Transitions
+   -------------------------------------------------------------------------- */
+.screen-showcase-view {
+  animation: screen-fade-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes screen-fade-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+
 

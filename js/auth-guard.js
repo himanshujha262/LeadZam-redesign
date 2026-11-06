@@ -31,3 +31,4 @@
     window.location.replace('signin.html?auth_required=true');
   }
 })();
+

@@ -40,3 +40,9 @@
   width: 8%;
 }
 
+/* Select Input Styling: Prevent chevron icon from overlapping text */
+select {
+  padding-right: 2.25rem !important;
+  background-position: right 0.65rem center !important;
+}
+

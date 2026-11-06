@@ -197,7 +197,7 @@
               </div>
 
               <!-- Channel Filter Dropdown -->
-              <select id="channel-filter" class="text-xs font-semibold bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-[#1264F5]">
+              <select id="channel-filter" class="text-xs font-semibold bg-white border border-slate-200 rounded-lg pl-3 pr-8 py-1.5 focus:outline-none focus:border-[#1264F5] cursor-pointer">
                 <option value="all">All Ad Channels</option>
                 <option value="Meta Ads">Meta Lead Ads</option>
                 <option value="Google Ads">Google Ads</option>
@@ -208,26 +208,26 @@
 
           <!-- Status Filter Tabs -->
           <div class="flex items-center border-b border-slate-200 overflow-x-auto text-xs font-semibold gap-1">
-            <button data-status="all" class="tab-btn px-4 py-2.5 text-[#1264F5] border-b-2 border-[#1264F5] flex items-center gap-1.5 transition -mb-px">
+            <button data-status="all" class="tab-btn px-4 py-2.5 text-[#1264F5] border-b-2 border-[#1264F5] flex items-center gap-1.5 transition -mb-px whitespace-nowrap shrink-0">
               <span>All Leads</span>
-              <span class="bg-blue-100 text-[#1264F5] px-1.5 py-0.2 rounded-full text-[10px]" id="count-all">8</span>
+              <span class="bg-blue-100 text-[#1264F5] px-1.5 py-0.5 rounded-full text-[10px]" id="count-all">8</span>
             </button>
-            <button data-status="New" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+            <button data-status="New" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px whitespace-nowrap shrink-0">
               <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
               <span>New</span>
-              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-new">2</span>
+              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full text-[10px]" id="count-new">2</span>
             </button>
-            <button data-status="Qualified" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+            <button data-status="Qualified" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px whitespace-nowrap shrink-0">
               <span>Qualified</span>
-              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-qualified">3</span>
+              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full text-[10px]" id="count-qualified">3</span>
             </button>
-            <button data-status="Follow-up" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+            <button data-status="Follow-up" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px whitespace-nowrap shrink-0">
               <span>Follow-up</span>
-              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-followup">2</span>
+              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full text-[10px]" id="count-followup">2</span>
             </button>
-            <button data-status="Meeting Booked" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px">
+            <button data-status="Meeting Booked" class="tab-btn px-4 py-2.5 text-slate-500 hover:text-slate-800 border-b-2 border-transparent flex items-center gap-1.5 transition -mb-px whitespace-nowrap shrink-0">
               <span>Meeting Booked</span>
-              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded-full text-[10px]" id="count-meeting">1</span>
+              <span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full text-[10px]" id="count-meeting">1</span>
             </button>
           </div>
 
@@ -815,7 +815,7 @@
           </div>
           <span class="text-[10px] text-emerald-700 bg-emerald-100 font-bold px-2 py-0.5 rounded">Cloud API Ready</span>
         </div>
-        <select id="wa-template-select" class="w-full text-xs bg-white border border-emerald-300 rounded-lg p-2 font-medium">
+        <select id="wa-template-select" class="w-full text-xs bg-white border border-emerald-300 rounded-lg pl-3 pr-8 py-2 font-medium cursor-pointer">
           <option value="1">Template: Immediate Inquiry Follow-up &amp; Booking</option>
           <option value="2">Template: Meeting Reschedule / Confirmation</option>
           <option value="3">Template: Growth Case Study &amp; Pricing PDF</option>
@@ -891,7 +891,7 @@
       <div class="space-y-3 text-xs">
         <div>
           <label class="block font-semibold text-slate-700 mb-1">Estimated Monthly Ad Spend / Budget</label>
-          <select id="qualify-budget" class="w-full p-2.5 rounded-lg border border-slate-200 bg-white">
+          <select id="qualify-budget" class="w-full pl-3 pr-8 py-2.5 rounded-lg border border-slate-200 bg-white cursor-pointer">
             <option value="15k">$10,000 - $25,000 / month (High Intent)</option>
             <option value="50k">$25,000 - $50,000 / month (Enterprise)</option>
             <option value="5k">&lt; $10,000 / month (Mid-tier)</option>
@@ -900,7 +900,7 @@
 
         <div>
           <label class="block font-semibold text-slate-700 mb-1">Assign to Sales Representative</label>
-          <select id="qualify-owner" class="w-full p-2.5 rounded-lg border border-slate-200 bg-white">
+          <select id="qualify-owner" class="w-full pl-3 pr-8 py-2.5 rounded-lg border border-slate-200 bg-white cursor-pointer">
             <option value="Amit Verma">Amit Verma (Account Executive)</option>
             <option value="Priya Sharma">Priya Sharma (Senior Closer)</option>
             <option value="Marcus Vance">Marcus Vance (Enterprise Rep)</option>
@@ -949,7 +949,7 @@
         </div>
         <div>
           <label class="block font-semibold text-slate-700 mb-1">Ad Source / Channel</label>
-          <select id="add-lead-source" class="w-full p-2.5 rounded-lg border border-slate-200 bg-white">
+          <select id="add-lead-source" class="w-full pl-3 pr-8 py-2.5 rounded-lg border border-slate-200 bg-white cursor-pointer">
             <option value="Meta Ads">Meta Lead Ads</option>
             <option value="Google Ads">Google Ads</option>
             <option value="Organic">Organic Inbound</option>

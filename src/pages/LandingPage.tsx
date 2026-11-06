@@ -685,20 +685,47 @@ export const LandingPage: React.FC = () => {
         {/* 5. ABOUT FOUNDER */}
         <section id="founder" className="py-16 sm:py-24 bg-white border-t border-[#E2E8F0]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="max-w-3xl mx-auto bg-slate-50 p-8 sm:p-12 rounded-3xl border border-[#E2E8F0] flex flex-col sm:flex-row items-center gap-8">
-              <img 
-                src="./assets/images/founder.png" 
-                alt="LeadZam Founder" 
-                className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl object-cover border-2 border-white shadow-md shrink-0" 
-              />
-              <div className="space-y-3 text-center sm:text-left">
-                <span className="text-xs font-bold text-[#1264F5] uppercase tracking-wider">FOUNDER PERSPECTIVE</span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A]">Built for Performance Teams</h3>
-                <p className="text-sm text-[#64748B] leading-relaxed">
-                  "Traditional enterprise CRMs are bloated and slow. Performance teams need a focused workflow: ingest ad leads within 3 seconds, qualify them without losing context, and trigger immediate follow-ups. That is why we built LeadZam."
-                </p>
-                <div className="font-semibold text-xs text-slate-900">
-                  Himanshu Jha • Product &amp; Engineering, LeadZam
+            <div className="founder-card max-w-4xl mx-auto rounded-3xl bg-slate-50 border border-[#E2E8F0] p-8 sm:p-12 shadow-sm group select-none">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                {/* Left: Founder Photo / Avatar Ring */}
+                <div className="md:col-span-4 flex flex-col items-center text-center">
+                  <div className="founder-avatar-ring relative w-44 h-44 sm:w-48 sm:h-48 rounded-full p-1.5 bg-gradient-to-tr from-[#1264F5] via-blue-400 to-emerald-400 shadow-md">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-slate-200 border-4 border-white">
+                      <img 
+                        src="./assets/images/founder.png" 
+                        alt="Himanshu Mishra, Founder &amp; CEO of LeadZam" 
+                        className="founder-avatar-img w-full h-full object-cover" 
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center gap-2 group-hover:scale-105 transition-transform duration-300">
+                    <span className="material-symbols-outlined text-[18px] text-emerald-600">verified</span>
+                    <span className="text-xs font-bold text-slate-700">Verified Growth Operator</span>
+                  </div>
+                </div>
+
+                {/* Right: Founder Narrative */}
+                <div className="md:col-span-8 flex flex-col">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#1264F5] mb-2 group-hover:tracking-wider transition-all duration-300">
+                    Built by operators who understand lead generation
+                  </span>
+                  <h3 className="text-2xl font-extrabold text-[#0F172A] leading-tight group-hover:text-[#1264F5] transition-colors duration-300">
+                    Himanshu Mishra
+                  </h3>
+                  <p className="text-xs font-semibold text-slate-500 mb-4">
+                    Founder &amp; CEO, LeadZam
+                  </p>
+                  <blockquote className="founder-quote-bar text-[#0F172A]/90 text-sm sm:text-base leading-relaxed italic border-l-2 border-blue-500 pl-4 py-1 mb-6">
+                    “As performance marketers running seven figures in Meta and Google ad spend, we felt the frustration of lead leakage firsthand. Leads taking hours to reach reps, fragmented spreadsheets, and zero feedback loop between sales closing and ad optimization. We built LeadZam to give growth teams instant speed-to-lead and complete clarity from impression to revenue.”
+                  </blockquote>
+                  <div className="flex items-center gap-4">
+                    <a className="inline-flex items-center gap-1.5 text-sm font-bold text-[#1264F5] group-hover:text-blue-700 transition-colors" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                      <span className="material-symbols-outlined text-[18px] group-hover:rotate-12 transition-transform duration-300">share</span>
+                      <span>Connect on LinkedIn <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span></span>
+                    </a>
+                    <span className="text-slate-300">•</span>
+                    <span className="text-xs text-[#64748B]">Over $12M+ managed in ad campaigns</span>
+                  </div>
                 </div>
               </div>
             </div>

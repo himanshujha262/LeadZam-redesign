@@ -351,5 +351,58 @@
   }
 }
 
+/* --------------------------------------------------------------------------
+   Founder Card Attractive Hover Expansion & Micro-Interactions
+   -------------------------------------------------------------------------- */
+.founder-card {
+  position: relative;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.45s ease;
+  will-change: transform, box-shadow;
+}
+
+.founder-card:hover {
+  transform: translate3d(0, -6px, 0) scale(1.03);
+  box-shadow: 0 25px 60px -15px rgba(18, 100, 245, 0.16), 0 0 0 1px rgba(18, 100, 245, 0.15);
+  border-color: rgba(18, 100, 245, 0.35);
+  background-color: #FFFFFF;
+}
+
+.founder-avatar-ring {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.founder-card:hover .founder-avatar-ring {
+  transform: scale(1.06);
+  box-shadow: 0 0 35px rgba(18, 100, 245, 0.4);
+}
+
+.founder-avatar-img {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.founder-card:hover .founder-avatar-img {
+  transform: scale(1.08);
+}
+
+.founder-quote-bar {
+  transition: padding-left 0.3s ease, border-color 0.3s ease;
+}
+
+.founder-card:hover .founder-quote-bar {
+  border-left-color: #1264F5;
+  padding-left: 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .founder-card:hover {
+    transform: none;
+  }
+}
+
+
 
 

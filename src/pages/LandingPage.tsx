@@ -9,7 +9,8 @@ import {
   Minus, 
   Play, 
   SlidersHorizontal,
-  Star
+  Star,
+  Webhook
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
@@ -227,6 +228,52 @@ export const LandingPage: React.FC = () => {
                     </Link>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 2.5 SOCIAL PROOF (Compact Trust Badges with 3D Pop-Out Architecture) */}
+        <section className="w-full bg-white py-12 border-y border-[#E2E8F0] platform-trust-stage overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+            <p className="text-xs uppercase tracking-widest font-bold text-[#64748B] mb-8">
+              Works natively with the platforms your growth team already uses
+            </p>
+
+            <div className="platform-trust-grid flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-2">
+              {/* Meta Ads */}
+              <div className="platform-pop-badge platform-pop-meta flex items-center gap-2.5 px-4 py-2.5 rounded-xl">
+                <div className="platform-pop-icon w-6 h-6 rounded bg-[#1877F2] text-white flex items-center justify-center text-xs font-bold shadow-sm">f</div>
+                <span className="text-sm font-semibold text-[#0F172A]">Meta Lead Ads</span>
+              </div>
+              {/* Google Ads */}
+              <div className="platform-pop-badge platform-pop-google flex items-center gap-2.5 px-4 py-2.5 rounded-xl">
+                <div className="platform-pop-icon w-6 h-6 rounded bg-amber-500 text-white flex items-center justify-center text-xs font-bold shadow-sm">G</div>
+                <span className="text-sm font-semibold text-[#0F172A]">Google Ads</span>
+              </div>
+              {/* WhatsApp */}
+              <div className="platform-pop-badge platform-pop-whatsapp flex items-center gap-2.5 px-4 py-2.5 rounded-xl">
+                <div className="platform-pop-icon w-6 h-6 rounded bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shadow-sm">
+                  <MessageSquare className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-sm font-semibold text-[#0F172A]">WhatsApp Cloud API</span>
+              </div>
+              {/* Gmail */}
+              <div className="platform-pop-badge platform-pop-gmail flex items-center gap-2.5 px-4 py-2.5 rounded-xl">
+                <div className="platform-pop-icon w-6 h-6 rounded bg-rose-500 text-white flex items-center justify-center text-xs font-bold shadow-sm">M</div>
+                <span className="text-sm font-semibold text-[#0F172A]">Gmail &amp; Outlook</span>
+              </div>
+              {/* Google Sheets */}
+              <div className="platform-pop-badge platform-pop-sheets flex items-center gap-2.5 px-4 py-2.5 rounded-xl">
+                <div className="platform-pop-icon w-6 h-6 rounded bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-sm">⊞</div>
+                <span className="text-sm font-semibold text-[#0F172A]">Google Sheets</span>
+              </div>
+              {/* Webhooks */}
+              <div className="platform-pop-badge platform-pop-webhooks flex items-center gap-2.5 px-4 py-2.5 rounded-xl">
+                <div className="platform-pop-icon w-6 h-6 rounded bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shadow-sm">
+                  <Webhook className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-sm font-semibold text-[#0F172A]">Custom Webhooks</span>
               </div>
             </div>
           </div>

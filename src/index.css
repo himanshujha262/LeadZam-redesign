@@ -403,6 +403,154 @@
   }
 }
 
+/* --------------------------------------------------------------------------
+   Platform Trust Badges 3D "Pop-Out of Page" Architecture & Micro-Interactions
+   -------------------------------------------------------------------------- */
+.platform-trust-stage {
+  perspective: 1200px;
+  perspective-origin: center center;
+}
+
+.platform-trust-grid {
+  transform-style: preserve-3d;
+}
+
+/* Base Badge State */
+.platform-pop-badge {
+  position: relative;
+  transform: translate3d(0, 0, 0);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 4px -1px rgba(15, 23, 42, 0.04), 0 1px 2px 0 rgba(15, 23, 42, 0.02);
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.35s ease,
+              background 0.35s ease,
+              opacity 0.35s ease;
+  will-change: transform, box-shadow;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* When mouse enters the container, ALL badges elevate out of the page */
+.platform-trust-stage:hover .platform-pop-badge {
+  transform: translate3d(0, -5px, 14px) scale(1.025);
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.09), 0 4px 8px -3px rgba(15, 23, 42, 0.05);
+  border-color: #CBD5E1;
+}
+
+/* When a specific badge is hovered, it leaps dramatically toward the user */
+.platform-trust-stage:hover .platform-pop-badge:hover {
+  transform: translate3d(0, -14px, 40px) scale(1.12);
+  z-index: 30;
+  background: #FFFFFF;
+  opacity: 1;
+}
+
+/* Other non-hovered badges gently recede so the active one pops vividly */
+.platform-trust-stage:hover .platform-pop-badge:not(:hover) {
+  opacity: 0.82;
+  transform: translate3d(0, -2px, 4px) scale(0.99);
+}
+
+/* Badge Icon Pop & Micro-Spin */
+.platform-pop-icon {
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.45s ease;
+  will-change: transform;
+}
+
+.platform-pop-badge:hover .platform-pop-icon {
+  transform: scale(1.22) rotate(-6deg);
+}
+
+/* Platform Badge Brand-Specific 3D Neon Ambient Glows */
+.platform-pop-meta:hover {
+  border-color: rgba(24, 119, 242, 0.7) !important;
+  box-shadow: 0 24px 44px -10px rgba(24, 119, 242, 0.36),
+              0 12px 20px -6px rgba(24, 119, 242, 0.22),
+              0 0 0 1px rgba(24, 119, 242, 0.35) !important;
+}
+.platform-pop-meta:hover .platform-pop-icon {
+  box-shadow: 0 6px 18px -2px rgba(24, 119, 242, 0.55);
+}
+
+.platform-pop-google:hover {
+  border-color: rgba(245, 158, 11, 0.75) !important;
+  box-shadow: 0 24px 44px -10px rgba(245, 158, 11, 0.38),
+              0 12px 20px -6px rgba(245, 158, 11, 0.22),
+              0 0 0 1px rgba(245, 158, 11, 0.35) !important;
+}
+.platform-pop-google:hover .platform-pop-icon {
+  box-shadow: 0 6px 18px -2px rgba(245, 158, 11, 0.55);
+}
+
+.platform-pop-whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.75) !important;
+  box-shadow: 0 24px 44px -10px rgba(37, 211, 102, 0.38),
+              0 12px 20px -6px rgba(37, 211, 102, 0.22),
+              0 0 0 1px rgba(37, 211, 102, 0.35) !important;
+}
+.platform-pop-whatsapp:hover .platform-pop-icon {
+  box-shadow: 0 6px 18px -2px rgba(37, 211, 102, 0.55);
+}
+
+.platform-pop-gmail:hover {
+  border-color: rgba(244, 63, 94, 0.7) !important;
+  box-shadow: 0 24px 44px -10px rgba(244, 63, 94, 0.35),
+              0 12px 20px -6px rgba(244, 63, 94, 0.22),
+              0 0 0 1px rgba(244, 63, 94, 0.35) !important;
+}
+.platform-pop-gmail:hover .platform-pop-icon {
+  box-shadow: 0 6px 18px -2px rgba(244, 63, 94, 0.55);
+}
+
+.platform-pop-sheets:hover {
+  border-color: rgba(16, 185, 129, 0.75) !important;
+  box-shadow: 0 24px 44px -10px rgba(16, 185, 129, 0.38),
+              0 12px 20px -6px rgba(16, 185, 129, 0.22),
+              0 0 0 1px rgba(16, 185, 129, 0.35) !important;
+}
+.platform-pop-sheets:hover .platform-pop-icon {
+  box-shadow: 0 6px 18px -2px rgba(16, 185, 129, 0.55);
+}
+
+.platform-pop-webhooks:hover {
+  border-color: rgba(99, 102, 241, 0.75) !important;
+  box-shadow: 0 24px 44px -10px rgba(99, 102, 241, 0.38),
+              0 12px 20px -6px rgba(99, 102, 241, 0.22),
+              0 0 0 1px rgba(99, 102, 241, 0.35) !important;
+}
+.platform-pop-webhooks:hover .platform-pop-icon {
+  box-shadow: 0 6px 18px -2px rgba(99, 102, 241, 0.55);
+}
+
+/* Subtle Shimmer Sheen on Badge Top Edge */
+.platform-pop-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.platform-pop-badge:hover::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .platform-trust-stage:hover .platform-pop-badge,
+  .platform-trust-stage:hover .platform-pop-badge:hover,
+  .platform-pop-badge:hover .platform-pop-icon {
+    transform: none !important;
+  }
+}
+
+
 
 
 

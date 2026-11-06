@@ -61,9 +61,18 @@ export const SignupPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col justify-between p-4 sm:p-6 font-sans antialiased text-[#0F172A]">
+    <div className="min-h-screen bg-[#F8FAFC] flex flex-col justify-between p-4 sm:p-6 font-sans antialiased text-[#0F172A] relative overflow-x-hidden">
+      {/* Animated Background Orbs & Ambient Grid */}
+      <div className="auth-bg-animation" aria-hidden="true">
+        <div className="auth-bg-grid" />
+        <div className="auth-orb auth-orb-1" />
+        <div className="auth-orb auth-orb-2" />
+        <div className="auth-orb auth-orb-3" />
+        <div className="auth-orb auth-orb-4" />
+      </div>
+
       {/* Top Bar with Back Link & Auth Switcher */}
-      <header className="w-full max-w-5xl mx-auto flex items-center justify-between py-2 px-1 sm:px-0">
+      <header className="relative z-10 w-full max-w-5xl mx-auto flex items-center justify-between py-2 px-1 sm:px-0">
         <Link
           to="/"
           className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full shadow-xs hover:shadow transition-all group"
@@ -84,7 +93,7 @@ export const SignupPage: React.FC = () => {
       </header>
 
       {/* Main Centered Content */}
-      <main className="w-full flex-1 flex flex-col justify-center items-center py-6 sm:py-8">
+      <main className="relative z-10 w-full flex-1 flex flex-col justify-center items-center py-6 sm:py-8">
         {/* Brand Header */}
         <div className="flex items-center justify-center gap-2.5 mb-7">
           <Link to="/" className="flex items-center gap-2">
@@ -374,7 +383,7 @@ export const SignupPage: React.FC = () => {
       </div>
       </main>
 
-      <footer className="w-full max-w-5xl mx-auto py-4 text-center text-[11px] text-slate-400">
+      <footer className="relative z-10 w-full max-w-5xl mx-auto py-4 text-center text-[11px] text-slate-400">
         © 2026 LeadZam Inc. All rights reserved. • ISO 27001 &amp; SOC2 Type II Certified
       </footer>
     </div>

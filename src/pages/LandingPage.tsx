@@ -14,9 +14,10 @@ import {
   CreditCard,
   LayoutGrid,
   Users,
-  UserPlus,
   Filter,
-  Gauge,
+  Timer,
+  Layers,
+  Send,
   Trophy,
   Target,
   BarChart3,
@@ -291,133 +292,347 @@ export const LandingPage: React.FC = () => {
         </section>
 
         {/* 3. VALUE PROPOSITIONS & FEATURES */}
-        <section id="features" className="py-20 lg:py-24 bg-white border-t border-[#E2E8F0]">
-          <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+        <section id="features" className="w-full relative overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#F1F5F9]/60 to-[#FFFFFF] py-20 lg:py-28 border-t border-[#E2E8F0]">
+          {/* Ambient Glows */}
+          <div className="absolute -top-32 -left-32 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-32 -right-32 w-96 h-96 bg-indigo-200/25 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-72 bg-blue-100/35 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="max-w-[1280px] mx-auto px-4 sm:px-6 relative z-10">
+            {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#1264F5] bg-blue-50 px-3.5 py-1 rounded-full border border-blue-100">
-                CORE FEATURES
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0F172A] mt-3.5 tracking-tight leading-tight">
-                Everything you need to turn ad leads into revenue
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50/90 border border-blue-200/70 shadow-xs mb-4">
+                <Layers className="w-4 h-4 text-[#2563EB]" />
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#1D4ED8]">CORE FEATURES</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-[#0F172A] tracking-tight leading-[1.18]">
+                Everything you need to turn{' '}
+                <span className="relative inline-block text-[#2563EB]">
+                  ad leads into
+                  <svg className="absolute -bottom-2.5 left-0 w-full overflow-visible" height="12" viewBox="0 0 180 12" fill="none">
+                    <path d="M2.5 9.5C45 2.5 135 1.5 177.5 7" stroke="#2563EB" strokeWidth="3" strokeLinecap="round" />
+                  </svg>
+                  <span className="absolute -top-3.5 -right-4 text-[#2563EB] select-none text-base font-bold tracking-widest leading-none">՚ ՚</span>
+                </span>
+                <br />
+                revenue
               </h2>
-              <p className="text-[#64748B] text-base sm:text-lg mt-3 leading-relaxed max-w-2xl mx-auto">
+
+              <p className="text-[#64748B] text-base sm:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
                 LeadZam brings lead generation, qualification, instant follow-ups, and ROAS reporting into one unified CRM workspace.
               </p>
             </div>
 
             {/* 6 Feature Cards (3x2 Grid) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
               
-              {/* Feature 1 */}
-              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                    <UserPlus className="w-5 h-5" />
+              {/* Card 1: Capture Leads Automatically */}
+              <div className="rounded-[28px] bg-white border border-[#E2E8F0]/90 p-6 sm:p-7 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_16px_40px_rgba(37,99,235,0.09)] hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div className="flex items-start justify-between gap-4">
+                  {/* Left Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] text-[#2563EB] border border-blue-100 flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                      <Users className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base sm:text-[17px] font-bold text-[#0F172A] mb-2 leading-snug group-hover:text-[#2563EB] transition-colors">
+                      Capture Leads Automatically
+                    </h3>
+                    <p className="text-xs sm:text-[12.5px] text-[#64748B] leading-relaxed">
+                      Fetch leads in real time from Meta, Google Ads, and other channels without manual effort.
+                    </p>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Capture Leads Automatically</h3>
-                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
-                    Direct native integrations with Meta and Google Ads ingest every form submission within seconds, eliminating dropped leads and zapier breakages.
-                  </p>
+
+                  {/* Right Graphic: Mini Browser Window with + Badge */}
+                  <div className="w-[120px] h-[95px] relative shrink-0 flex items-center justify-center">
+                    {/* Spark Lines */}
+                    <svg className="absolute -top-1 -right-0.5 w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="none">
+                      <path d="M4 14C7 10 11 6 15 3M9 17C12 13 15 9 17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    {/* Mini Window Card */}
+                    <div className="w-[98px] h-[72px] bg-gradient-to-b from-[#F8FAFC] to-[#EFF6FF] rounded-xl border border-blue-200/90 shadow-xs p-1.5 flex flex-col justify-between relative group-hover:shadow-md transition-shadow">
+                      {/* Header Bar */}
+                      <div className="w-full h-3 bg-blue-500 rounded-md flex items-center px-1.5 gap-0.5">
+                        <span className="w-1 h-1 rounded-full bg-white/90" />
+                        <span className="w-1 h-1 rounded-full bg-white/90" />
+                        <span className="w-1 h-1 rounded-full bg-white/90" />
+                      </div>
+                      {/* Lead Row 1 */}
+                      <div className="flex items-center gap-1.5 mt-0.5">
+                        <div className="w-3.5 h-3.5 rounded-full bg-blue-200 flex items-center justify-center text-[7px] text-blue-700 font-bold shrink-0">
+                          <Users className="w-2.5 h-2.5 text-blue-600" />
+                        </div>
+                        <div className="flex-1 space-y-0.5">
+                          <div className="w-10 h-1 bg-blue-200 rounded-full" />
+                          <div className="w-6 h-0.5 bg-slate-200 rounded-full" />
+                        </div>
+                      </div>
+                      {/* Lead Row 2 */}
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-3.5 h-3.5 rounded-full bg-blue-200 flex items-center justify-center text-[7px] text-blue-700 font-bold shrink-0">
+                          <Users className="w-2.5 h-2.5 text-blue-600" />
+                        </div>
+                        <div className="flex-1 space-y-0.5">
+                          <div className="w-8 h-1 bg-blue-200 rounded-full" />
+                          <div className="w-5 h-0.5 bg-slate-200 rounded-full" />
+                        </div>
+                      </div>
+                      {/* Green Plus Badge */}
+                      <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full bg-[#10B981] text-white flex items-center justify-center shadow-md ring-2 ring-white font-bold text-xs">
+                        +
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-8">
-                  <Link to="/leads" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
-                    <span>See live leads table</span>
-                    <ArrowRight className="w-4 h-4" />
+
+                {/* Bottom Link Pill */}
+                <div className="mt-5">
+                  <Link to="/leads" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] text-[#1D4ED8] text-xs font-semibold hover:bg-blue-100 transition-all group-hover:gap-2">
+                    <span>See how it works</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
 
-              {/* Feature 2 */}
-              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                    <Filter className="w-5 h-5" />
+              {/* Card 2: Context-Preserving Drawer */}
+              <div className="rounded-[28px] bg-white border border-[#E2E8F0]/90 p-6 sm:p-7 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_16px_40px_rgba(124,58,237,0.09)] hover:border-purple-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div className="flex items-start justify-between gap-4">
+                  {/* Left Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="w-9 h-9 rounded-xl bg-[#F5F3FF] text-[#7C3AED] border border-purple-100 flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                      <Filter className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base sm:text-[17px] font-bold text-[#0F172A] mb-2 leading-snug group-hover:text-[#7C3AED] transition-colors">
+                      Context-Preserving Drawer
+                    </h3>
+                    <p className="text-xs sm:text-[12.5px] text-[#64748B] leading-relaxed">
+                      Quickly view a lead's complete history — ads, forms, chats, notes, and more — without leaving your flow.
+                    </p>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Context-Preserving Drawer</h3>
-                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
-                    Click any lead to inspect their complete ad campaign origin, budget, score, qualification checklist, and full touchpoint history without leaving your list.
-                  </p>
+
+                  {/* Right Graphic: Sliding Drawer with Mouse Pointer */}
+                  <div className="w-[120px] h-[95px] relative shrink-0 flex items-center justify-center">
+                    <div className="w-[98px] h-[72px] bg-white rounded-xl border border-purple-200/90 shadow-xs p-2 flex items-center gap-2 relative bg-gradient-to-br from-white to-purple-50/50 group-hover:shadow-md transition-shadow">
+                      {/* Avatar */}
+                      <div className="w-7 h-7 rounded-full bg-purple-100 border border-purple-200 flex items-center justify-center text-[#7C3AED] shrink-0">
+                        <Users className="w-3.5 h-3.5" />
+                      </div>
+                      {/* Details Placeholder Bars */}
+                      <div className="flex-1 space-y-1">
+                        <div className="w-10 h-1.5 bg-purple-200 rounded-full" />
+                        <div className="w-12 h-1 bg-slate-200 rounded-full" />
+                        <div className="w-8 h-1 bg-slate-100 rounded-full" />
+                      </div>
+                      {/* Mouse Cursor Pointer Clicking */}
+                      <svg className="absolute -bottom-1 -right-1 w-6 h-6 text-slate-800 drop-shadow-md" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 2l12 11.5-5.5.5 3.5 7.5-2.5 1-3.5-7.5-4 4V2z" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-8">
-                  <Link to="/leads" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+
+                {/* Bottom Link Pill */}
+                <div className="mt-5">
+                  <Link to="/leads" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#F5F3FF] text-[#6D28D9] text-xs font-semibold hover:bg-purple-100 transition-all group-hover:gap-2">
                     <span>Preview lead drawer</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
 
-              {/* Feature 3 */}
-              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                    <Zap className="w-5 h-5" />
+              {/* Card 3: Instant WhatsApp Sequences */}
+              <div className="rounded-[28px] bg-white border border-[#E2E8F0]/90 p-6 sm:p-7 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_16px_40px_rgba(16,185,129,0.09)] hover:border-emerald-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div className="flex items-start justify-between gap-4">
+                  {/* Left Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="w-9 h-9 rounded-xl bg-[#ECFDF5] text-[#059669] border border-emerald-100 flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                      <Zap className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base sm:text-[17px] font-bold text-[#0F172A] mb-2 leading-snug group-hover:text-[#059669] transition-colors">
+                      Instant WhatsApp Sequences
+                    </h3>
+                    <p className="text-xs sm:text-[12.5px] text-[#64748B] leading-relaxed">
+                      Trigger personalized WhatsApp messages and follow-up sequences automatically to keep leads engaged.
+                    </p>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Instant WhatsApp Sequences</h3>
-                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
-                    Trigger personalized WhatsApp messages and email sequences the instant a form is submitted to capture buyer intent before competitors wake up.
-                  </p>
+
+                  {/* Right Graphic: WhatsApp Message with Paper Plane */}
+                  <div className="w-[120px] h-[95px] relative shrink-0 flex items-center justify-center">
+                    {/* Spark Lines */}
+                    <svg className="absolute -top-1 -right-0.5 w-5 h-5 text-emerald-500" viewBox="0 0 20 20" fill="none">
+                      <path d="M4 14C7 10 11 6 15 3M9 17C12 13 15 9 17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    <div className="w-[98px] h-[72px] bg-gradient-to-br from-[#ECFDF5] to-[#D1FAE5]/60 rounded-xl border border-emerald-300/80 shadow-xs p-1.5 flex flex-col justify-between relative group-hover:shadow-md transition-shadow">
+                      {/* WhatsApp Header */}
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-4 h-4 rounded-md bg-[#25D366] text-white flex items-center justify-center shadow-2xs shrink-0 text-[10px]">
+                          💬
+                        </div>
+                        <div className="w-10 h-1 bg-emerald-400 rounded-full" />
+                      </div>
+                      {/* Chat Bubble */}
+                      <div className="w-full bg-white rounded-lg p-1.5 border border-emerald-100 shadow-2xs space-y-1">
+                        <div className="w-12 h-1 bg-slate-200 rounded-full" />
+                        <div className="w-8 h-0.5 bg-slate-100 rounded-full" />
+                      </div>
+                      {/* Blue Send Paper Plane Badge */}
+                      <div className="absolute -bottom-1.5 -right-1.5 w-6 h-6 rounded-full bg-[#1264F5] text-white flex items-center justify-center shadow-md ring-2 ring-white">
+                        <Send className="w-3 h-3 -rotate-12" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-8">
-                  <Link to="/dashboard" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
-                    <span>View automations</span>
-                    <ArrowRight className="w-4 h-4" />
+
+                {/* Bottom Link Pill */}
+                <div className="mt-5">
+                  <Link to="/dashboard" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] text-[#1D4ED8] text-xs font-semibold hover:bg-blue-100 transition-all group-hover:gap-2">
+                    <span>View automation</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
 
-              {/* Feature 4 */}
-              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                    <TrendingUp className="w-5 h-5" />
+              {/* Card 4: Closed-Loop ROAS Reporting */}
+              <div className="rounded-[28px] bg-white border border-[#E2E8F0]/90 p-6 sm:p-7 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_16px_40px_rgba(249,115,22,0.09)] hover:border-orange-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div className="flex items-start justify-between gap-4">
+                  {/* Left Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="w-9 h-9 rounded-xl bg-[#FFF7ED] text-[#EA580C] border border-orange-100 flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                      <TrendingUp className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base sm:text-[17px] font-bold text-[#0F172A] mb-2 leading-snug group-hover:text-[#EA580C] transition-colors">
+                      Closed-Loop ROAS Reporting
+                    </h3>
+                    <p className="text-xs sm:text-[12.5px] text-[#64748B] leading-relaxed">
+                      Connect ad spends to real revenue with clear, channel-wise ROAS insights and performance tracking.
+                    </p>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Closed-Loop ROAS Reporting</h3>
-                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
-                    Connect actual closed deal revenue back to specific campaigns, ad creatives, and search terms for true marketing ROAS clarity.
-                  </p>
+
+                  {/* Right Graphic: ROAS Pill + Bar Chart with Swoosh Arrow */}
+                  <div className="w-[120px] h-[95px] relative shrink-0 flex flex-col items-center justify-end pb-1">
+                    {/* ROAS Pill */}
+                    <div className="absolute top-0 right-1 bg-[#ECFDF5] text-[#047857] border border-emerald-300/70 text-[9.5px] font-extrabold px-2 py-0.5 rounded-full shadow-xs flex items-center gap-0.5">
+                      <span>ROAS ↑ 3.2x</span>
+                    </div>
+                    {/* 4 Gradient Bars */}
+                    <div className="flex items-end gap-1.5 h-11 relative">
+                      <div className="w-3 h-4 bg-gradient-to-t from-blue-400 to-blue-200 rounded-t-sm" />
+                      <div className="w-3 h-6 bg-gradient-to-t from-blue-500 to-blue-300 rounded-t-sm" />
+                      <div className="w-3 h-8 bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-sm" />
+                      <div className="w-3 h-11 bg-gradient-to-t from-blue-700 to-blue-500 rounded-t-sm" />
+                      {/* Swooshing Upward Orange Growth Arrow */}
+                      <svg className="absolute -top-3 -left-3 w-16 h-14 overflow-visible pointer-events-none" viewBox="0 0 64 50" fill="none">
+                        <path d="M4 42 C16 38, 32 26, 52 8" stroke="#F97316" strokeWidth="2.5" strokeLinecap="round" />
+                        <path d="M45 7 L54 7 L54 16" stroke="#F97316" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-8">
-                  <Link to="/dashboard" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+
+                {/* Bottom Link Pill */}
+                <div className="mt-5">
+                  <Link to="/dashboard" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] text-[#1D4ED8] text-xs font-semibold hover:bg-blue-100 transition-all group-hover:gap-2">
                     <span>Explore analytics</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
 
-              {/* Feature 5 */}
-              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                    <LayoutGrid className="w-5 h-5" />
+              {/* Card 5: Table & Kanban Pipelines */}
+              <div className="rounded-[28px] bg-white border border-[#E2E8F0]/90 p-6 sm:p-7 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_16px_40px_rgba(37,99,235,0.09)] hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div className="flex items-start justify-between gap-4">
+                  {/* Left Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="w-9 h-9 rounded-xl bg-[#EFF6FF] text-[#2563EB] border border-blue-100 flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                      <LayoutGrid className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base sm:text-[17px] font-bold text-[#0F172A] mb-2 leading-snug group-hover:text-[#2563EB] transition-colors">
+                      Table &amp; Kanban Pipelines
+                    </h3>
+                    <p className="text-xs sm:text-[12.5px] text-[#64748B] leading-relaxed">
+                      Manage leads your way with a flexible table view or visual Kanban pipeline for better tracking and control.
+                    </p>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Table &amp; Kanban Pipelines</h3>
-                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
-                    Toggle seamlessly between data-dense sorting tables and drag-and-drop visual deal boards suited for sales reps and account executives.
-                  </p>
+
+                  {/* Right Graphic: Kanban Board with 3 Status Badges */}
+                  <div className="w-[120px] h-[95px] relative shrink-0 flex items-center justify-center">
+                    {/* Spark Lines */}
+                    <svg className="absolute -top-1 -right-0.5 w-5 h-5 text-blue-500" viewBox="0 0 20 20" fill="none">
+                      <path d="M4 14C7 10 11 6 15 3M9 17C12 13 15 9 17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    <div className="w-[102px] h-[74px] bg-slate-50/90 rounded-xl border border-slate-200 p-1 flex items-start gap-1 relative shadow-xs group-hover:shadow-md transition-shadow">
+                      {/* Col 1 */}
+                      <div className="flex-1 flex flex-col gap-1">
+                        <span className="bg-[#2563EB] text-white text-[7.5px] font-bold py-0.5 rounded text-center leading-tight">New</span>
+                        <div className="h-3.5 bg-white border border-slate-200/90 rounded shadow-2xs" />
+                        <div className="h-3.5 bg-white border border-slate-200/90 rounded shadow-2xs" />
+                      </div>
+                      {/* Col 2 */}
+                      <div className="flex-1 flex flex-col gap-1">
+                        <span className="bg-[#38BDF8] text-white text-[7px] font-bold py-0.5 rounded text-center leading-tight">In Progress</span>
+                        <div className="h-3.5 bg-white border border-slate-200/90 rounded shadow-2xs" />
+                        <div className="h-3.5 bg-white border border-slate-200/90 rounded shadow-2xs" />
+                      </div>
+                      {/* Col 3 */}
+                      <div className="flex-1 flex flex-col gap-1">
+                        <span className="bg-[#10B981] text-white text-[7.5px] font-bold py-0.5 rounded text-center leading-tight">Won</span>
+                        <div className="h-3.5 bg-white border border-slate-200/90 rounded shadow-2xs" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-8">
-                  <Link to="/leads" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+
+                {/* Bottom Link Pill */}
+                <div className="mt-5">
+                  <Link to="/leads" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EFF6FF] text-[#1D4ED8] text-xs font-semibold hover:bg-blue-100 transition-all group-hover:gap-2">
                     <span>Try pipeline view</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
 
-              {/* Feature 6 (Highlighted with Solid Blue Icon) */}
-              <div className="rounded-[22px] bg-white border border-blue-200/90 p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group ring-1 ring-blue-100/50">
-                <div>
-                  <div className="w-11 h-11 rounded-xl bg-[#1264F5] text-white flex items-center justify-center mb-6 shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform">
-                    <Gauge className="w-5 h-5" />
+              {/* Card 6: Speed-to-Lead Timer */}
+              <div className="rounded-[28px] bg-white border border-[#E2E8F0]/90 p-6 sm:p-7 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_16px_40px_rgba(99,102,241,0.09)] hover:border-indigo-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div className="flex items-start justify-between gap-4">
+                  {/* Left Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="w-9 h-9 rounded-xl bg-[#EEF2FF] text-[#4F46E5] border border-indigo-100 flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                      <Timer className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-base sm:text-[17px] font-bold text-[#0F172A] mb-2 leading-snug group-hover:text-[#4F46E5] transition-colors">
+                      Speed-to-Lead Timer
+                    </h3>
+                    <p className="text-xs sm:text-[12.5px] text-[#64748B] leading-relaxed">
+                      Track and improve your response time with a real-time speed-to-lead timer and performance insights.
+                    </p>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Speed-to-Lead Timer</h3>
-                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
-                    Track rep response latency with live seconds-precision timers. Benchmark team performance and prevent warm prospects from slipping away.
-                  </p>
+
+                  {/* Right Graphic: Stopwatch with Lightning Bolt and Speed Lines */}
+                  <div className="w-[120px] h-[95px] relative shrink-0 flex items-center justify-center">
+                    {/* Spark Lines */}
+                    <svg className="absolute -top-1 -right-0.5 w-5 h-5 text-indigo-500" viewBox="0 0 20 20" fill="none">
+                      <path d="M4 14C7 10 11 6 15 3M9 17C12 13 15 9 17 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    {/* Speed Swoosh Lines on Left */}
+                    <div className="flex flex-col items-end gap-1 mr-1.5">
+                      <div className="w-3.5 h-0.5 bg-blue-300 rounded-full" />
+                      <div className="w-5 h-0.5 bg-blue-500 rounded-full" />
+                      <div className="w-3 h-0.5 bg-blue-400 rounded-full" />
+                    </div>
+                    {/* Stopwatch Circle */}
+                    <div className="w-[48px] h-[48px] rounded-full border-[3px] border-[#2563EB] bg-white shadow-md flex items-center justify-center relative group-hover:scale-105 transition-transform">
+                      {/* Crown Button */}
+                      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-1 bg-[#1D4ED8] rounded-t-sm" />
+                      <Zap className="w-5 h-5 text-[#2563EB] fill-[#2563EB]" />
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-8">
-                  <Link to="/dashboard" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+
+                {/* Bottom Link Pill */}
+                <div className="mt-5">
+                  <Link to="/dashboard" className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EEF2FF] text-[#4338CA] text-xs font-semibold hover:bg-indigo-100 transition-all group-hover:gap-2">
                     <span>Test speed metrics</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>

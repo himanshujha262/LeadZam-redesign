@@ -10,7 +10,16 @@ import {
   Play, 
   SlidersHorizontal,
   Star,
-  Webhook
+  Webhook,
+  Calendar,
+  CreditCard,
+  LayoutGrid,
+  Users,
+  Trophy,
+  Target,
+  BarChart3,
+  Home,
+  ShieldCheck
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
@@ -816,29 +825,224 @@ export const LandingPage: React.FC = () => {
           </div>
         </section>
 
-        {/* 7. FINAL CTA BANNER */}
-        <section className="w-full bg-[#1264F5] py-20 text-white relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-              Ready to turn more ad leads into customers?
-            </h2>
-            <p className="text-blue-100 text-base sm:text-lg mt-4 max-w-xl mx-auto">
-              Join leading performance marketing agencies and sales teams accelerating their conversions with LeadZam.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
-              <Link 
-                to="/signup" 
-                className="bg-white hover:bg-slate-50 text-[#1264F5] px-7 py-3.5 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all flex items-center gap-2"
-              >
-                <span>Start Free 14-Day Trial</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link 
-                to="/leads" 
-                className="border border-white/40 hover:bg-white/10 text-white px-6 py-3.5 rounded-xl font-semibold transition-all flex items-center gap-2"
-              >
-                <span>Live Interactive Demo</span>
-              </Link>
+        {/* 7. FINAL CTA BANNER (High-Velocity Conversion Modern Redesign) */}
+        <section className="w-full cta-banner-modern py-20 lg:py-28 text-white relative overflow-hidden">
+          {/* Background Ambient Light Sweeps & Dot Matrix Grid */}
+          <div className="cta-banner-dots" aria-hidden="true" />
+          <div className="cta-banner-light-sweeps" aria-hidden="true">
+            <div className="cta-banner-light-arc cta-banner-light-arc-1" />
+            <div className="cta-banner-light-arc cta-banner-light-arc-2" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+              
+              {/* Left Column: Copy, Value Props, and CTAs */}
+              <div className="lg:col-span-7 flex flex-col items-start text-left">
+                {/* Rocket Pill Badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-white text-xs sm:text-sm font-semibold shadow-sm mb-6">
+                  <span className="text-base leading-none">🚀</span>
+                  <span>LeadZam CRM</span>
+                </div>
+
+                {/* Headline with Yellow Sparks & Cyan Swoop Underline */}
+                <h2 className="text-3xl sm:text-5xl lg:text-[50px] font-extrabold tracking-tight leading-[1.12] text-white">
+                  Stop Losing Leads.<br className="hidden sm:inline" />
+                  Start Closing More <span className="relative inline-block whitespace-nowrap">
+                    Deals.
+                    {/* Playful Yellow Rays above Deals */}
+                    <svg className="absolute -top-6 -right-5 sm:-top-7 sm:-right-7 w-6 h-6 sm:w-8 sm:h-8 text-[#FACC15]" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M4 14L8 18M16 4V10M26 10L20 16" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                    </svg>
+                    {/* Cyan Highlight Swoop Underline */}
+                    <svg className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4 text-[#38BDF8]" viewBox="0 0 180 16" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+                      <path d="M2 12C45 4 135 3 178 9C145 13 55 14 2 12Z" fill="currentColor" fillOpacity="0.85"/>
+                    </svg>
+                  </span>
+                </h2>
+
+                {/* Paragraph */}
+                <p className="text-blue-100/95 text-base sm:text-lg leading-relaxed mt-5 max-w-xl">
+                  Capture every lead, automate follow-ups, track your sales pipeline, and convert more prospects into paying customers — all from one powerful CRM platform.
+                </p>
+
+                {/* Buttons Row */}
+                <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 mt-8 w-full sm:w-auto">
+                  <Link 
+                    to="/signup" 
+                    className="inline-flex items-center justify-center gap-2 bg-white hover:bg-blue-50 text-[#0F56D2] font-bold text-sm sm:text-base px-6 sm:px-7 py-3.5 rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <span>Start Your Free 14-Day Trial</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link 
+                    to="/dashboard" 
+                    className="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 border border-white/35 hover:border-white/60 text-white font-semibold text-sm sm:text-base px-5 sm:px-6 py-3.5 rounded-xl sm:rounded-2xl backdrop-blur-md shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <Play className="w-4 h-4 fill-white" />
+                    <span>Explore Interactive CRM</span>
+                  </Link>
+                </div>
+
+                {/* Trust Checklist with Vertical Dividers */}
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-8 text-xs sm:text-[13px] text-white/90 font-medium">
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="w-4 h-4 text-white" />
+                    <span>14-Day Free Trial</span>
+                  </div>
+                  <span className="text-white/40 hidden sm:inline">|</span>
+                  <div className="flex items-center gap-1.5">
+                    <CreditCard className="w-4 h-4 text-white" />
+                    <span>No Credit Card Required</span>
+                  </div>
+                  <span className="text-white/40 hidden sm:inline">|</span>
+                  <div className="flex items-center gap-1.5">
+                    <Zap className="w-4 h-4 text-[#FACC15] fill-[#FACC15]" />
+                    <span>Setup in Minutes</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: 3D Angled macOS CRM Mockup & Floating Annotation */}
+              <div className="lg:col-span-5 relative cta-mockup-stage pt-6 lg:pt-0">
+                {/* Floating Speech Bubble / Callout Annotation */}
+                <div className="relative flex justify-end pr-4 sm:pr-8 mb-3 z-20">
+                  {/* Hand-drawn curved dotted arrow */}
+                  <svg className="absolute -bottom-5 right-48 sm:right-56 w-16 h-12 text-white/90" viewBox="0 0 70 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M5 45C18 35 32 15 58 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="4 3"/>
+                    <path d="M52 5L62 12L53 19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  {/* Callout Sticker */}
+                  <div className="relative inline-flex items-center gap-1.5 bg-[#0F56D2] border border-blue-300/40 text-white font-bold text-xs sm:text-sm px-4 py-2 rounded-xl shadow-xl shadow-blue-950/40">
+                    <span>Turn leads into customers</span>
+                    {/* Yellow rays */}
+                    <svg className="absolute -top-3.5 -right-3 w-5 h-5 text-[#FACC15]" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M10 2V6M16 6L13 9M18 12H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Mockup Window Card */}
+                <div className="cta-mockup-card bg-white rounded-2xl sm:rounded-3xl border border-white/60 shadow-[0_30px_70px_-15px_rgba(0,18,70,0.45),0_15px_30px_-10px_rgba(0,0,0,0.2)] overflow-hidden">
+                  {/* Window Chrome Header */}
+                  <div className="bg-slate-50/95 px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full bg-[#EF4444]" />
+                      <div className="w-3 h-3 rounded-full bg-[#F59E0B]" />
+                      <div className="w-3 h-3 rounded-full bg-[#10B981]" />
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-[#0F172A]">
+                      <Home className="w-3.5 h-3.5 text-[#1264F5]" />
+                      <span>LeadZam CRM</span>
+                    </div>
+                    <div className="w-12" />
+                  </div>
+
+                  {/* Window Workspace */}
+                  <div className="p-3 sm:p-4 grid grid-cols-12 gap-3 sm:gap-4 bg-[#F8FAFC]">
+                    {/* Micro Sidebar */}
+                    <div className="col-span-4 sm:col-span-3 bg-white rounded-xl border border-slate-100 p-2 sm:p-2.5 flex flex-col gap-1 sm:gap-1.5 shadow-sm text-xs">
+                      <div className="bg-[#1264F5] text-white font-bold px-2 py-1.5 rounded-lg flex items-center gap-1.5">
+                        <LayoutGrid className="w-3.5 h-3.5" />
+                        <span className="truncate">Dashboard</span>
+                      </div>
+                      <div className="text-slate-600 font-medium px-2 py-1.5 rounded-lg flex items-center gap-1.5 hover:bg-slate-50 transition-colors">
+                        <Users className="w-3.5 h-3.5 text-slate-400" />
+                        <span className="truncate">Leads</span>
+                      </div>
+                      <div className="text-slate-600 font-medium px-2 py-1.5 rounded-lg flex items-center gap-1.5 hover:bg-slate-50 transition-colors">
+                        <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
+                        <span className="truncate">Deals</span>
+                      </div>
+                      <div className="text-slate-600 font-medium px-2 py-1.5 rounded-lg flex items-center gap-1.5 hover:bg-slate-50 transition-colors">
+                        <Zap className="w-3.5 h-3.5 text-slate-400" />
+                        <span className="truncate">Automations</span>
+                      </div>
+                      <div className="text-slate-600 font-medium px-2 py-1.5 rounded-lg flex items-center gap-1.5 hover:bg-slate-50 transition-colors">
+                        <BarChart3 className="w-3.5 h-3.5 text-slate-400" />
+                        <span className="truncate">Reports</span>
+                      </div>
+                    </div>
+
+                    {/* Main Content Stage */}
+                    <div className="col-span-8 sm:col-span-9 flex flex-col gap-3">
+                      {/* 3 Stat Cards Row */}
+                      <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
+                        {/* Stat 1 */}
+                        <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-slate-100 shadow-sm flex flex-col justify-between">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-blue-50 text-[#1264F5] flex items-center justify-center">
+                              <Users className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                            </span>
+                            <span className="text-[9px] sm:text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1 py-0.5 rounded leading-none">↑ +32%</span>
+                          </div>
+                          <div>
+                            <div className="text-sm sm:text-base font-black text-[#0F172A] leading-tight">248</div>
+                            <div className="text-[9px] sm:text-[10px] font-medium text-slate-500">New Leads</div>
+                          </div>
+                        </div>
+                        {/* Stat 2 */}
+                        <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-slate-100 shadow-sm flex flex-col justify-between">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+                              <Target className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                            </span>
+                            <span className="text-[9px] sm:text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1 py-0.5 rounded leading-none">↑ +18%</span>
+                          </div>
+                          <div>
+                            <div className="text-sm sm:text-base font-black text-[#0F172A] leading-tight">78%</div>
+                            <div className="text-[9px] sm:text-[10px] font-medium text-slate-500 truncate">Follow-up Rate</div>
+                          </div>
+                        </div>
+                        {/* Stat 3 */}
+                        <div className="bg-white rounded-xl p-2 sm:p-2.5 border border-slate-100 shadow-sm flex flex-col justify-between">
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-lg bg-amber-50 text-amber-500 flex items-center justify-center">
+                              <Trophy className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                            </span>
+                            <span className="text-[9px] sm:text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1 py-0.5 rounded leading-none">↑ +40%</span>
+                          </div>
+                          <div>
+                            <div className="text-sm sm:text-base font-black text-[#0F172A] leading-tight">42</div>
+                            <div className="text-[9px] sm:text-[10px] font-medium text-slate-500 truncate">Deals Won</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Big Chart Card */}
+                      <div className="bg-white rounded-xl p-2.5 sm:p-3 border border-slate-100 shadow-sm flex flex-col justify-between">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[11px] sm:text-xs font-bold text-[#0F172A]">Lead Conversion</span>
+                          <span className="text-[9px] sm:text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded leading-none">↑ +40%</span>
+                        </div>
+                        {/* Upward Trend Chart SVG */}
+                        <div className="w-full h-16 sm:h-20">
+                          <svg className="w-full h-full overflow-visible" viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                            <defs>
+                              <linearGradient id="ctaChartGradReact" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.32" />
+                                <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.0" />
+                              </linearGradient>
+                            </defs>
+                            {/* Area Fill */}
+                            <path d="M0,65 Q40,68 70,52 T140,58 T200,38 T250,42 T300,16 L300,80 L0,80 Z" fill="url(#ctaChartGradReact)" />
+                            {/* Line Stroke */}
+                            <path d="M0,65 Q40,68 70,52 T140,58 T200,38 T250,42 T300,16" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                            {/* Data Points */}
+                            <circle cx="0" cy="65" r="3" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2" />
+                            <circle cx="70" cy="52" r="3" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2" />
+                            <circle cx="140" cy="58" r="3" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2" />
+                            <circle cx="200" cy="38" r="3" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2" />
+                            <circle cx="250" cy="42" r="3" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2" />
+                            <circle cx="300" cy="16" r="3.5" fill="#FFFFFF" stroke="#2563EB" strokeWidth="2.5" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

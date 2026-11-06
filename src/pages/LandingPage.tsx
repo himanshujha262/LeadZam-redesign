@@ -17,7 +17,7 @@ export const LandingPage: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Auto-transition screens after 1.5 seconds, paused on user hover
+  // Auto-transition screens calmly every 3.8 seconds, paused on user hover
   useEffect(() => {
     if (isHovered) return;
     const tabs: Array<'live' | 'dashboard' | 'qualify'> = ['live', 'dashboard', 'qualify'];
@@ -26,7 +26,7 @@ export const LandingPage: React.FC = () => {
         const nextIndex = (tabs.indexOf(prev) + 1) % tabs.length;
         return tabs[nextIndex];
       });
-    }, 1500);
+    }, 3800);
 
     return () => clearTimeout(timer);
   }, [activeTab, isHovered]);

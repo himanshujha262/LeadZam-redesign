@@ -6,6 +6,7 @@ const screenTabs = ['live', 'dashboard-screen', 'qualify-screen'];
 let currentScreenIndex = 0;
 let autoTransitionTimer = null;
 let isUserInteracting = false;
+const SCREEN_DWELL_MS = 3800; // Calm, comfortable pace (never rushed)
 
 function switchScreenTab(tabId, isManual = false) {
   const index = screenTabs.indexOf(tabId);
@@ -22,7 +23,7 @@ function switchScreenTab(tabId, isManual = false) {
     }
     if (btn) {
       btn.className =
-        'px-4 py-2 rounded-xl text-xs font-semibold transition bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-2';
+        'px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-2';
     }
   });
 
@@ -30,20 +31,20 @@ function switchScreenTab(tabId, isManual = false) {
   const activeBtn = document.getElementById('tab-btn-' + tabId);
   if (activeEl) {
     activeEl.classList.remove('hidden');
-    // Force DOM reflow to trigger smooth transition animation
+    // Force DOM reflow to trigger smooth 0.9s cinematic ease animation
     void activeEl.offsetWidth;
     activeEl.classList.add('screen-showcase-view');
   }
   if (activeBtn) {
     activeBtn.className =
-      'px-4 py-2 rounded-xl text-xs font-bold transition shadow-xs bg-[#1264F5] text-white flex items-center gap-2';
+      'px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 shadow-sm bg-[#1264F5] text-white flex items-center gap-2';
   }
 
   if (isManual) {
     stopAutoTransition();
     autoTransitionTimer = setTimeout(() => {
       startAutoTransition();
-    }, 4500);
+    }, 6000);
   }
 }
 
@@ -55,7 +56,7 @@ function startAutoTransition() {
     currentScreenIndex = (currentScreenIndex + 1) % screenTabs.length;
     switchScreenTab(screenTabs[currentScreenIndex], false);
     startAutoTransition();
-  }, 1500);
+  }, SCREEN_DWELL_MS);
 }
 
 function stopAutoTransition() {

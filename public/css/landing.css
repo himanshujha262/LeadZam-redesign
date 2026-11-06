@@ -189,23 +189,26 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Work In Action Screen Showcase Transitions
+   Work In Action Screen Showcase Transitions (Smooth & Cinematic)
    -------------------------------------------------------------------------- */
 .screen-showcase-view {
-  animation: screen-fade-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: opacity, transform;
+  animation: screen-smooth-transition 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: opacity, transform, filter;
 }
 
-@keyframes screen-fade-in {
+@keyframes screen-smooth-transition {
   0% {
     opacity: 0;
-    transform: translate3d(0, 10px, 0) scale(0.99);
+    transform: translate3d(0, 16px, 0) scale(0.985);
+    filter: blur(3px);
   }
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0px);
   }
 }
+
 
 
 

@@ -3,7 +3,7 @@
  */
 
 function switchScreenTab(tabId) {
-  const views = ['live', 'dashboard-screen', 'drawer-screen', 'qualify-screen'];
+  const views = ['live', 'dashboard-screen', 'qualify-screen'];
   views.forEach((v) => {
     const el = document.getElementById('screen-view-' + v);
     const btn = document.getElementById('tab-btn-' + v);
@@ -48,7 +48,7 @@ function toggleFaq(btn) {
 
 document.addEventListener('DOMContentLoaded', () => {
   // Screen tab switcher listeners
-  const tabs = ['live', 'dashboard-screen', 'drawer-screen', 'qualify-screen'];
+  const tabs = ['live', 'dashboard-screen', 'qualify-screen'];
   tabs.forEach((tabId) => {
     const btn = document.getElementById('tab-btn-' + tabId);
     if (btn) {

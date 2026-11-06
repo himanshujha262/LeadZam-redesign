@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'live' | 'dashboard' | 'drawer' | 'qualify'>('live');
+  const [activeTab, setActiveTab] = useState<'live' | 'dashboard' | 'qualify'>('live');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const faqs = [
@@ -308,16 +308,6 @@ export const LandingPage: React.FC = () => {
                 <span>CRM Dashboard Screen</span>
               </button>
               <button 
-                onClick={() => setActiveTab('drawer')} 
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
-                  activeTab === 'drawer' 
-                    ? 'bg-[#1264F5] text-white shadow-xs' 
-                    : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
-                }`}
-              >
-                <span>Lead Drawer Screen</span>
-              </button>
-              <button 
                 onClick={() => setActiveTab('qualify')} 
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
                   activeTab === 'qualify' 
@@ -403,16 +393,6 @@ export const LandingPage: React.FC = () => {
                     <Link to="/dashboard" className="text-xs font-bold text-[#1264F5] hover:underline">Open Live Dashboard →</Link>
                   </div>
                   <img src="./assets/images/crm-dashboard-screen.png" alt="CRM Dashboard" className="w-full rounded-2xl border border-slate-200" />
-                </div>
-              )}
-
-              {activeTab === 'drawer' && (
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                    <span className="font-bold text-sm text-slate-800">430px Context-Preserving Lead Drawer</span>
-                    <Link to="/leads/1" className="text-xs font-bold text-[#1264F5] hover:underline">Test Drawer in App →</Link>
-                  </div>
-                  <img src="./assets/images/crm-drawer-screen.png" alt="Lead Drawer" className="w-full rounded-2xl border border-slate-200" />
                 </div>
               )}
 

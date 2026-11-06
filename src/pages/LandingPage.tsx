@@ -86,13 +86,6 @@ export const LandingPage: React.FC = () => {
               <span>Get Started Free</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link 
-              to="/leads" 
-              className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs sm:text-sm font-semibold px-3 py-2 rounded-xl transition-all"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Live CRM Demo</span>
-            </Link>
           </div>
         </div>
       </header>

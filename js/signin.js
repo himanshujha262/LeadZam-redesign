@@ -22,9 +22,27 @@ function handleSocialAuth(provider) {
     if (label) label.textContent = `Authenticating with ${provider}... Redirecting to workspace.`;
     success.classList.remove('hidden');
   }
+
+  // Persist authenticated session
+  const user = {
+    isAuthenticated: true,
+    email: `${provider.toLowerCase()}@leadzam.com`,
+    name: `${provider} User`,
+    company: 'LeadZam Growth Agency',
+    role: 'Campaign Specialist',
+    token: 'lz_token_' + Date.now()
+  };
+  try {
+    localStorage.setItem('leadzam_user', JSON.stringify(user));
+    localStorage.setItem('leadzam_auth', 'true');
+  } catch (e) {}
+
+  const redirectUrl = sessionStorage.getItem('leadzam_redirect_after_login') || 'dashboard.html';
+  sessionStorage.removeItem('leadzam_redirect_after_login');
+
   setTimeout(() => {
-    window.location.href = 'dashboard.html';
-  }, 800);
+    window.location.href = redirectUrl;
+  }, 700);
 }
 
 function handleFormSubmit(e) {
@@ -47,12 +65,38 @@ function handleFormSubmit(e) {
   if (text) text.textContent = 'Verifying credentials...';
   if (success) success.classList.remove('hidden');
 
+  // Persist authenticated session
+  const cleanName = email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  const user = {
+    isAuthenticated: true,
+    email: email,
+    name: cleanName || 'LeadZam User',
+    company: 'LeadZam Growth Agency',
+    role: 'Sales Director',
+    token: 'lz_token_' + Date.now()
+  };
+  try {
+    localStorage.setItem('leadzam_user', JSON.stringify(user));
+    localStorage.setItem('leadzam_auth', 'true');
+  } catch (e) {}
+
+  const redirectUrl = sessionStorage.getItem('leadzam_redirect_after_login') || 'dashboard.html';
+  sessionStorage.removeItem('leadzam_redirect_after_login');
+
   setTimeout(() => {
-    window.location.href = 'dashboard.html';
-  }, 800);
+    window.location.href = redirectUrl;
+  }, 700);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Check if redirected because authentication is required
+  if (window.location.search.includes('auth_required=true')) {
+    const authBanner = document.getElementById('auth-required-banner');
+    if (authBanner) {
+      authBanner.classList.remove('hidden');
+    }
+  }
+
   const googleBtn = document.getElementById('google-login-btn');
   if (googleBtn) {
     googleBtn.addEventListener('click', () => handleSocialAuth('Google'));

@@ -1,3 +1,25 @@
+// LeadZam Dashboard Security Access Guard
+(function verifyDashboardAccess() {
+  try {
+    const auth = localStorage.getItem('leadzam_auth');
+    const userStr = localStorage.getItem('leadzam_user');
+    let isAuthed = false;
+    if (auth === 'true') isAuthed = true;
+    if (userStr) {
+      const user = JSON.parse(userStr);
+      if (user && (user.email || user.isAuthenticated)) isAuthed = true;
+    }
+    if (!isAuthed) {
+      try {
+        sessionStorage.setItem('leadzam_redirect_after_login', window.location.href);
+      } catch (e) {}
+      window.location.replace('signin.html?auth_required=true');
+    }
+  } catch (e) {
+    window.location.replace('signin.html?auth_required=true');
+  }
+})();
+
 // In-memory reactive Lead Store based on stitch mockups
     let leadsData = [
       {
@@ -863,6 +885,35 @@
 
       const closeMobilePreviewBtn = document.getElementById('close-mobile-preview-btn');
       if (closeMobilePreviewBtn) closeMobilePreviewBtn.addEventListener('click', toggleMobileView);
+
+      // Populate authenticated user info
+      try {
+        const userStr = localStorage.getItem('leadzam_user');
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          const nameEl = document.getElementById('sidebar-user-name');
+          const roleEl = document.getElementById('sidebar-user-role');
+          const avatarEl = document.getElementById('sidebar-user-avatar');
+          if (nameEl && user.name) nameEl.textContent = user.name;
+          if (roleEl && (user.role || user.company)) roleEl.textContent = user.role || user.company;
+          if (avatarEl && user.name) {
+            const initials = user.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+            avatarEl.textContent = initials || 'LZ';
+          }
+        }
+      } catch (e) {}
+
+      // Logout handler
+      const logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('leadzam_user');
+          localStorage.removeItem('leadzam_auth');
+          sessionStorage.removeItem('leadzam_redirect_after_login');
+          window.location.href = 'signin.html';
+        });
+      }
 
       // Initial render
       renderLeads();

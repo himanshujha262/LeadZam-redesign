@@ -37,8 +37,26 @@ function simulateSocialSignup(provider) {
     if (title) title.textContent = `Authenticated with ${provider}!`;
     alertBox.classList.remove('hidden');
   }
+
+  // Persist authenticated session
+  const user = {
+    isAuthenticated: true,
+    name: `${provider} User`,
+    email: `user@${provider.toLowerCase()}.com`,
+    company: 'LeadZam Workspace',
+    role: 'Workspace Admin',
+    token: 'lz_token_' + Date.now()
+  };
+  try {
+    localStorage.setItem('leadzam_user', JSON.stringify(user));
+    localStorage.setItem('leadzam_auth', 'true');
+  } catch (e) {}
+
+  const redirectUrl = sessionStorage.getItem('leadzam_redirect_after_login') || 'dashboard.html';
+  sessionStorage.removeItem('leadzam_redirect_after_login');
+
   setTimeout(() => {
-    window.location.href = 'dashboard.html';
+    window.location.href = redirectUrl;
   }, 700);
 }
 
@@ -51,8 +69,33 @@ function simulateSubmit() {
   if (text) text.textContent = 'Setting up workspace...';
   if (alertBox) alertBox.classList.remove('hidden');
 
+  const fullNameInput = document.getElementById('fullName');
+  const workEmailInput = document.getElementById('workEmail');
+  const companyNameInput = document.getElementById('companyName');
+
+  const fullName = fullNameInput ? fullNameInput.value.trim() : '';
+  const workEmail = workEmailInput ? workEmailInput.value.trim() : '';
+  const companyName = companyNameInput ? companyNameInput.value.trim() : '';
+
+  // Persist authenticated session
+  const user = {
+    isAuthenticated: true,
+    name: fullName || 'LeadZam Admin',
+    email: workEmail || 'admin@leadzam.com',
+    company: companyName || 'LeadZam Workspace',
+    role: 'Workspace Admin',
+    token: 'lz_token_' + Date.now()
+  };
+  try {
+    localStorage.setItem('leadzam_user', JSON.stringify(user));
+    localStorage.setItem('leadzam_auth', 'true');
+  } catch (e) {}
+
+  const redirectUrl = sessionStorage.getItem('leadzam_redirect_after_login') || 'dashboard.html';
+  sessionStorage.removeItem('leadzam_redirect_after_login');
+
   setTimeout(() => {
-    window.location.href = 'dashboard.html';
+    window.location.href = redirectUrl;
   }, 800);
 }
 

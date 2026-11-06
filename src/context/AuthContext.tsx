@@ -24,30 +24,28 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const saved = localStorage.getItem('leadzam_user');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (parsed && (parsed.email || parsed.name)) {
+          return parsed;
+        }
       } catch {
         return null;
       }
     }
-    // Default logged in user for smooth evaluation
-    return {
-      name: 'Himanshu Kumar',
-      email: 'himanshu@leadzam.com',
-      company: 'LeadZam Growth Agency',
-      role: 'Sales Director',
-    };
+    return null;
   });
 
   const login = async (email: string): Promise<boolean> => {
     await new Promise((res) => setTimeout(res, 400));
     const newUser: User = {
-      name: email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+      name: email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || 'LeadZam User',
       email,
       company: 'Growth Technologies Inc.',
       role: 'Account Executive',
     };
     setUser(newUser);
     localStorage.setItem('leadzam_user', JSON.stringify(newUser));
+    localStorage.setItem('leadzam_auth', 'true');
     return true;
   };
 
@@ -60,6 +58,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
     setUser(demoUser);
     localStorage.setItem('leadzam_user', JSON.stringify(demoUser));
+    localStorage.setItem('leadzam_auth', 'true');
   };
 
   const signup = async (name: string, email: string, company: string): Promise<boolean> => {
@@ -72,12 +71,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
     setUser(newUser);
     localStorage.setItem('leadzam_user', JSON.stringify(newUser));
+    localStorage.setItem('leadzam_auth', 'true');
     return true;
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem('leadzam_user');
+    localStorage.removeItem('leadzam_auth');
   };
 
   return (

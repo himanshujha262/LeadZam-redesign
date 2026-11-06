@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="js/auth-guard.js"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/style.css"/>
@@ -109,15 +110,15 @@
 
         <div class="flex items-center justify-between pt-1">
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-full bg-slate-900 text-white font-bold text-xs flex items-center justify-center">
+            <div id="sidebar-user-avatar" class="w-8 h-8 rounded-full bg-slate-900 text-white font-bold text-xs flex items-center justify-center">
               HM
             </div>
             <div class="text-xs">
-              <div class="font-bold text-[#0F172A] leading-tight">Himanshu M.</div>
-              <div class="text-[10px] text-slate-400">Founder &amp; CEO</div>
+              <div id="sidebar-user-name" class="font-bold text-[#0F172A] leading-tight">Himanshu M.</div>
+              <div id="sidebar-user-role" class="text-[10px] text-slate-400">Founder &amp; CEO</div>
             </div>
           </div>
-          <a href="index.html" title="Sign Out" class="text-slate-400 hover:text-red-600 transition">
+          <a href="#" id="logout-btn" title="Sign Out" class="text-slate-400 hover:text-red-600 transition">
             <span class="material-symbols-outlined text-[18px]">logout</span>
           </a>
         </div>

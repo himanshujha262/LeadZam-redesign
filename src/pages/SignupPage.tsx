@@ -1,12 +1,14 @@
 import React, { useState, useMemo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/Button';
 import { Eye, EyeOff, AlertCircle } from 'lucide-react';
 
 export const SignupPage: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { signup } = useAuth();
+  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/leads';
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -51,7 +53,7 @@ export const SignupPage: React.FC = () => {
     try {
       setIsSubmitting(true);
       await signup(name, email, company, password);
-      navigate('/leads');
+      navigate(from, { replace: true });
     } catch {
       setErrors({ form: 'Registration failed. Please try again.' });
       setIsSubmitting(false);
@@ -93,7 +95,7 @@ export const SignupPage: React.FC = () => {
             type="button"
             onClick={() => {
               signup('Google User', 'user@gmail.com', 'Google Workspace', 'pass123');
-              navigate('/leads');
+              navigate(from, { replace: true });
             }}
             className="w-full inline-flex justify-center items-center gap-2 py-2 px-3 rounded-lg border border-[#E2E8F0] bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs"
           >
@@ -122,7 +124,7 @@ export const SignupPage: React.FC = () => {
             type="button"
             onClick={() => {
               signup('Microsoft User', 'user@microsoft.com', 'Microsoft Workspace', 'pass123');
-              navigate('/leads');
+              navigate(from, { replace: true });
             }}
             className="w-full inline-flex justify-center items-center gap-2 py-2 px-3 rounded-lg border border-[#E2E8F0] bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 transition shadow-xs"
           >

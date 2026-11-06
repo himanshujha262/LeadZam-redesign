@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/Button';
-import { Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { Eye, EyeOff, AlertCircle, Lock } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
+  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/leads';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +33,7 @@ export const LoginPage: React.FC = () => {
     try {
       setIsSubmitting(true);
       await login(email, password);
-      navigate('/leads');
+      navigate(from, { replace: true });
     } catch {
       setError('Invalid credentials. Please try again.');
       setIsSubmitting(false);
@@ -40,7 +42,7 @@ export const LoginPage: React.FC = () => {
 
   const handleSocialAuth = (provider: string) => {
     login(`${provider.toLowerCase()}@user.com`, 'samplePass123!');
-    navigate('/leads');
+    navigate(from, { replace: true });
   };
 
   return (
@@ -72,6 +74,14 @@ export const LoginPage: React.FC = () => {
             Sign in to manage your leads and campaigns.
           </p>
         </div>
+
+        {/* Authentication Required Banner */}
+        {location.state?.from && (
+          <div className="mb-5 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-center gap-2.5">
+            <Lock className="w-4 h-4 text-amber-600 shrink-0" />
+            <span>Authentication required. Please sign in or register to access the dashboard overview.</span>
+          </div>
+        )}
 
         {/* Social SSO Buttons */}
         <div className="grid grid-cols-2 gap-3 mb-6">

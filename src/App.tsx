@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { LeadProvider } from './context/LeadContext';
 import { AppLayout } from './components/layout/AppLayout';
+import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { LandingPage } from './pages/LandingPage';
 import { LeadsPage } from './pages/LeadsPage';
 import { DashboardPage } from './pages/DashboardPage';
@@ -23,11 +24,13 @@ export const App: React.FC = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
 
-            {/* App Layout Protected Routes */}
-            <Route element={<AppLayout />}>
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/leads" element={<LeadsPage />} />
-              <Route path="/leads/:id" element={<LeadsPage />} />
+            {/* Protected Routes: Requires Login or Signup */}
+            <Route element={<ProtectedRoute />}>
+              <Route element={<AppLayout />}>
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/leads" element={<LeadsPage />} />
+                <Route path="/leads/:id" element={<LeadsPage />} />
+              </Route>
             </Route>
 
             {/* Fallback */}

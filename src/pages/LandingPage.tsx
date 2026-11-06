@@ -8,13 +8,15 @@ import {
   Plus, 
   Minus, 
   Play, 
-  SlidersHorizontal,
   Star,
   Webhook,
   Calendar,
   CreditCard,
   LayoutGrid,
   Users,
+  UserPlus,
+  Filter,
+  Gauge,
   Trophy,
   Target,
   BarChart3,
@@ -289,60 +291,137 @@ export const LandingPage: React.FC = () => {
         </section>
 
         {/* 3. VALUE PROPOSITIONS & FEATURES */}
-        <section id="features" className="py-16 sm:py-24 bg-white border-t border-[#E2E8F0]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="text-xs font-bold text-[#1264F5] uppercase tracking-wider bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-                BUILT FOR CONVERSIONS
+        <section id="features" className="py-20 lg:py-24 bg-white border-t border-[#E2E8F0]">
+          <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+            <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#1264F5] bg-blue-50 px-3.5 py-1 rounded-full border border-blue-100">
+                CORE FEATURES
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mt-3 tracking-tight">
-                Everything you need to close ad leads faster
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0F172A] mt-3.5 tracking-tight leading-tight">
+                Everything you need to turn ad leads into revenue
               </h2>
-              <p className="text-[#64748B] text-base mt-2">
-                Stop losing leads in spreadsheets. LeadZam accelerates your sales cycle from the second an ad is clicked.
+              <p className="text-[#64748B] text-base sm:text-lg mt-3 leading-relaxed max-w-2xl mx-auto">
+                LeadZam brings lead generation, qualification, instant follow-ups, and ROAS reporting into one unified CRM workspace.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:shadow-md transition space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#1264F5] flex items-center justify-center font-bold">
-                  <Zap className="w-5 h-5" />
+            {/* 6 Feature Cards (3x2 Grid) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              
+              {/* Feature 1 */}
+              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <UserPlus className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Capture Leads Automatically</h3>
+                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
+                    Direct native integrations with Meta and Google Ads ingest every form submission within seconds, eliminating dropped leads and zapier breakages.
+                  </p>
                 </div>
-                <h3 className="font-bold text-base text-[#0F172A]">Instant Ingestion</h3>
-                <p className="text-xs text-[#64748B] leading-relaxed">
-                  Real-time webhooks capture leads from Meta Instant Forms and Google Search Ads in under 3 seconds.
-                </p>
+                <div className="mt-8">
+                  <Link to="/leads" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                    <span>See live leads table</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:shadow-md transition space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
-                  <SlidersHorizontal className="w-5 h-5" />
+              {/* Feature 2 */}
+              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <Filter className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Context-Preserving Drawer</h3>
+                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
+                    Click any lead to inspect their complete ad campaign origin, budget, score, qualification checklist, and full touchpoint history without leaving your list.
+                  </p>
                 </div>
-                <h3 className="font-bold text-base text-[#0F172A]">Context-Preserving Drawer</h3>
-                <p className="text-xs text-[#64748B] leading-relaxed">
-                  Inspect and qualify prospects in a 430px sliding drawer while keeping the main leads list visible behind.
-                </p>
+                <div className="mt-8">
+                  <Link to="/leads" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                    <span>Preview lead drawer</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:shadow-md transition space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
-                  <MessageSquare className="w-5 h-5" />
+              {/* Feature 3 */}
+              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <Zap className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Instant WhatsApp Sequences</h3>
+                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
+                    Trigger personalized WhatsApp messages and email sequences the instant a form is submitted to capture buyer intent before competitors wake up.
+                  </p>
                 </div>
-                <h3 className="font-bold text-base text-[#0F172A]">1-Click WhatsApp</h3>
-                <p className="text-xs text-[#64748B] leading-relaxed">
-                  Dispatch approved Meta WhatsApp templates with booking links right from the lead's contact record.
-                </p>
+                <div className="mt-8">
+                  <Link to="/dashboard" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                    <span>View automations</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs hover:shadow-md transition space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
-                  <TrendingUp className="w-5 h-5" />
+              {/* Feature 4 */}
+              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <TrendingUp className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Closed-Loop ROAS Reporting</h3>
+                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
+                    Connect actual closed deal revenue back to specific campaigns, ad creatives, and search terms for true marketing ROAS clarity.
+                  </p>
                 </div>
-                <h3 className="font-bold text-base text-[#0F172A]">Closed-Loop ROAS</h3>
-                <p className="text-xs text-[#64748B] leading-relaxed">
-                  Attribute won revenue back to specific campaigns, ad sets, and reps to maximize return on ad spend.
-                </p>
+                <div className="mt-8">
+                  <Link to="/dashboard" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                    <span>Explore analytics</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
+
+              {/* Feature 5 */}
+              <div className="rounded-[22px] bg-white border border-[#E2E8F0] p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-200 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#EFF6FF] text-[#1264F5] border border-blue-100/80 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <LayoutGrid className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Table &amp; Kanban Pipelines</h3>
+                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
+                    Toggle seamlessly between data-dense sorting tables and drag-and-drop visual deal boards suited for sales reps and account executives.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <Link to="/leads" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                    <span>Try pipeline view</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Feature 6 (Highlighted with Solid Blue Icon) */}
+              <div className="rounded-[22px] bg-white border border-blue-200/90 p-7 sm:p-8 shadow-xs hover:shadow-lg hover:border-blue-300 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group ring-1 ring-blue-100/50">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#1264F5] text-white flex items-center justify-center mb-6 shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform">
+                    <Gauge className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] mb-3 group-hover:text-[#1264F5] transition-colors">Speed-to-Lead Timer</h3>
+                  <p className="text-xs sm:text-[13px] text-[#64748B] leading-relaxed">
+                    Track rep response latency with live seconds-precision timers. Benchmark team performance and prevent warm prospects from slipping away.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <Link to="/dashboard" className="text-xs sm:text-sm font-semibold text-[#1264F5] hover:text-blue-700 inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                    <span>Test speed metrics</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

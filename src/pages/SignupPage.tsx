@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/Button';
-import { Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { Eye, EyeOff, AlertCircle, ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const SignupPage: React.FC = () => {
   const navigate = useNavigate();
@@ -61,10 +61,33 @@ export const SignupPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col justify-center items-center p-4 sm:p-6 font-sans antialiased text-[#0F172A]">
-      {/* Brand Header */}
-      <div className="flex items-center justify-center gap-2.5 mb-7">
-        <Link to="/leads" className="flex items-center gap-2">
+    <div className="min-h-screen bg-[#F8FAFC] flex flex-col justify-between p-4 sm:p-6 font-sans antialiased text-[#0F172A]">
+      {/* Top Bar with Back Link & Auth Switcher */}
+      <header className="w-full max-w-5xl mx-auto flex items-center justify-between py-2 px-1 sm:px-0">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-200/80 px-3.5 py-1.5 rounded-full shadow-xs hover:shadow transition-all group"
+        >
+          <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-150 group-hover:-translate-x-0.5" />
+          <span>Back to Home</span>
+        </Link>
+        <div className="inline-flex items-center gap-2 p-1 pl-3 bg-white/90 backdrop-blur-xs border border-slate-200/90 rounded-full shadow-xs hover:shadow-sm transition-all">
+          <span className="text-xs text-slate-500 font-medium hidden sm:inline">Already registered?</span>
+          <Link
+            to="/login"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1264F5] hover:bg-blue-600 text-white text-xs font-bold transition-all shadow-xs group"
+          >
+            <span>Sign In</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5" />
+          </Link>
+        </div>
+      </header>
+
+      {/* Main Centered Content */}
+      <main className="w-full flex-1 flex flex-col justify-center items-center py-6 sm:py-8">
+        {/* Brand Header */}
+        <div className="flex items-center justify-center gap-2.5 mb-7">
+          <Link to="/" className="flex items-center gap-2">
           <img
             src="/assets/images/logo.png"
             alt="LeadZam"
@@ -349,6 +372,11 @@ export const SignupPage: React.FC = () => {
           </Link>
         </div>
       </div>
+      </main>
+
+      <footer className="w-full max-w-5xl mx-auto py-4 text-center text-[11px] text-slate-400">
+        © 2026 LeadZam Inc. All rights reserved. • ISO 27001 &amp; SOC2 Type II Certified
+      </footer>
     </div>
   );
 };
